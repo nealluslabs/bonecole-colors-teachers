@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-function MyCoolersRowCard ({ groupId, name, fee, count, status, img, startDate, members, isMember}) {
+function HomeCoolersCard ({ groupId, name, fee, count, status, img, startDate, members, isMember}) {
     const [isOpen, setIsOpen] = useState(false);
     const classes = useStyles();
     const classes2 = useStyles2();
@@ -106,8 +106,8 @@ function MyCoolersRowCard ({ groupId, name, fee, count, status, img, startDate, 
             margin: 'auto',
             // maxWidth: 500,
             border: '0px solid black',
-            boxShadow: '0px 4px 16px rgba(60, 60, 60, 0.06);',
             borderRadius: '7px',
+            boxShadow: '0px 4px 16px rgba(60, 60, 60, 0.06)',
             flexGrow: 1,
             backgroundColor: (theme) =>
               theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -124,19 +124,21 @@ function MyCoolersRowCard ({ groupId, name, fee, count, status, img, startDate, 
               <Grid item xs container direction="column" spacing={0}>
                 <Grid item xs>
                   <div style={{display: 'flex', border: '0px solid red', marginBottom: '-20px'}}>
-                  <h2 style={{ fontSize: '18px'}}><b>NAME: </b></h2>
+                  {/* <h2 style={{ fontSize: '18px'}}><b>NAME: </b></h2> */}
+                  <h2 style={{ fontSize: '18px'}}><b>{name.toUpperCase()} </b></h2>
                     &nbsp; &nbsp;
-                  <p style={{ fontSize: '16px'}}>{name.toUpperCase()}</p>
+                  {/* <p style={{ fontSize: '16px'}}>{name.toUpperCase()}</p> */}
                   </div>
-                  <div style={{display: 'flex', marginBottom: '-20px'}}>
+                  {/* <div style={{display: 'flex', marginBottom: '-20px'}}>
                   <h2 style={{ fontSize: '18px'}}><b>FEE: </b></h2>
                     &nbsp; &nbsp;
                   <p style={{ fontSize: '16px'}}>{fee}</p>
-                  </div>
+                  </div> */}
                   <div style={{display: 'flex' }}>
-                  <h2 style={{ fontSize: '18px'}}><b>COUNT: </b></h2>
-                    &nbsp; &nbsp;
-                  <p style={{ fontSize: '16px'}}>{count}</p>
+                  {/* <h2 style={{ fontSize: '18px'}}><b>COUNT: </b></h2> */}
+                    {/* &nbsp; &nbsp; */}
+                  {/* <p style={{ fontSize: '16px'}}>{count} Members</p> */}
+                  <p style={{ fontSize: '16px'}}>{members.length} Members</p>
                   </div>
                 </Grid>
               </Grid>
@@ -171,4 +173,4 @@ function MyCoolersRowCard ({ groupId, name, fee, count, status, img, startDate, 
       );
 }
 
-export default MyCoolersRowCard
+export default HomeCoolersCard

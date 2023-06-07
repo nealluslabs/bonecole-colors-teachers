@@ -20,6 +20,7 @@ import { useTheme, styled } from '@mui/material/styles';
 import { BaseOptionChart } from 'src/components/chart2';
 import RecentTransaction from 'src/components/home/recent-transaction';
 import { fetchMyTransactions } from 'src/redux/actions/transaction.action';
+import HomeCoolersCard from 'src/components/home/home-coolers-card';
 
 
 const CHART_HEIGHT = 392;
@@ -104,7 +105,7 @@ const myCoolerGroups = myGroups?.length ? (
   .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
   .map(group => {
     return (
-      <MyCoolersRowCard 
+        <HomeCoolersCard 
       groupId={group.groupId}
       name={group.groupName} 
       fee={fCurrency(group.amount)}
@@ -129,9 +130,9 @@ const myCoolerGroups = myGroups?.length ? (
       </Helmet>
 
       <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
-        </Typography>
+        {/* <Typography variant="h4" sx={{ mb: 5 }}>
+         Welcome 🖐🏽
+        </Typography> */}
         <Grid container spacing={2}>
             <Grid item xs={12} md={8} lg={6}>
               <Paper
@@ -140,7 +141,9 @@ const myCoolerGroups = myGroups?.length ? (
                   display: 'flex',
                   flexDirection: 'column',
                   height: 240,
-                  border: '1px solid black'
+                  border: '1px solid #F8F8F8',
+                  backgroundColor: '#F8F8F8',
+                  borderRadius: '10px'
                 }}
               >
                 {/* <PieChartCard /> */}
@@ -157,7 +160,8 @@ const myCoolerGroups = myGroups?.length ? (
                   display: 'flex',
                   flexDirection: 'column',
                   height: 240,
-                  border: '1px solid black'
+                  // border: '1px solid black',
+                  backgroundColor: '#6077F00F',
                 }}
               >
                 <WalletBox type={'PROFILE'}  BoxIcon={AccountCircleIcon}/>
@@ -168,7 +172,7 @@ const myCoolerGroups = myGroups?.length ? (
           {/* <SearchBox style={{ width: '100%' }} /> */}
           
         <Grid container spacing={2}>
-            <Grid item xs={12} md={12} lg={7.5}>
+            <Grid item xs={12} md={12} lg={7}>
              {
                 isLoading ?
                 <Stack>
@@ -177,11 +181,14 @@ const myCoolerGroups = myGroups?.length ? (
                 <Skeleton animation={false} />
                 </Stack>
                 :
-                myCoolerGroups
+                <div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <h2>Coolers</h2>
+                {myCoolerGroups}
+                </div>
               }
             </Grid>
 
-             <Grid item xs={8} md={6} lg={4.5}>
+             <Grid item xs={8} md={6} lg={5}>
              {/* <Grid item xs={12} md={8} lg={6}> */}
               <Paper
                 sx={{
@@ -189,10 +196,15 @@ const myCoolerGroups = myGroups?.length ? (
                   display: 'flex',
                   flexDirection: 'column',
                   height: 540,
-                  border: '1px solid black'
+                  // border: '1px solid black',
+                  backgroundColor: '#EDF5FF',
                 }}
               >
+                <div style={{paddingRight: '10px', paddingLeft: '20px'}}>
                 <RecentTransaction />
+
+                </div>
+                
               </Paper>
             </Grid>
           </Grid>

@@ -96,81 +96,72 @@ export default function SettingsPage() {
         <title> Cooler | Settings </title>
       </Helmet>
 
-      <Container maxWidth="xl">
-      <CssBaseline/> 
-       <>
-       <form onSubmit={settingsUpdate}>
-        <Grid container spacing={2} justify="center" style={{marginTop:"2rem", marginBottom:"2rem"}}>
-       
-        <Grid item xs={6}>
-        {/* <center>
-        <Typography variant="h4">
-         <b>SETTINGS</b>
-        </Typography>
-        </center>
-        <br/> */}
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <CardMedia
+      <Container maxWidth="xl" style={{height: '100%', backgroundColor: '#6077F00F', border: '0px solid red' }}>
+  <CssBaseline />
+  <form onSubmit={settingsUpdate}>
+    <Grid container spacing={2} style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+      <Grid item xs={12} md={4} style={{border: '0px solid red'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
+          <CardMedia
             style={{ border: '0.2px solid black', backgroundColor: '#fff', width: '240px' }}
             component="img"
-            height="140"
+            height="240"
             width="540"
             image={file ? file : state.imageUrl !== "" ? state.imageUrl : DEFAULTIMG}
             alt="IMG"
-        />
-        </div>
-          <center>
-          <Button component="label" variant="contained" style={{minHeight: '45px', minWidth: '145px', backgroundColor: '#348AED', marginTop: '15px' }}>
+          />
+          <Button component="label" variant="contained" style={{ minHeight: '45px', minWidth: '145px', backgroundColor: '#348AED', marginTop: '15px' }}>
             <b>UPLOAD</b>
             <input
-            type="file"
-            style={{ display: 'none' }}
-            onChange={handleselectedFile}
+              type="file"
+              style={{ display: 'none' }}
+              onChange={handleselectedFile}
             />
           </Button>
-          </center>
-
-              <br/>      
-    </Grid>
-       
-
+        </div>
       </Grid>
+      <Grid item xs={12} md={8}>
+        <Grid container direction="column" spacing={6} style={{ paddingLeft: '100px', paddingRight: '100px' }}>
+          <Grid item xs>
+          <p style={{ fontSize: '17px', width: '40%' }}>Payment Link</p>
+            <div style={{ display: 'flex',}}>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                // label="Enter Payment Link"
+                variant="outlined"
+                name="paymentLink"
+                value={state.paymentLink}
+                style={{background: 'white'}}
+                onChange={handleChange}
+              />
+            </div>
+            <p style={{ fontSize: '17px', width: '40%' }}>Password</p>
+            <div style={{ display: 'flex' }}>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                // label="Enter Password"
+                variant="outlined"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
+                style={{background: 'white'}}
+              />
+            </div>
+          </Grid>
+          {/* <div style={{ border: '1px solid grey', width: '100%' }}></div> */}
+          <center>
+            <Button type="submit" disabled={loading} variant="contained" style={{ minHeight: '45px', minWidth: '100px', backgroundColor: '#348AED' }}>
+              <b>{loading ? "Loading..." : "UPDATE"}</b>
+            </Button>
+          </center>
+        </Grid>
+      </Grid>
+    </Grid>
+  </form>
+</Container>
 
-      <Grid item xs container direction="column" spacing={6} style={{paddingLeft: '100px', paddingRight: '100px'}}>
-                <Grid item xs>
-                  <div style={{display: 'flex', marginBottom: '-20px'}}>
-                  <h2 style={{ fontSize: '19px', width: '40%'}}><b>PAYMENT LINK: </b></h2>
-                    &nbsp; &nbsp;
-                    <TextField id="outlined-basic" fullWidth label="Enter Payment Link" variant="outlined" 
-                    name="paymentLink"
-                    value={state.paymentLink}
-                    onChange={handleChange}
-                    />
-                  </div>
-                  <br/><br/>
-                  <div style={{display: 'flex', marginBottom: '-20px'}}>
-                  <h2 style={{ fontSize: '19px', width: '40%'}}><b>PASSWORD: </b></h2>
-                    &nbsp; &nbsp;
-                    <TextField id="outlined-basic" fullWidth label="Enter Password" variant="outlined" 
-                    name="password"
-                    value={state.password}
-                    onChange={handleChange}
-                    />
-                  </div>
-                  <br/>
-
-                </Grid>
-                <div style={{border: '1px solid grey', width: '100%'}}></div>
-                <br/>
-                 <center>
-                <Button type="submit" disabled={loading} variant="contained" style={{minHeight: '45px', maxWidth: '100px', backgroundColor: '#348AED'}}>
-                    <b>{loading ? "Loading..." : "UPDATE"}</b> 
-                </Button>
-                 </center>
-              </Grid>
-            </form>
-    </>
-      </Container>
     </>
   );
 }

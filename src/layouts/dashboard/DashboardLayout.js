@@ -22,6 +22,7 @@ const Main = styled('div')(({ theme }) => ({
   overflow: 'auto',
   minHeight: '100%',
   paddingTop: APP_BAR_MOBILE + 24,
+  backgroundColor: 'white',
   paddingBottom: theme.spacing(10),
   [theme.breakpoints.up('lg')]: {
     paddingTop: APP_BAR_DESKTOP + 24,

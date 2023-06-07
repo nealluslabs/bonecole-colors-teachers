@@ -48,19 +48,24 @@ function NavItem({ item }) {
       component={RouterLink}
       to={path}
       sx={{
+        color: '#FFFFFF',
+        fontSize: '18px',
         '&.active': {
-          color: 'black',
+          color: '#130C66',
           // bgcolor: '#66000000',
-          backgroundColor: path != '#' && 'black',
+          backgroundColor: path != '#' && 'white',
           fontWeight: 'fontWeightBold',
+          borderBottomLeftRadius: '26px',
         },
       }}
     >
-      {iconLabel != 'msg' && iconLabel != 'settings' && <StyledNavItemIcon sx={{color: '#FFFFFF', fontSize: '20px'}}>{icon && icon}</StyledNavItemIcon>}
-      {iconLabel === 'msg' && <StyledNavItemIcon sx={{color: '#FFFFFF', fontSize: '20px'}}><MessageIcon /></StyledNavItemIcon>}
-      {iconLabel === 'settings' && <StyledNavItemIcon sx={{color: '#FFFFFF', fontSize: '20px'}}><SettingsIcon /></StyledNavItemIcon>}
+      {iconLabel != 'msg' && iconLabel != 'settings' && <StyledNavItemIcon sx={{ fontSize: '20px'}}>{icon && icon}</StyledNavItemIcon>}
+      {iconLabel === 'msg' && <StyledNavItemIcon sx={{fontSize: '20px'}}><MessageIcon /></StyledNavItemIcon>}
+      {iconLabel === 'settings' && <StyledNavItemIcon sx={{fontSize: '20px'}}><SettingsIcon /></StyledNavItemIcon>}
 
-      <ListItemText disableTypography primary={title} sx={{color: '#FFFFFF', fontSize: '18px'}}/>
+      <ListItemText disableTypography primary={title} sx={{color: title.toLowerCase() === 'cooler' && 'white'}}/>
+      {/* sx={{ color: '#130C66', fontSize: '18px'}}/> */}
+      {/* <ListItemText disableTypography primary={title} sx={{ color: '#FFFFFF', fontSize: '18px'}}/> */}
 
       {info && info}
     </StyledNavItem>
@@ -74,22 +79,23 @@ function SubNavItem({ item }) {
       component={RouterLink}
       to={path}
       sx={{
+        color: '#FFFFFF',
         '&.active': {
-          // color: 'black',
-          // bgcolor: '#66000000',
-          backgroundColor: path != '#' && 'black',
+          color: '#130C66',
+          backgroundColor: path != '#' && 'white',
           fontWeight: 'fontWeightBold',
+          borderBottomLeftRadius: '26px',
         },
       }}
     >
       {/* <StyledNavItemIcon sx={{color: '#FFFFFF', fontSize: '20px'}}>{icon && icon}</StyledNavItemIcon> */}
-      <StyledNavItemIcon sx={{color: '#FFFFFF', fontSize: '18px', ml: 5}}>
+      <StyledNavItemIcon sx={{fontSize: '18px', ml: 5}}>
         {icon === 'LockIcon' && <LockIcon />}
         {icon === 'LockOpen' && <LockOpenIcon />}
         {icon === 'Savings' && <SavingsIcon />}
       </StyledNavItemIcon>
 
-      <ListItemText disableTypography primary={title} sx={{color: '#FFFFFF', fontSize: '15px'}}/>
+      <ListItemText disableTypography primary={title} sx={{fontSize: '15px'}}/>
 
       {info && info}
     </StyledNavItem>

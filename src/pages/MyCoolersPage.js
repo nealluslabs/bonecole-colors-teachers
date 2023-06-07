@@ -59,7 +59,7 @@ export default function MyCoolersPage() {
       <Helmet>
         <title> Cooler | My Groups </title>
       </Helmet>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" style={{backgroundColor: '#609AF00F'}}>
       {/* <SearchBox style={{ width: '100%' }} /> */}
       <br/>
       <Grid  container direction="row" justifyContent="flex-end" alignItems="flex-end">

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // components
@@ -11,6 +11,7 @@ import Searchbar from './Searchbar2';
 import AccountPopover from './AccountPopover';
 import NotificationsPopover from './NotificationsPopover';
 import Searchbar2 from './Searchbar2';
+import { useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,7 @@ const HEADER_DESKTOP = 92;
 
 const StyledRoot = styled(AppBar)(({ theme }) => ({
   ...bgBlur({ color: theme.palette.background.default }),
+  backgroundColor: 'white',
   boxShadow: 'none',
   [theme.breakpoints.up('lg')]: {
     width: `calc(100% - ${NAV_WIDTH + 1}px)`,
@@ -43,6 +45,7 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
+  const { user } = useSelector((state) => state.auth);
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -56,7 +59,10 @@ export default function Header({ onOpenNav }) {
         >
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
-
+        <Typography variant="h4" sx={{color: 'black' }}>
+         Welcome {user?.firstName}👋
+         {/* Welcome {user?.firstName + " " + user?.lastName}🖐🏽 */}
+        </Typography>
         {/* <Searchbar /> */}
         {/* <Searchbar2 /> */}
         <Box sx={{ flexGrow: 1 }} />

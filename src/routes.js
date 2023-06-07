@@ -14,10 +14,11 @@ import MembersPage from './pages/MembersPage';
 import CreateCoolerPage from './pages/CreateCoolerPage';
 import PublicCoolerJoin from './pages/PublicCoolerJoin';
 import PrivateCoolerJoin from './pages/PrivateCoolerJoin';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage from './pages/RegisterPage2';
 import JoinCoolerPage from './pages/JoinCoolerPage';
 import InboxPage from './pages/InboxPage';
 import SettingsPage from './pages/SettingsPage';
+import UploadVideoPage from './pages/UploadVideo';
 
 
 export default function Router() {
@@ -40,6 +41,7 @@ export default function Router() {
         { path: 'join-public-cooler', element: <PublicCoolerJoin /> },
         { path: 'join-private-cooler', element: <PrivateCoolerJoin /> },
         { path: 'create-cooler', element: <CreateCoolerPage /> },
+        { path: 'upload-video', element: <UploadVideoPage /> },
       ],
     },
     {

@@ -76,7 +76,9 @@ function CoolerRowCard ({ groupId, name, fee, feeInNum, count, status, img, star
             pb: 2,
             margin: 'auto',
             // maxWidth: 500,
-            border: '1px solid black',
+            border: '0px solid black',
+            boxShadow: '0px 4px 16px rgba(60, 60, 60, 0.06);',
+            borderRadius: '7px',
             flexGrow: 1,
             backgroundColor: (theme) =>
               theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
