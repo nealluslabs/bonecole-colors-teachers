@@ -1,0 +1,290 @@
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import {Grid, Box, Typography, Button, MenuItem, Select} from '@mui/material';
+import TextField from '@material-ui/core/TextField';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      alignItems: 'center',
+      paddingLeft: '4rem',
+      paddingRight: '4rem',
+    },
+    searchInput: {
+      background: 'white',
+      border: '1px solid #00000026',
+      padding: '10px',
+      borderRadius: '8px',
+      // marginRight: theme.spacing(2),
+      width: '100%',
+      minWidth: '100%',
+      '& .MuiInputBase-input': {
+        color: 'grey',
+      },
+      '& .MuiInputBase-input::placeholder': {
+        color: 'grey',
+      },
+      '& .MuiInput-underline:before': {
+        borderBottomColor: 'grey',
+      },
+      '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+        borderBottomColor: 'grey',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: 'grey',
+      },
+    },
+    searchButton: {
+      color: '#fff',
+      padding: '15px',
+      minWidth: '45%',
+      backgroundColor: 'black',
+      '&:hover': {
+        backgroundColor: theme.palette.primary.dark,
+      },
+    },
+  }));
+  
+
+const Step3 = () => {
+    const classes = useStyles();
+
+      const [loading, setLoading] = useState(false);
+      const [selectedFile, setSelectedFile] = useState({selectedFile: [], selectedFileName: []});
+      const [file, setFile] = useState();
+      const [state, setState] = useState({
+        fname:  "",
+        lname: "",
+        gender: "",
+       
+      })
+      const handleChange = (e) => {
+        const value = e.target.value;
+        setState({
+          ...state,
+          [e.target.name]: value
+        });
+      }
+  
+
+  const handleselectedFile = event => {
+    setSelectedFile({
+        selectedFile: event.target.files[0],
+        selectedFileName: event.target.files[0].name
+    });
+    setFile(URL.createObjectURL(event.target.files[0]));
+};
+
+
+    return (
+    <div className={classes.root}>
+<Grid container spacing={4} alignItems="center">
+  {/* First set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+        Student Passport (Format: PNG, JPEG, JPG)
+      </Typography>
+      <TextField
+        name="fname"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={state.fname}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#392751',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleselectedFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Second set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+        Another Field (Format: PNG, JPEG, JPG)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={state.anotherField}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#392751',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleselectedFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Third set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      Mother’s ID (Format: PNG,JPEG, JPG)
+      </Typography>
+      <TextField
+        name="fname"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={state.fname}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#392751',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleselectedFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Fouth set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      All Certificates (Format: PDF)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={state.anotherField}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#392751',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleselectedFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Fifth set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      All Relevant Medical Records (Format: PDF)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={state.anotherField}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#392751',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleselectedFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+
+</Grid>
+</div>
+
+    );
+  };
+
+  export default Step3;

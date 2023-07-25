@@ -19,6 +19,10 @@ import JoinCoolerPage from './pages/JoinCoolerPage';
 import InboxPage from './pages/InboxPage';
 import SettingsPage from './pages/SettingsPage';
 import UploadVideoPage from './pages/UploadVideo';
+import StudentPage from './pages/StudentPage';
+import ReportPage from './pages/ReportPage';
+import ViewStudentPage from './pages/ViewStudentPage';
+import TeacherPage from './pages/TeacherPage';
 
 
 export default function Router() {
@@ -29,6 +33,10 @@ export default function Router() {
       children: [
         { element: <Navigate to="/login" />, index: true },
         { path: 'home', element: <HomePage /> },
+        { path: 'students', element: <StudentPage /> },
+        { path: 'view-student', element: <ViewStudentPage /> },
+        { path: 'teachers', element: <TeacherPage /> },
+        { path: 'reports', element: <ReportPage /> },
         { path: 'members', element: <MembersPage /> },
         { path: 'my-cooler', element: <MyCoolersPage /> },
         { path: 'cooler', element: <CoolersPage /> },
@@ -44,14 +52,14 @@ export default function Router() {
         { path: 'upload-video', element: <UploadVideoPage /> },
       ],
     },
-    {
-      path: 'login',
-      element: <LoginPage />,
-    },
-    {
-      path: 'register',
-      element: <RegisterPage />,
-    },
+    // {
+    //   path: 'login',
+    //   element: <LoginPage />,
+    // },
+    // {
+    //   path: 'register',
+    //   element: <RegisterPage />,
+    // },
     {
       element: <SimpleLayout />,
       children: [

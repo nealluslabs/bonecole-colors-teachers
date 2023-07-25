@@ -1,13 +1,11 @@
 import { Helmet } from 'react-helmet-async';
-import { Grid, Container, Typography, Paper, Button, Stack, Skeleton } from '@mui/material';
+import { Grid, Container, Typography, Paper, Button, Stack, Skeleton, Box } from '@mui/material';
 import { useEffect } from 'react';
 import { fCurrency, fNumber } from '../utils/formatNumber';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import EmptyRowCard from 'src/components/home/empty-row-card';
 import { fetchGroups, fetchMyGroups } from 'src/redux/actions/group.action';
-import MyCoolersRowCard from 'src/components/my-cooler/my-coolers-card';
-import PieChartCard from 'src/components/home/pie-chart-card';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import WalletBox from 'src/components/home/wallet-box';
 import { isItLoading } from 'src/redux/reducers/group.slice';
@@ -21,6 +19,15 @@ import { BaseOptionChart } from 'src/components/chart2';
 import RecentTransaction from 'src/components/home/recent-transaction';
 import { fetchMyTransactions } from 'src/redux/actions/transaction.action';
 import HomeCoolersCard from 'src/components/home/home-coolers-card';
+import CustomSearchBar from 'src/components/global/CustomSearchBar';
+import DashboardCard from 'src/components/home/dashboard-card';
+
+import TeacherImg from '../assets/images/dashboard/teacher.png';
+import StudentImg from '../assets/images/dashboard/student.png';
+import AgentImg from '../assets/images/dashboard/agent.png';
+import PieChart from 'src/components/home/pie-chart-one';
+import PieChartCard from 'src/components/home/pie-chart-card';
+import CustomChart from 'src/components/home/custom-chart';
 
 
 const CHART_HEIGHT = 392;
@@ -81,11 +88,11 @@ export default function HomePage() {
 
 
 
-  useEffect(() => {
-    if(user?.id == undefined){
-     return navigate("/login");
-    }
-   }, [])
+  // useEffect(() => {
+  //   if(user?.id == undefined){
+  //    return navigate("/login");
+  //   }
+  //  }, [])
 
   useEffect(() => {
     dispatch(fetchMyGroups(user?.coolers));
@@ -125,88 +132,100 @@ const myCoolerGroups = myGroups?.length ? (
 
   return (
     <>
-      <Helmet>
-        <title> Cooler | HOME </title>
-      </Helmet>
 
       <Container maxWidth="xl">
-        {/* <Typography variant="h4" sx={{ mb: 5 }}>
-         Welcome 🖐🏽
-        </Typography> */}
         <Grid container spacing={2}>
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                  border: '1px solid #F8F8F8',
-                  backgroundColor: '#F8F8F8',
-                  borderRadius: '10px'
-                }}
-              >
-                {/* <PieChartCard /> */}
-            {/* <ChartWrapperStyle dir="ltr"> */}
-              <ReactApexChart key={Math.random()} type="donut" series={CHART_DATA} options={chartOptions} height={240} />
-            {/* </ChartWrapperStyle> */}
-              </Paper>
-            </Grid>
+     {/* First Grid Item */}
+     <Grid item xs={12} md={4} lg={4}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 240,
+              border: '1px solid #F8F8F8',
+              backgroundColor: '#F8F8F8',
+              borderRadius: '10px'
+            }}
+          >
+            <DashboardCard header={'Total Number of Teachers'} value={"20"} img={TeacherImg} />
+          </Paper>
+        </Grid>
 
-             <Grid item xs={12} md={8} lg={6}>
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 240,
-                  // border: '1px solid black',
-                  backgroundColor: '#6077F00F',
-                }}
-              >
-                <WalletBox type={'PROFILE'}  BoxIcon={AccountCircleIcon}/>
-              </Paper>
-            </Grid>
+        {/* Second Grid Item */}
+        <Grid item xs={12} md={4} lg={4}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 240,
+              border: '1px solid #F8F8F8',
+              backgroundColor: '#F8F8F8',
+              borderRadius: '10px'
+            }}
+          >
+            <DashboardCard header={'Total Number of Students'} value={"1,220"} img={StudentImg} />
+          </Paper>
+        </Grid>
+
+        {/* Third Grid Item */}
+        {/* <Grid item xs={12} md={8} lg={6}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 240,
+              border: '1px solid #F8F8F8',
+              backgroundColor: '#F8F8F8',
+              borderRadius: '10px'
+            }}
+          >
+            <DashboardCard header={'Total Number of Administrators'} value={"2"} img={AgentImg} />
+          </Paper>
+        </Grid> */}
+
+        {/* Fourth Grid Item */}
+        <Grid item xs={12} md={4} lg={4}>
+          <Paper
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              height: 240,
+              border: '1px solid #F8F8F8',
+              backgroundColor: '#F8F8F8',
+              borderRadius: '10px'
+            }}
+          >
+            <DashboardCard header={'Total Expense'} value={"$20,000"} img={TeacherImg} type="last"/>
+          </Paper>
+          </Grid>
+            
           </Grid>
           <br/>
           {/* <SearchBox style={{ width: '100%' }} /> */}
           
         <Grid container spacing={2}>
-            <Grid item xs={12} md={12} lg={7}>
-             {
-                isLoading ?
-                <Stack>
-                <Skeleton />
-                <Skeleton animation="wave" />
-                <Skeleton animation={false} />
-                </Stack>
-                :
-                <div style={{background: '#F8F8F8',  padding: '10px'}}>
-                <h2>Coolers</h2>
-                {myCoolerGroups}
+            <Grid item xs={12} md={12} lg={6}>
+              <div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <PieChartCard headerOne={"Statistics"} headerTwo={'Gender Ratio (Students)'}  value={"1200"} type={"one"}/>
                 </div>
-              }
             </Grid>
 
-             <Grid item xs={8} md={6} lg={5}>
-             {/* <Grid item xs={12} md={8} lg={6}> */}
-              <Paper
-                sx={{
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: 540,
-                  // border: '1px solid black',
-                  backgroundColor: '#EDF5FF',
-                }}
-              >
-                <div style={{paddingRight: '10px', paddingLeft: '20px'}}>
-                <RecentTransaction />
-
+             <Grid item xs={8} md={12} lg={6}>
+              <div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <PieChartCard headerOne={"Statistics"} headerTwo={'Gender Ratio (Teachers)'}  value={"200"} type={"two"}/>
                 </div>
-                
-              </Paper>
             </Grid>
+
+            <Grid item xs={8} md={12} lg={12}>
+              <div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <CustomChart headerOne={"Statistics"} headerTwo={'Earnings & Expense'}  value={"200"} type={"two"}/>
+                </div>
+            </Grid>
+            
           </Grid>
       </Container>
     </>
