@@ -32,8 +32,9 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/login" />, index: true },
-        { path: 'home', element: <HomePage /> },
-        { path: 'students', element: <StudentPage /> },
+        // { path: 'home', element: <HomePage /> },
+        { path: 'home', element: <StudentPage /> },
+        // { path: 'students', element: <StudentPage /> },
         { path: 'view-student', element: <ViewStudentPage /> },
         { path: 'teachers', element: <TeacherPage /> },
         { path: 'reports', element: <ReportPage /> },

@@ -19,12 +19,10 @@ import CustomSearchBar from 'src/components/global/CustomSearchBar';
 import SearchIcon from '@mui/icons-material/Search';
 import ViewStudents from 'src/components/students/ViewStudents';
 import AddStudent from 'src/components/students/AddStudent';
-import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
-import CummulativeContainer from 'src/components/global/CummulativeContainer';
 
 
 
-export default function ViewStudentPage() {
+export default function EditStudentPage() {
   const theme = useTheme();
     
   const navigate = useNavigate();
@@ -45,23 +43,19 @@ export default function ViewStudentPage() {
 
 
   const [selectedOption, setSelectedOption] = useState('');
-  const [activeButton, setActiveButton] = useState('1');
+  const [activeButton, setActiveButton] = useState('viewStudents');
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
-  const handleOne = () => {
-    setActiveButton('1');
+  const handleViewStudentsClick = () => {
+    setActiveButton('viewStudents');
  
   };
 
-  const handleTwo = () => {
-    setActiveButton('2');
-  };
-
-  const handleThree = () => {
-    setActiveButton('3');
+  const handleAddStudentsClick = () => {
+    setActiveButton('addStudents');
   };
 
   return (
@@ -69,13 +63,8 @@ export default function ViewStudentPage() {
 
       <Container maxWidth="xl">
         <Grid container spacing={2} alignItems="center">
-        <Box >
-        <Typography variant="h4" sx={{color: '#392751', fontSize: '36px' }}>
-       <b> Gabriel Result Records</b>
-
-        </Typography>
-      </Box>
-        <Grid item sx={{mb: 2}}>
+     <CustomToggleSwitch activeButton={activeButton} setActiveButton={setActiveButton} handleViewStudentsClick={handleViewStudentsClick} handleAddStudentsClick={handleAddStudentsClick}/>
+     <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
@@ -120,13 +109,13 @@ export default function ViewStudentPage() {
         </FormControl>
       </Grid>
       &nbsp; &nbsp;
-      <Box sx={{ width: '20%',}}>
+      <Box sx={{ width: '20%' }}>
         <CustomSearchBar  title={"Search Student"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751', }}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751' }}
         >
           <SearchIcon />
         </Button>
@@ -154,18 +143,20 @@ export default function ViewStudentPage() {
           </Select>
         </FormControl>
       </Grid>
+
           </Grid>
           <br/>
           
-        <Grid container spacing={2} sx={{background: '#F8F8F8', padding: '10px'}}>
+        <Grid container spacing={2}>
             <Grid item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-               <ViewStudents />
+               {activeButton === 'viewStudents' &&  <ViewStudents />}  
+               {/* <ViewStudents /> */}
+               {activeButton === 'addStudents' && <AddStudent />}
                 </div>
             </Grid>
+            
           </Grid>
-          <br/><br/>
-          <CummulativeContainer />
       </Container>
     </>
   );

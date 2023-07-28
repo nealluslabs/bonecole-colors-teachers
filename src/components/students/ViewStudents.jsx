@@ -5,10 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const columns = [
   { field: 'id', headerName: '#', width: 100 },
-  { field: 'name', headerName: 'Student Absent', width: 250 },
-  { field: 'gender', headerName: 'Gender', width: 200 },
-  { field: 'class', headerName: 'Class', width: 200 },
-  { field: 'section', headerName: 'Section', width: 200 },
+  { field: 'regId', headerName: 'Registration ID', width: 200 },
+  { field: 'fname', headerName: 'First name', width: 150 },
+  { field: 'lname', headerName: 'Last Name', width: 150 },
+  { field: 'gender', headerName: 'Gender', width: 100 },
+  { field: 'dob', headerName: 'DOB', width: 150 },
+  { field: 'age', headerName: 'Age', width: 100 },
   {
     field: 'actions',
     headerName: '',
@@ -19,12 +21,12 @@ const columns = [
           <Button
           onClick={() => {
             // navigate('/dashboard/view-student');
-            window.location.href = '/dashboard/view-student';
+            window.location.href = '/dashboard/edit-student';
           }}
             variant="contained"
             style={{ minWidth: '85px', backgroundColor: "#392751" }}
           >
-            View Result
+            Action
           </Button>
         {/* </Link> */}
       </Grid>
@@ -33,20 +35,24 @@ const columns = [
 ];
 
 const rows = [
-  { id: 1, name: 'John Snow', gender: 'Male', class: 'Jss 1', section: 'A' },
-  { id: 2, name: 'Central Cee', gender: 'Male', class: 'SS2 1', section: 'B' },
-  { id: 3, name: 'Bella Aston', gender: 'Male', class: 'Jss 3', section: 'A' },
-  { id: 4, name: 'Carla Esther', gender: 'Female', class: 'SS 3', section: 'B' },
-  { id: 5, name: 'Samuel Ricardo', gender: 'Male', class: 'Jss 1', section: 'C' },
-  { id: 6, name: 'Bluey Umsy', gender: 'Female', class: 'SS 2', section: 'A' },
-];
+  { id: 1, regId: '11380033', fname: 'Jack', lname: 'Dawson', gender: 'Male', dob: '01-03-2010', age: '46' },
+  { id: 1, regId: '13550033', fname: 'Bella', lname: 'Donna', gender: 'Female', dob: '01-03-2010', age: '28' },
+  { id: 1, regId: '11380033', fname: 'John', lname: 'Wick', gender: 'Male', dob: '01-03-2010', age: '51' },
+  { id: 1, regId: '11380033', fname: 'Arjit', lname: 'Sinngh', gender: 'Male', dob: '01-03-2010', age: '34' },
+  { id: 1, regId: '11380033', fname: 'Samu', lname: 'Eracdo', gender: 'Male', dob: '01-03-2010', age: '27' },
+  { id: 1, regId: '11380033', fname: 'Carla', lname: 'Esposito', gender: 'Female', dob: '01-03-2010', age: '24' },
+  { id: 1, regId: '11380033', fname: 'Eva', lname: 'Johnson', gender: 'Female', dob: '01-03-2010', age: '25' },
+  { id: 1, regId: '11380033', fname: 'Monica', lname: 'Lamera', gender: 'Female', dob: '01-03-2010', age: '28' },
+  { id: 1, regId: '11380033', fname: 'Santos', lname: 'Uzi', gender: 'Male', dob: '01-03-2010', age: '29' },
+  { id: 1, regId: '11380033', fname: 'Lidia', lname: 'James', gender: 'Female', dob: '01-03-2010', age: '32' },
+]
 
 export default function ViewStudents() {
   const navigate = useNavigate();
 
   const handleViewResultClick = (id) => {
    
-    navigate('/dashboard/view-student'); 
+    navigate('/dashboard/edit-student'); 
   };
   return (
     <div style={{ height: 400, width: '100%' }}>

@@ -20,6 +20,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ViewStudents from 'src/components/students/ViewStudents';
 import AddStudent from 'src/components/students/AddStudent';
 import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
+import ViewReport from 'src/components/report/ViewReport';
 
 
 
@@ -133,10 +134,11 @@ export default function ReportPage() {
       </Box>
           </Grid>
           <br/>
-          
-        <Grid container spacing={2} sx={{background: '#F8F8F8', padding: '10px'}}>
-        <Grid item sx={{mb: 2}}>
-     <FormControl sx={{ minWidth: 140 }}>
+
+      <Grid container spacing={2} sx={{background: '#F8F8F8', padding: '10px', justifyContent: 'space-between',}}>
+      <Grid container sx={{ justifyContent: 'flex-start', border: '0px solid red', width: '40%', mt: 4 }}>
+      <Grid item>
+     <FormControl sx={{ minWidth: 140, backgroundColor: 'white', }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -157,8 +159,8 @@ export default function ReportPage() {
           </Select>
         </FormControl>
       </Grid>
-     <Grid item sx={{mb: 2}}>
-     <FormControl sx={{ minWidth: 140 }}>
+     <Grid item >
+     <FormControl sx={{ minWidth: 140, backgroundColor: 'white', }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -179,45 +181,47 @@ export default function ReportPage() {
           </Select>
         </FormControl>
       </Grid>
-      &nbsp; &nbsp;
-      <Box sx={{ width: '20%', marginTop: '1.2%'}}>
-        <CustomSearchBar  title={"Search Student"} />
+
+    </Grid>
+
+    <Grid container sx={{ justifyContent: 'flex-end',  border: '0px solid red', width: '60%',  mt: 4 }}>
+      <Box sx={{ width: '40%', }}>
+        <CustomSearchBar title={'Search Student'} />
       </Box>
-      <Box sx={{ flexGrow: 1}}>
+      <Box>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751',  marginTop: '3%' }}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751',}}
         >
           <SearchIcon />
         </Button>
       </Box>
-
-      <Grid item sx={{mb: 2}}>
-     <FormControl sx={{ minWidth: 140 }}>
+      &nbsp; &nbsp;
+      <Grid item sx={{ mb: 2 }}>
+        <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
             displayEmpty
             label=""
             sx={{
-            //   minHeight: 30,
+              //   minHeight: 30,
               minWidth: 120,
               p: 1,
             }}
           >
-            <MenuItem value="">
-              Filter By
-            </MenuItem>
+            <MenuItem value="">Filter By</MenuItem>
             <MenuItem value={1}>Option 1</MenuItem>
             <MenuItem value={2}>Option 2</MenuItem>
             <MenuItem value={3}>Option 3</MenuItem>
           </Select>
         </FormControl>
       </Grid>
+      </Grid>
 
             <Grid item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-               <ViewStudents />
+               <ViewReport />
                 </div>
             </Grid>
             
