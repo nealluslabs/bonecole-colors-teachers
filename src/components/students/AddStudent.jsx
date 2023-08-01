@@ -75,17 +75,56 @@ export default function AddStudent() {
     }
   };
 
+   const handleSave = () => {
+
+   }
+
   return (
     <Box sx={{ width: '100%' }}>
-      <Stepper nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => (
-          <Step key={label} completed={completed[index]}>
-            <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
-            </StepButton>
-          </Step>
-        ))}
-      </Stepper>
+      <div style={{ display: 'flex', width: '100%' }}>
+  <div style={{ flex: 1 }}>
+    <Stepper nonLinear activeStep={activeStep} style={{ border: '0px solid red', background: 'white' }}>
+      {steps.map((label, index) => (
+        <Step key={label} completed={completed[index]}>
+          <StepButton color="inherit" onClick={handleStep(index)}>
+            {label}
+          </StepButton>
+        </Step>
+      ))}
+    </Stepper>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'flex-end', flex: 1 }}>
+    <Button
+      variant="contained"
+      style={{
+        minWidth: '125px',
+        backgroundColor: 'transparent',
+        border: '1px solid #392751',
+        paddingTop: '15px',
+        paddingBottom: '15px',
+        paddingLeft: '20px',
+        color: '#392751'
+      }}
+    >
+      Edit
+    </Button>
+    <Button
+      variant="contained"
+      style={{
+        minWidth: '125px',
+        backgroundColor: '#D72A34',
+        marginLeft: '1rem',
+        paddingTop: '15px',
+        paddingBottom: '15px',
+        paddingLeft: '20px',
+        color: 'white'
+      }}
+    >
+      Delete Info
+    </Button>
+  </div>
+</div>
+
       <div>
         {allStepsCompleted() ? (
           <React.Fragment>
@@ -108,37 +147,37 @@ export default function AddStudent() {
             <br />
             {/* Render the appropriate step content */}
             {getStepContent(activeStep)}
-            <br /><br />
+            <br/><br />
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
-                <Button variant="contained" style={{ minWidth: '125px', backgroundColor: "#762AD7", marginLeft: '4rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
-                  Next
-                </Button>
-              </Grid>
-              <Button
-                color="inherit"
+               <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start">
+               <Button
+                variant="contained"
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                sx={{ mr: 1 }}
+                style={{
+                  display: activeStep === 0 ? 'none' : 'inline-block',
+                  minWidth: '125px',
+                  backgroundColor: 'transparent',
+                  border: '1px solid #962DFF',
+                  color: '#962DFF',
+                  marginLeft: '4rem',
+                  paddingTop: '15px',
+                  paddingBottom: '15px',
+                  paddingLeft: '20px',
+                }}
               >
-                Back
+                Previous
               </Button>
+
+                {activeStep === 2 ? <Button variant="contained" onClick={handleSave} style={{ minWidth: '125px', backgroundColor: "#762AD7", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+                Save
+              </Button> :
+              <Button variant="contained" onClick={handleNext} style={{ minWidth: '125px', backgroundColor: "#762AD7", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+              Next
+            </Button>}
+
+              </Grid>
               <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
-              {activeStep !== steps.length &&
-                (completed[activeStep] ? (
-                  <Typography variant="caption" sx={{ display: 'inline-block' }}>
-                    {steps[activeStep]} already completed
-                  </Typography>
-                ) : (
-                  <Button onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1
-                      ? 'Finish'
-                      : 'Complete Step'}
-                  </Button>
-                ))}
             </Box>
           </React.Fragment>
         )}
