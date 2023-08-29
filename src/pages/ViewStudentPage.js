@@ -91,9 +91,12 @@ export default function ViewStudentPage() {
             <MenuItem value="">
               Select Class
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+        <MenuItem value={'JSS 1'}>JSS 1</MenuItem>
+        <MenuItem value={'JSS 2'}>JSS 2</MenuItem>
+        <MenuItem value={'JSS 3'}>JSS 3</MenuItem>
+        <MenuItem value={'SS 1'}>SS 1</MenuItem>
+        <MenuItem value={'SS 2'}>SS 2</MenuItem>
+        <MenuItem value={'SS 3'}>SS 3</MenuItem>
           </Select>
         </FormControl>
       </Grid>

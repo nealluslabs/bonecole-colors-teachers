@@ -27,64 +27,47 @@ import { clearGroup } from '../reducers/group.slice';
 
 export const signup = (user, navigate, setLoading) => async (dispatch) => {
   var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  var today  = new Date();
-  const date = today.toISOString();
- 
-  db.collection('employers')
-    .where('employerNumber', '==', parseInt(user.employeer))
-    .get()
-    .then((snapshot) => {
-      const employeer = snapshot.docs.map((doc) => ({ ...doc.data() }));
-      if (employeer.length) {  
-        console.log('Employeer Exist:', employeer[0].cooler);
-        fb.auth().createUserWithEmailAndPassword(
-          user.email,
-          user.password
-      ).then((res)=>{
-        return db.collection('employees').doc(res.user.uid).set({
-          id: res.user.uid,
-          email: user.email,
-          firstName: user.fname,
-          lastName: user.lname,
-          imageUrl: "",
-          password: user.password,
-          coolers: [],
-          employeerNumber: user.employeer,
-          employeerID: employeer[0].id,
-          accruedBalance: 0,
-          walletBalance: 1000,
-          accountCreated: today.toLocaleDateString("en-US", options),
-        }).then(() => {
-          return db.collection('inbox')
-          .add({
-              id: res.user.uid,
-              msg: 'Welcome to Cooler. Thank you for joining us!',
-              isViewed: false,
-              unread: 0,
-              time: date,
-          })
-        })
-      }).then(() => {
-        notifySuccessFxn("Registered Successfully✔😊")
-        navigate('/login', { replace: true });
-      }).catch((err) => {
-        console.error("Error signing up: ", err);
-        var errorMessage = err.message;
-        notifyErrorFxn(errorMessage);
-        dispatch(signupFailed({ errorMessage }));
-        setLoading(false);
-      })
+  var today = new Date();
 
-      } else {
-        setLoading(false);
-        console.log('Invalid employeer code');
-        notifyErrorFxn("Invalid Employeer Code");
-      }
-    }).catch((error) => {
-      setLoading(false);
-      console.log('Error querying collection:', error);
-    });
-}
+  const generateRandomString = (length) => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    return result;
+  };
+
+  const randomRegistrationId = generateRandomString(10); 
+
+  fb.auth().createUserWithEmailAndPassword(
+    user.email,
+    user.password
+  ).then((res) => {
+    console.log("Good to go...");
+    return db.collection('teachers').doc(res.user.uid).set({
+      teacherId: res.user.uid,
+      registrationId: randomRegistrationId, 
+      email: user.email,
+      sname: user.sname,
+      fname: user.fname,
+      lname: user.lname,
+      phone: user.phone,
+      password: user.password,
+      accountCreated: today.toLocaleDateString("en-US", options),
+    })
+  }).then(() => {
+    notifySuccessFxn('Registered Successfully✔');
+    navigate('/login', { replace: true });
+  }).catch((err) => {
+    console.error("Error signing up: ", err);
+    var errorMessage = err.message;
+    notifyErrorFxn(errorMessage);
+    dispatch(signupFailed({ errorMessage }));
+    setLoading(false);
+  });
+};
 
 
 export const uploadImage = (user, file, navigate, setLoading) => async (dispatch) => {
@@ -117,7 +100,7 @@ export const uploadImage = (user, file, navigate, setLoading) => async (dispatch
 
 
 export const fetchUserData = (id, type, navigate, setLoading) => async (dispatch) => {
-  var user = db.collection("employees").doc(id);
+  var user = db.collection("teachers").doc(id);
   user.get().then((doc) => {
   if (doc.exists) {
     // console.log("User Data:", doc.data());

@@ -46,10 +46,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Step2 = ({state, handleChange}) => {
+const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
   const classes = useStyles();
 
   return (
+    <>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Typography variant="subtitle1">Additional Info</Typography>
+      <div>
+        <Button
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: 'transparent',
+            border: '1px solid #392751',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: '#392751'
+          }}
+          disabled={loading}
+          onClick={handleUpdate}
+        >
+          {loading ? "Loading..." : "Edit"}
+        </Button>
+        <Button
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: '#D72A34',
+            marginLeft: '1rem',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: 'white'
+          }}
+        >
+          Delete Info
+        </Button>
+      </div>
+    </div>
+     <br/>
     <div className={classes.root}>
       <Grid container spacing={4}>
         <Grid item xs={6}>
@@ -277,7 +314,8 @@ const Step2 = ({state, handleChange}) => {
         </Grid>
       </Grid>
     </div>
+    </>
   );
 };
 
-export default Step2;
+export default EditAdditionalInfo;

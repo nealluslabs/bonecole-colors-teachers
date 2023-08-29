@@ -6,61 +6,65 @@ import { Link, useNavigate } from 'react-router-dom';
 const columns = [
   {
     field: 'id',
-    headerName: '#', // Header name
+    headerName: '#', 
     width: 100,
     renderCell: (params) => {
     },
   },
-  { field: 'registrationId', headerName: 'Registration ID', width: 200 },
-  { field: 'fname', headerName: 'First Name', width: 200 },
-  { field: 'lname', headerName: 'Last Name', width: 200 },
+  {
+    field: 'studentName', 
+    headerName: 'Student',
+    width: 200,
+    renderCell: (params) => {
+      const fullName = `${params.row.fname} ${params.row.lname}`;
+      return <div>{fullName}</div>;
+    },
+  },
   { field: 'gender', headerName: 'Gender', width: 200 },
-  { field: 'dob', headerName: 'DOB', width: 200 },
+  { field: 'class', headerName: 'Class', width: 200 },
+  { field: 'section', headerName: 'Section', width: 200 },
   {
     field: 'actions',
     headerName: '',
-    width: 130,
-    // renderCell: (params) => (
-    //   <Grid container alignItems="center" justifyContent="flex-end">
-    //       <Button
-    //       onClick={() => {
-    //         navigate('/dashboard/edit-student');
-    //       }}
-    //         variant="contained"
-    //         style={{ minWidth: '85px', backgroundColor: "#392751" }}
-    //       >
-    //         Action
-    //       </Button>
-    //     {/* </Link> */}
-    //   </Grid>
-    // ),
+    width: 300,
   },
 ];
 
-export default function ViewStudents({students}) {
+export default function ViewStudentsReport({ students }) {
   const navigate = useNavigate();
   const handleActionClick = (student) => {
-    navigate('/dashboard/edit-student', { state: { student } });
+    navigate('/dashboard/view-exam-report', { state: { student } });
+  };
+
+  const handleAddResult = (student) => {
+    navigate('/dashboard/action-reports', { state: { student } });
   };
 
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={students}
-        columns={columns?.map((col) => {
+        columns={columns.map((col) => {
           if (col.field === 'actions') {
             return {
               ...col,
               renderCell: (params) => (
-                <Grid container alignItems="center" justifyContent="flex-end">
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <Button
                     onClick={() => handleActionClick(params?.row)}
                     variant="contained"
+                    style={{ minWidth: '85px', backgroundColor: "#392751", marginRight: '20px' }}
+                  >
+                    View Result
+                  </Button>
+                  <Button
+                    onClick={() => handleAddResult(params?.row)}
+                    variant="contained"
                     style={{ minWidth: '85px', backgroundColor: "#392751" }}
                   >
-                    Action
+                    Add Result
                   </Button>
-                </Grid>
+                </div>
               ),
             };
           }

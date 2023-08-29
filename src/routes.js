@@ -14,7 +14,7 @@ import MembersPage from './pages/MembersPage';
 import CreateCoolerPage from './pages/CreateCoolerPage';
 import PublicCoolerJoin from './pages/PublicCoolerJoin';
 import PrivateCoolerJoin from './pages/PrivateCoolerJoin';
-import RegisterPage from './pages/RegisterPage2';
+import RegisterPage from './pages/RegisterPage';
 import JoinCoolerPage from './pages/JoinCoolerPage';
 import InboxPage from './pages/InboxPage';
 import SettingsPage from './pages/SettingsPage';
@@ -23,6 +23,9 @@ import StudentPage from './pages/StudentPage';
 import ReportPage from './pages/ReportPage';
 import ViewStudentPage from './pages/ViewStudentPage';
 import TeacherPage from './pages/TeacherPage';
+import AddEditReportPage from './pages/AddEditReportPage';
+import ViewExamReportPage from './pages/ViewExamReportPage';
+import EditStudentPage from './pages/EditStudentPage';
 
 
 export default function Router() {
@@ -32,12 +35,13 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/login" />, index: true },
-        // { path: 'home', element: <HomePage /> },
         { path: 'home', element: <StudentPage /> },
-        // { path: 'students', element: <StudentPage /> },
         { path: 'view-student', element: <ViewStudentPage /> },
+        { path: 'view-exam-report', element: <ViewExamReportPage /> },
         { path: 'teachers', element: <TeacherPage /> },
         { path: 'reports', element: <ReportPage /> },
+        { path: 'action-reports', element: <AddEditReportPage /> },
+        { path: 'edit-student', element: <EditStudentPage /> },
         { path: 'members', element: <MembersPage /> },
         { path: 'my-cooler', element: <MyCoolersPage /> },
         { path: 'cooler', element: <CoolersPage /> },
@@ -53,18 +57,18 @@ export default function Router() {
         { path: 'upload-video', element: <UploadVideoPage /> },
       ],
     },
-    // {
-    //   path: 'login',
-    //   element: <LoginPage />,
-    // },
-    // {
-    //   path: 'register',
-    //   element: <RegisterPage />,
-    // },
+    {
+      path: 'login',
+      element: <LoginPage />,
+    },
+    {
+      path: 'register',
+      element: <RegisterPage />,
+    },
     {
       element: <SimpleLayout />,
       children: [
-        // { element: <Navigate to="/login" />, index: true },
+        { element: <Navigate to="/login" />, index: true },
         { element: <Navigate to="/dashboard/home" />, index: true },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },

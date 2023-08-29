@@ -47,7 +47,18 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-const Step3 = () => {
+const Step3 = ({
+  studentPassportFile,
+  handleStudentPassportFile,
+  anotherFieldFile,
+  handleAnotherFieldFile,
+  mothersIdFile,
+  handleMothersIdFile,
+  certificateFile,
+  handleCertificateFile,
+  medicalRecordFile,
+  handleMedicalFile,
+}) => {
     const classes = useStyles();
 
       const [loading, setLoading] = useState(false);
@@ -68,14 +79,6 @@ const Step3 = () => {
       }
   
 
-  const handleselectedFile = event => {
-    setSelectedFile({
-        selectedFile: event.target.files[0],
-        selectedFileName: event.target.files[0].name
-    });
-    setFile(URL.createObjectURL(event.target.files[0]));
-};
-
 
     return (
     <div className={classes.root}>
@@ -91,7 +94,7 @@ const Step3 = () => {
         placeholder="Select a file"
         disabled
         fullWidth
-        value={state.fname}
+        value={studentPassportFile.selectedFileName}
         onChange={handleChange}
         className={classes.searchInput}
         InputProps={{
@@ -114,7 +117,7 @@ const Step3 = () => {
         <input
           type="file"
           style={{ display: 'none' }}
-          onChange={handleselectedFile}
+          onChange={handleStudentPassportFile}
         />
       </Button>
     </Grid>
@@ -131,7 +134,7 @@ const Step3 = () => {
         placeholder="Select a file"
         disabled
         fullWidth
-        value={state.anotherField}
+        value={anotherFieldFile.selectedFileName}
         onChange={handleChange}
         className={classes.searchInput}
         InputProps={{
@@ -154,7 +157,7 @@ const Step3 = () => {
         <input
           type="file"
           style={{ display: 'none' }}
-          onChange={handleselectedFile}
+          onChange={handleAnotherFieldFile}
         />
       </Button>
     </Grid>
@@ -171,7 +174,7 @@ const Step3 = () => {
         placeholder="Select a file"
         disabled
         fullWidth
-        value={state.fname}
+        value={mothersIdFile.selectedFileName}
         onChange={handleChange}
         className={classes.searchInput}
         InputProps={{
@@ -194,7 +197,7 @@ const Step3 = () => {
         <input
           type="file"
           style={{ display: 'none' }}
-          onChange={handleselectedFile}
+          onChange={handleMothersIdFile}
         />
       </Button>
     </Grid>
@@ -211,7 +214,7 @@ const Step3 = () => {
         placeholder="Select a file"
         disabled
         fullWidth
-        value={state.anotherField}
+        value={certificateFile.selectedFileName}
         onChange={handleChange}
         className={classes.searchInput}
         InputProps={{
@@ -234,7 +237,7 @@ const Step3 = () => {
         <input
           type="file"
           style={{ display: 'none' }}
-          onChange={handleselectedFile}
+          onChange={handleCertificateFile}
         />
       </Button>
     </Grid>
@@ -251,7 +254,7 @@ const Step3 = () => {
         placeholder="Select a file"
         disabled
         fullWidth
-        value={state.anotherField}
+        value={medicalRecordFile.selectedFileName}
         onChange={handleChange}
         className={classes.searchInput}
         InputProps={{
@@ -274,7 +277,7 @@ const Step3 = () => {
         <input
           type="file"
           style={{ display: 'none' }}
-          onChange={handleselectedFile}
+          onChange={handleMedicalFile}
         />
       </Button>
     </Grid>

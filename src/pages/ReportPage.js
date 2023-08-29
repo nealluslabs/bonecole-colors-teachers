@@ -20,7 +20,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import ViewStudents from 'src/components/students/ViewStudents';
 import AddStudent from 'src/components/students/AddStudent';
 import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
-import ViewReport from 'src/components/report/ViewReport';
+import { getStudents } from 'src/redux/actions/student.action';
+import ViewStudentsReport from 'src/components/students/ViewStudentReport';
 
 
 
@@ -30,8 +31,8 @@ export default function ReportPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { myGroups, isLoading } = useSelector((state) => state.group);
-  const { transactions } = useSelector((state) => state.transaction);
+  const { students } = useSelector((state) => state.student);
+
 
   useEffect(() => {
     dispatch(fetchMyGroups(user?.coolers));
@@ -40,6 +41,11 @@ export default function ReportPage() {
   }, [user])
 
   useEffect(() => {
+    dispatch(fetchUserData(user?.id));
+  }, [])
+
+  useEffect(() => {
+    dispatch(getStudents());
     dispatch(fetchUserData(user?.id));
   }, [])
 
@@ -86,9 +92,12 @@ export default function ReportPage() {
             <MenuItem value="">
               Select Class
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+        <MenuItem value={'JSS 1'}>JSS 1</MenuItem>
+        <MenuItem value={'JSS 2'}>JSS 2</MenuItem>
+        <MenuItem value={'JSS 3'}>JSS 3</MenuItem>
+        <MenuItem value={'SS 1'}>SS 1</MenuItem>
+        <MenuItem value={'SS 2'}>SS 2</MenuItem>
+        <MenuItem value={'SS 3'}>SS 3</MenuItem>
           </Select>
         </FormControl>
       </Grid>
@@ -134,11 +143,10 @@ export default function ReportPage() {
       </Box>
           </Grid>
           <br/>
-
-      <Grid container spacing={2} sx={{background: '#F8F8F8', padding: '10px', justifyContent: 'space-between',}}>
-      <Grid container sx={{ justifyContent: 'flex-start', border: '0px solid red', width: '40%', mt: 4 }}>
-      <Grid item>
-     <FormControl sx={{ minWidth: 140, backgroundColor: 'white', }}>
+          
+        <Grid container spacing={2} sx={{background: '#F8F8F8', padding: '10px'}}>
+        <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -153,14 +161,17 @@ export default function ReportPage() {
             <MenuItem value="">
               Select Class
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+        <MenuItem value={'JSS 1'}>JSS 1</MenuItem>
+        <MenuItem value={'JSS 2'}>JSS 2</MenuItem>
+        <MenuItem value={'JSS 3'}>JSS 3</MenuItem>
+        <MenuItem value={'SS 1'}>SS 1</MenuItem>
+        <MenuItem value={'SS 2'}>SS 2</MenuItem>
+        <MenuItem value={'SS 3'}>SS 3</MenuItem>
           </Select>
         </FormControl>
       </Grid>
-     <Grid item >
-     <FormControl sx={{ minWidth: 140, backgroundColor: 'white', }}>
+     <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -181,47 +192,47 @@ export default function ReportPage() {
           </Select>
         </FormControl>
       </Grid>
-
-    </Grid>
-
-    <Grid container sx={{ justifyContent: 'flex-end',  border: '0px solid red', width: '60%',  mt: 4 }}>
-      <Box sx={{ width: '40%', }}>
-        <CustomSearchBar title={'Search Student'} />
+      &nbsp; &nbsp;
+      <Box sx={{ width: '20%', marginTop: '1.2%'}}>
+        <CustomSearchBar  title={"Search Student"} />
       </Box>
-      <Box>
+      <Box sx={{ flexGrow: 1}}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751',}}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751',  marginTop: '3%' }}
         >
           <SearchIcon />
         </Button>
       </Box>
-      &nbsp; &nbsp;
-      <Grid item sx={{ mb: 2 }}>
-        <FormControl sx={{ minWidth: 140 }}>
+
+      <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
             displayEmpty
             label=""
             sx={{
-              //   minHeight: 30,
+            //   minHeight: 30,
               minWidth: 120,
               p: 1,
             }}
           >
-            <MenuItem value="">Filter By</MenuItem>
+            <MenuItem value="">
+              Filter By
+            </MenuItem>
             <MenuItem value={1}>Option 1</MenuItem>
             <MenuItem value={2}>Option 2</MenuItem>
             <MenuItem value={3}>Option 3</MenuItem>
           </Select>
         </FormControl>
       </Grid>
-      </Grid>
 
             <Grid item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-               <ViewReport />
+              {activeButton === '1' &&  <ViewStudentsReport students={students}/>}  
+              {activeButton === '2' &&  <ViewStudentsReport students={students}/>}  
+              {activeButton === '3' &&  <ViewStudentsReport students={students}/>}  
                 </div>
             </Grid>
             

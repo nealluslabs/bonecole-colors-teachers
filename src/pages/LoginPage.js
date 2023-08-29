@@ -4,16 +4,15 @@ import { styled } from '@mui/material/styles';
 import { Link, Container, Typography, Divider, Stack, Button } from '@mui/material';
 // hooks
 import useResponsive from '../hooks/useResponsive';
-// components
-import Iconify from '../components/iconify';
 
-import Piggy from '../assets/images/piggy2.jpg';
-import CoolerEntryIMG from '../assets/images/cooler-entry.jpg';
+import IMG from '../assets/images/child.png';
+import BONLOGO from '../assets/images/logo.png';
 import LoginForm from 'src/components/login/LoginForm';
 
 // ----------------------------------------------------------------------
 
 const StyledRoot = styled('div')(({ theme }) => ({
+  backgroundColor: 'white',
   [theme.breakpoints.up('md')]: {
     display: 'flex',
   },
@@ -21,13 +20,18 @@ const StyledRoot = styled('div')(({ theme }) => ({
 
 const StyledSection = styled('div')(({ theme }) => ({
   width: '100%',
-  maxWidth: 480,
+  maxWidth: 680,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   boxShadow: theme.customShadows.card,
   backgroundColor: theme.palette.background.default,
+  backgroundImage: `url(${IMG})`,
+  backgroundSize: '100% 130%', 
+  objectFit: 'cover',
+  backgroundPosition: 'center',
 }));
+
 
 const StyledContent = styled('div')(({ theme }) => ({
   maxWidth: 480,
@@ -47,42 +51,34 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Cooler Web </title>
+        <title> Login | BON Web </title>
       </Helmet>
 
-      <StyledRoot>
-      {/* <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-      <img src={Piggy} width="100" height="100"/>
-    </Typography> */}
-      
-
+      <StyledRoot style={{ flexDirection: 'row-reverse' }}>
         {mdUp && (
-          <StyledSection>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Hi, Welcome Back
-            </Typography>
-            <img src={CoolerEntryIMG} alt="login" />
-            {/* <img src="/assets/illustrations/illustration_login.png" alt="login" /> */}
-          </StyledSection>
+           <StyledSection style={{ border: '0px solid green', flex: 2 }}>
+       </StyledSection>
         )}
 
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" style={{ border: '0px solid red', flex: 2 }}>
           <StyledContent>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '50px' }}>
+          <img src={BONLOGO} width="300" height="60" />
+          </div>
             <Typography variant="h4" gutterBottom>
-              Sign in to Cooler(Employee)
+              Login
             </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              Don’t have an account? {''}
-              <Link href='/register' variant="subtitle2">Get started</Link>
+            <LoginForm />
+            <Typography variant="body2" sx={{ mt: 2 }}>
+              Don’t have an account yet? {''}
+              <Link href='/register' variant="subtitle2">Register here</Link>
             </Typography>
 
-            <Divider sx={{ my: 3 }}>
+            {/* <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 OR
               </Typography>
-            </Divider>
-
-            <LoginForm />
+            </Divider> */}
           </StyledContent>
         </Container>
       </StyledRoot>

@@ -48,7 +48,6 @@ export const addJob = (job, setLoading, clearState) => async (dispatch) => {
         console.error("Error adding document: ", error);
         alert('Error adding job.❌')
     });
-
 };
 export const updateJob = (job, setLoading, clearState, history) => async (dispatch) => {
 
