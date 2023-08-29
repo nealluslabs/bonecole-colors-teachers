@@ -53,27 +53,10 @@ export default function Nav({ openNav, onCloseNav }) {
         height: 1,
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
       }}
-    >
-      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        {/* <Logo /> */}
-      </Box>
-
-      <Box sx={{ mb: 5, mx: 2.5 }}>
+      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>{/* <Logo /> */}</Box>
+      <Box sx={{ mb: 5, mx: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Link underline="none">
-          {/* <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
-
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: '#FFFFFF' }}>
-                {account.displayName}
-              </Typography>
-
-              <Typography variant="body2" sx={{ color: 'red' }}>
-                {account.role}
-              </Typography>
-            </Box>
-          </StyledAccount> */}
-          <img src={BONLOGO} width="220" height="60"/>
+          <img src={BONLOGO} width="170" height="40" alt="Logo" />
         </Link>
       </Box>
 
