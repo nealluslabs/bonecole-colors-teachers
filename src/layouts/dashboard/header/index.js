@@ -84,7 +84,7 @@ export default function Header({ onOpenNav }) {
         {/* <Searchbar2 /> */}
         <Box sx={{ flexGrow: 1 }} />
         <Typography variant="h6" sx={{color: '#392751', fontSize: '16px' }}>
-        Administration &nbsp;
+        Teacher &nbsp;
         </Typography>
         <Stack
           direction="row"
