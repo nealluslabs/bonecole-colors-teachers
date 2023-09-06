@@ -109,7 +109,7 @@ const Step3 = ({
         style={{
           minHeight: '52px',
           minWidth: '145px',
-          backgroundColor: '#392751',
+          backgroundColor: '  #000000',
           marginTop: '20px',
         }}
       >
@@ -149,7 +149,7 @@ const Step3 = ({
         style={{
           minHeight: '52px',
           minWidth: '145px',
-          backgroundColor: '#392751',
+          backgroundColor: '  #000000',
           marginTop: '20px',
         }}
       >
@@ -189,7 +189,7 @@ const Step3 = ({
         style={{
           minHeight: '52px',
           minWidth: '145px',
-          backgroundColor: '#392751',
+          backgroundColor: '  #000000',
           marginTop: '20px',
         }}
       >
@@ -229,7 +229,7 @@ const Step3 = ({
         style={{
           minHeight: '52px',
           minWidth: '145px',
-          backgroundColor: '#392751',
+          backgroundColor: '  #000000',
           marginTop: '20px',
         }}
       >
@@ -269,7 +269,7 @@ const Step3 = ({
         style={{
           minHeight: '52px',
           minWidth: '145px',
-          backgroundColor: '#392751',
+          backgroundColor: '  #000000',
           marginTop: '20px',
         }}
       >

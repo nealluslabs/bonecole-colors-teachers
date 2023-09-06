@@ -58,11 +58,11 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           style={{
             minWidth: '125px',
             backgroundColor: 'transparent',
-            border: '1px solid #392751',
+            border: '1px solid   #000000',
             paddingTop: '15px',
             paddingBottom: '15px',
             paddingLeft: '20px',
-            color: '#392751'
+            color: '  #000000'
           }}
           disabled={loading}
           onClick={handleUpdate}
@@ -73,7 +73,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           variant="contained"
           style={{
             minWidth: '125px',
-            backgroundColor: '#D72A34',
+            backgroundColor: ' #D72A34',
             marginLeft: '1rem',
             paddingTop: '15px',
             paddingBottom: '15px',

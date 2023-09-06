@@ -129,14 +129,14 @@ export default function ReportPage() {
       <Box sx={{ }}>
       <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#392751' }}
+          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: ' #000000' }}
           >
           Export
         </Button>
             &nbsp; &nbsp;
       <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#D72A8B' }}
+          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#D72A34' }}
         >
           Print
         </Button>
@@ -199,7 +199,7 @@ export default function ReportPage() {
       <Box sx={{ flexGrow: 1}}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751',  marginTop: '3%' }}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: ' #000000',  marginTop: '3%' }}
         >
           <SearchIcon />
         </Button>

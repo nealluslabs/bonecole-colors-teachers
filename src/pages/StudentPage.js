@@ -118,7 +118,7 @@ export default function StudentPage() {
       <Box sx={{ flexGrow: 1}}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751' }}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: ' #000000' }}
         >
           <SearchIcon />
         </Button>

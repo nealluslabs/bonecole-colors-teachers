@@ -19,8 +19,8 @@ const CustomToggleSwitch = ({activeButton, setActiveButton, handleViewStudentsCl
         style={{
           minHeight: '50px',
           minWidth: '180px',
-          backgroundColor: activeButton === 'viewStudents' ? '#392751' : 'transparent',
-          color: activeButton === 'viewStudents' ? '#fff' : '#392751',
+          backgroundColor: activeButton === 'viewStudents' ? ' #000000' : 'transparent',
+          color: activeButton === 'viewStudents' ? '#fff' : ' #000000',
           border: 'none',
           borderRadius: '20px',
           marginRight: '4px',
@@ -34,8 +34,8 @@ const CustomToggleSwitch = ({activeButton, setActiveButton, handleViewStudentsCl
         style={{
           minHeight: '50px',
           minWidth: '180px',
-          backgroundColor: activeButton === 'addStudents' ? '#392751' : 'transparent',
-          color: activeButton === 'addStudents' ? '#fff' : '#392751',
+          backgroundColor: activeButton === 'addStudents' ? ' #000000' : 'transparent',
+          color: activeButton === 'addStudents' ? '#fff' : ' #000000',
           border: 'none',
           borderRadius: '20px',
         }}

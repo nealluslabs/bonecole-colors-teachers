@@ -53,7 +53,7 @@ function NavItem({ item }) {
         '&.active': {
           color: 'grey',
           // bgcolor: '#66000000',
-          backgroundColor: path != '#' && '#392751',
+          backgroundColor: path != '#' && ' #D72A34',
           fontWeight: 'fontWeightBold',
           // borderBottomLeftRadius: '26px',
         },
@@ -83,7 +83,7 @@ function SubNavItem({ item }) {
         color: '#FFFFFF',
         '&.active': {
           color: 'grey',
-          backgroundColor: path != '#' && '#392751',
+          backgroundColor: path != '#' && ' #D72A34',
           fontWeight: 'fontWeightBold',
           // borderBottomLeftRadius: '26px',
         },

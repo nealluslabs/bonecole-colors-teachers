@@ -21,7 +21,7 @@ export default function PieChartCard({ headerOne, headerTwo, value, type }) {
           <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#9291A5', fontSize: '16.23px' }}>
             {headerOne}
           </Typography>
-          <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#392751', fontSize: '20.33px' }}>
+          <Typography color="textPrimary" variant="h6" component="p" style={{ color: ' #D72A34', fontSize: '20.33px' }}>
             <b>{headerTwo}</b>
           </Typography>
         </Grid>
@@ -49,7 +49,7 @@ export default function PieChartCard({ headerOne, headerTwo, value, type }) {
               color="textPrimary"
               variant="h6"
               component="p"
-              style={{ color: '#392751', fontSize: '20.33px' }}
+              style={{ color: ' #D72A34', fontSize: '20.33px' }}
             >
               <b>{value}</b>
             </Typography>

@@ -195,7 +195,7 @@ const AssessmentReportForm = ({studentData}) => {
       <br />
       <Grid container style={{ backgroundColor: '#F9F9F9', padding: '20px', borderRadius: '14px' }}>
       <Grid item xs={6}>
-        <Typography variant="body1" align="left" style={{color: '#392751', fontSize: '20px'}}>
+        <Typography variant="body1" align="left" style={{color: ' #D72A34', fontSize: '20px'}}>
         <b><span style={{lineHeight: '3rem'}}>Cummulative:</span></b>       
           <TextField
           type='number'
@@ -227,7 +227,7 @@ const AssessmentReportForm = ({studentData}) => {
           <Typography variant="body1" align="right" style={{ color: '#2AD776', fontSize: '20px' }}>
             <Button
               variant="contained"
-              style={{ minHeight: '50px', minWidth: '145px', backgroundColor: '#392751' }}
+              style={{ minHeight: '50px', minWidth: '145px', backgroundColor: ' #D72A34' }}
               onClick={handleEnterClick}
               disabled={loading}
             >

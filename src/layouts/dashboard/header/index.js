@@ -60,7 +60,7 @@ export default function Header({ onOpenNav }) {
         >
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
-        <Typography variant="h4" sx={{color: '#392751', fontSize: '36px' }}>
+        <Typography variant="h4" sx={{color: ' #000000', fontSize: '36px' }}>
        <b> Dashboard</b>
          {/* Welcome {user?.firstName + " " + user?.lastName}🖐🏽 */}
         </Typography>
@@ -74,7 +74,7 @@ export default function Header({ onOpenNav }) {
       <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '145px', backgroundColor: '#392751' }}
+          style={{ minHeight: '50px', minWidth: '145px', backgroundColor: ' #000000' }}
         >
           SERACH
         </Button>
@@ -83,7 +83,7 @@ export default function Header({ onOpenNav }) {
         {/* <Searchbar /> */}
         {/* <Searchbar2 /> */}
         <Box sx={{ flexGrow: 1 }} />
-        <Typography variant="h6" sx={{color: '#392751', fontSize: '16px' }}>
+        <Typography variant="h6" sx={{color: ' #000000', fontSize: '16px' }}>
         Teacher &nbsp;
         </Typography>
         <Stack

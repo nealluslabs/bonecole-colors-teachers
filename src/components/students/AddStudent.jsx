@@ -218,7 +218,7 @@ export default function AddStudent() {
           </>
         ) : (
           <>
-            <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '#392751', fontSize: '18px' }}>
+            <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '  #000000', fontSize: '18px' }}>
               <b>{activeStep === 0 && 'Basic Information'}</b>
               <b>{activeStep === 1 && 'Additional Information'}</b>
               <b>{activeStep === 2 && 'Document Uploads'}</b>
@@ -238,7 +238,7 @@ export default function AddStudent() {
                   display: activeStep === 0 ? 'none' : 'inline-block',
                   minWidth: '125px',
                   backgroundColor: 'transparent',
-                  border: '1px solid #962DFF',
+                  border: '1px solid #000000',
                   color: '#962DFF',
                   marginLeft: '4rem',
                   paddingTop: '15px',
@@ -249,10 +249,10 @@ export default function AddStudent() {
                 Previous
               </Button>
 
-                {activeStep === 2 ? <Button disabled={loading} variant="contained" onClick={handleSubmit} style={{ minWidth: '125px', backgroundColor: "#762AD7", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+                {activeStep === 2 ? <Button disabled={loading} variant="contained" onClick={handleSubmit} style={{ minWidth: '125px', backgroundColor: "  #000000", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
                {loading ? "Loading..." : "Save"}
               </Button> :
-              <Button disabled={loading} variant="contained" onClick={handleNext} style={{ minWidth: '125px', backgroundColor: "#762AD7", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+              <Button disabled={loading} variant="contained" onClick={handleNext} style={{ minWidth: '125px', backgroundColor: "  #000000", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
               Next
             </Button>}
 

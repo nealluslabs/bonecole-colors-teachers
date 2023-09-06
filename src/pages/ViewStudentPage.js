@@ -70,7 +70,7 @@ export default function ViewStudentPage() {
       <Container maxWidth="xl">
         <Grid container spacing={2} alignItems="center">
         <Box >
-        <Typography variant="h4" sx={{color: '#392751', fontSize: '36px' }}>
+        <Typography variant="h4" sx={{color: ' #000000', fontSize: '36px' }}>
        <b> Gabriel Result Records</b>
 
         </Typography>
@@ -129,7 +129,7 @@ export default function ViewStudentPage() {
       <Box sx={{ flexGrow: 1}}>
         <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#392751', }}
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: ' #000000', }}
         >
           <SearchIcon />
         </Button>

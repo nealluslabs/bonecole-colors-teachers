@@ -27,7 +27,7 @@ const columns = [
     //         navigate('/dashboard/edit-student');
     //       }}
     //         variant="contained"
-    //         style={{ minWidth: '85px', backgroundColor: "#392751" }}
+    //         style={{ minWidth: '85px', backgroundColor: " #D72A34" }}
     //       >
     //         Action
     //       </Button>
@@ -56,7 +56,7 @@ export default function ViewStudents({students}) {
                   <Button
                     onClick={() => handleActionClick(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: "#392751" }}
+                    style={{ minWidth: '85px', backgroundColor: " #D72A34" }}
                   >
                     Action
                   </Button>

@@ -119,7 +119,7 @@ export default function RegisterForm() {
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
       </Stack>
 
-      <LoadingButton fullWidth size="large" type="submit" variant="contained" disabled={loading} style={{backgroundColor: '#D72A8B', color: 'white'}}>
+      <LoadingButton fullWidth size="large" type="submit" variant="contained" disabled={loading} style={{backgroundColor: '#D72A34', color: 'white'}}>
         {loading ? "Loading..." : "Register"}
       </LoadingButton>
       </form>

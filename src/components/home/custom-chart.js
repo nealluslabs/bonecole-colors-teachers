@@ -22,10 +22,10 @@ export default function CustomChart({ headerOne, headerTwo, value, type }) {
     <>
       <Grid container alignItems="center"  style={{ padding: '10px' }}>
         <Grid item xs={3}>
-          <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#9291A5', fontSize: '16.23px' }}>
+          <Typography color="textPrimary" variant="h6" component="p" style={{ color: ' #000000', fontSize: '16.23px' }}>
             {headerOne}
           </Typography>
-          <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#392751', fontSize: '20.33px' }}>
+          <Typography color="textPrimary" variant="h6" component="p" style={{ color: ' #D72A34', fontSize: '20.33px' }}>
             <b>{headerTwo}</b>
           </Typography>
         </Grid>
@@ -47,7 +47,7 @@ export default function CustomChart({ headerOne, headerTwo, value, type }) {
     style={{
       display: 'flex', 
       alignItems: 'center',
-      color: '#9291A5',
+      color: ' #000000',
       fontSize: '16.23px',
       border: '2px solid #c6c0c0', 
       borderRadius: '9px',
@@ -67,7 +67,7 @@ export default function CustomChart({ headerOne, headerTwo, value, type }) {
     style={{
       display: 'flex', 
       alignItems: 'center',
-      color: '#9291A5',
+      color: ' #000000',
       fontSize: '16.23px',
       border: '2px solid #c6c0c0', 
       borderRadius: '9px',
@@ -87,7 +87,7 @@ export default function CustomChart({ headerOne, headerTwo, value, type }) {
     style={{
       display: 'flex', 
       alignItems: 'center',
-      color: '#9291A5',
+      color: ' #000000',
       fontSize: '16.23px',
       border: '2px solid #c6c0c0', 
       borderRadius: '9px',
@@ -101,12 +101,12 @@ export default function CustomChart({ headerOne, headerTwo, value, type }) {
     &nbsp; &nbsp;&nbsp; &nbsp;
     {/* <Grid container alignItems="center"> */}
   <Grid item xs={1.5} style={{ textAlign: 'center', marginTop: '5px' }}>
-    <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#9291A5', fontSize: '16.23px' }}>
+    <Typography color="textPrimary" variant="h6" component="p" style={{ color: ' #000000', fontSize: '16.23px' }}>
       7 days
     </Typography>
   </Grid>
   <Grid item xs={1.5} style={{ textAlign: 'center', marginTop: '5px' }}>
-    <Typography color="textPrimary" variant="h6" component="p" style={{ color: '#9291A5', fontSize: '16.23px' }}>
+    <Typography color="textPrimary" variant="h6" component="p" style={{ color: ' #000000', fontSize: '16.23px' }}>
       30 days
     </Typography>
   </Grid>

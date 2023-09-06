@@ -53,14 +53,14 @@ export default function ViewStudentsReport({ students }) {
                   <Button
                     onClick={() => handleActionClick(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: "#392751", marginRight: '20px' }}
+                    style={{ minWidth: '85px', backgroundColor: " #000000", marginRight: '20px' }}
                   >
                     View Result
                   </Button>
                   <Button
                     onClick={() => handleAddResult(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: "#392751" }}
+                    style={{ minWidth: '85px', backgroundColor: " #000000" }}
                   >
                     Add Result
                   </Button>

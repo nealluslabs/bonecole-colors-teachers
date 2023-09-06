@@ -17,7 +17,7 @@ export default function DashboardCard({header, value, img, type}) {
     <>
      <Grid container alignItems="center">
       <Grid item xs={6}>
-      <Typography color="textPrimary" variant="h6" component="p" style={{color: '#392751', fontSize: '17px'}}>
+      <Typography color="textPrimary" variant="h6" component="p" style={{color: ' #D72A34', fontSize: '17px'}}>
         <b>{header}</b>
       </Typography>
       </Grid>
@@ -35,7 +35,7 @@ export default function DashboardCard({header, value, img, type}) {
       <br/>
       <Grid container alignItems="center">
       <Grid item xs={6}>
-        <Typography color="textPrimary" variant="h1" component="p" style={{color: '#392751', fontSize: '36px'}}>
+        <Typography color="textPrimary" variant="h1" component="p" style={{color: ' #D72A34', fontSize: '36px'}}>
           <b>{value}</b>
         </Typography>
       </Grid>

@@ -57,7 +57,7 @@ export default function LoginForm() {
         </Link> */}
       </Stack>
 
-      <LoadingButton fullWidth size="large" type="submit" disabled={loading} style={{backgroundColor: '#D72A8B', color: 'white'}}>
+      <LoadingButton fullWidth size="large" type="submit" disabled={loading} style={{backgroundColor: '#D72A34', color: 'white'}}>
         {loading ? "Loading..." : "Login"}
       </LoadingButton>
       </form>

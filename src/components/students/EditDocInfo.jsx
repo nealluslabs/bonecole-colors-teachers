@@ -58,11 +58,11 @@ const EditDocInfo = ({state, handleChange, handleUpdate, loading}) => {
           style={{
             minWidth: '125px',
             backgroundColor: 'transparent',
-            border: '1px solid #392751',
+            border: '1px solid  #000000',
             paddingTop: '15px',
             paddingBottom: '15px',
             paddingLeft: '20px',
-            color: '#392751'
+            color: ' #D72A34'
           }}
           disabled={loading}
           // onClick={handleUpdate}

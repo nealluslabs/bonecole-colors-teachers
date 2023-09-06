@@ -5,7 +5,7 @@ const CummulativeContainer = ({result}) => {
   return (
     <Grid container style={{ backgroundColor: '#F9F9F9', padding: '20px', borderRadius: '14px' }}>
       <Grid item xs={6}>
-        <Typography variant="body1" align="left" style={{color: '#392751', fontSize: '20px'}}>
+        <Typography variant="body1" align="left" style={{color: ' #D72A34', fontSize: '20px'}}>
         <b>Cummulative: &nbsp; &nbsp; &nbsp;{result?.totalCumulative}</b>
         </Typography>
       </Grid>
@@ -15,6 +15,8 @@ const CummulativeContainer = ({result}) => {
         </Typography>
       </Grid>
     </Grid>
+
+
   );
 };
 
