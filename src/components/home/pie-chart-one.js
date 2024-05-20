@@ -4,8 +4,8 @@ import { Chart } from "react-google-charts";
 
 export const data = [
   ["Language", "Speakers (in millions)"],
-  ["Boys", 650.55],
-  ["Girls", 550.66],
+  ["Section 2", 650.55],
+  ["Section 1", 550.66],
 ];
 
 export const options = {

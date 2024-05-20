@@ -116,7 +116,7 @@ const myCoolerGroups = myGroups?.length ? (
       groupId={group.groupId}
       name={group.groupName} 
       fee={fCurrency(group.amount)}
-      count={`${group.members.length} OF ${group.noOfSavers} SAVERS`}
+      count={`${group.members && group.members.length} OF ${group.noOfSavers && group.noOfSavers} SAVERS`}
       img={group.imageUrl}
       members={group.members}
       isMember={group.members.includes(user?.id)}
@@ -210,13 +210,13 @@ const myCoolerGroups = myGroups?.length ? (
         <Grid container spacing={2}>
             <Grid item xs={12} md={12} lg={6}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-                <PieChartCard headerOne={"Statistics"} headerTwo={'Gender Ratio (Students)'}  value={"1200"} type={"one"}/>
+                <PieChartCard headerOne={"Statistics"} headerTwo={'Ratio (Students)'}  value={"1200"} type={"one"}/>
                 </div>
             </Grid>
 
              <Grid item xs={8} md={12} lg={6}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-                <PieChartCard headerOne={"Statistics"} headerTwo={'Gender Ratio (Teachers)'}  value={"200"} type={"two"}/>
+                <PieChartCard headerOne={"Statistics"} headerTwo={'Ratio (Teachers)'}  value={"200"} type={"two"}/>
                 </div>
             </Grid>
 

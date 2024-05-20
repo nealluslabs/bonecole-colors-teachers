@@ -6,7 +6,7 @@ import { Link, Container, Typography, Divider, Stack, Button } from '@mui/materi
 import useResponsive from '../hooks/useResponsive';
 // components
 
-import IMG from '../assets/images/child.png';
+import IMG from '../assets/images/office.jpeg';
 import BONLOGO from '../assets/images/logo.png';
 import RegisterForm from 'src/components/register/RegisterForm';
 
@@ -18,7 +18,7 @@ const StyledRoot = styled('div')(({ theme }) => ({
 
 const StyledSection = styled('div')(({ theme }) => ({
   width: '100%',
-  maxWidth: 680,
+  maxWidth: 980,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -51,16 +51,16 @@ export default function RegisterPage() {
         <title> Register | BON Web </title>
       </Helmet>
 
-      <StyledRoot style={{ flexDirection: 'row-reverse' }}>
+      <StyledRoot style={{ flexDirection: 'row' }}>
         {mdUp && (
-           <StyledSection style={{ border: '0px solid green', flex: 2 }}>
+           <StyledSection style={{ border: '0px solid green', flex: 3 }}>
        </StyledSection>
         )}
 
         <Container maxWidth="sm" style={{ border: '0px solid red', flex: 2 }}>
           <StyledContent>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '50px' }}>
-          <img src={BONLOGO} width="300" height="60" />
+          <img src={BONLOGO} width="240" height="45" />
           </div>
             <Typography variant="h4" gutterBottom>
             Registration
