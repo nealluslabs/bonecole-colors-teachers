@@ -4,14 +4,14 @@ import { Button, Divider, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 const columns = [
-  {
+  /*{
     field: 'id',
     headerName: '#', // Header name
     width: 100,
     renderCell: (params) => {
     },
-  },
-  { field: 'registrationId', headerName: 'Registration ID', width: 200 },
+  },*/
+  /*{ field: 'registrationId', headerName: 'Registration ID', width: 200 },*/
   { field: 'fname', headerName: 'First Name', width: 200 },
   { field: 'lname', headerName: 'Last Name', width: 200 },
   { field: 'gender', headerName: 'Gender', width: 200 },

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
@@ -37,6 +37,7 @@ Nav.propTypes = {
 
 export default function Nav({ openNav, onCloseNav }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate()
 
   const isDesktop = useResponsive('up', 'lg');
 
@@ -57,7 +58,7 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>{/* <Logo /> */}</Box>
       <Box sx={{ mb: 5, mx: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Link underline="none">
-          <img src={BONLOGO} width="170" height="40" alt="Logo" />
+          <img src={BONLOGO} onClick={()=>{navigate('/dashboard/home')}} width="170" height="40" alt="Logo" />
         </Link>
       </Box>
 

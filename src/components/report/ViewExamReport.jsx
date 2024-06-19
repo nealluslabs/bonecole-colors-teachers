@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router-dom';
 
 const columns = [
-  { field: 'id', headerName: '#', width: 150 },
+  /*{ field: 'id', headerName: '#', width: 150 },*/
   { field: 'subject', headerName: 'Subject', width: 200 },
   { field: 'ca', headerName: 'Continuous Assessment', width: 200 },
   { field: 'testScores', headerName: 'Test scores', width: 200 },

@@ -4,13 +4,13 @@ import { Button, Divider, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
 const columns = [
-  {
+ /* {
     field: 'id',
     headerName: '#', 
     width: 100,
     renderCell: (params) => {
     },
-  },
+  },*/
   {
     field: 'studentName', 
     headerName: 'Student',
