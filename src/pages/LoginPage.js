@@ -51,7 +51,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | BON Web </title>
+        <title> Login | Bonecole Teacher </title>
       </Helmet>
 
       <StyledRoot style={{ flexDirection: 'row' }}>
