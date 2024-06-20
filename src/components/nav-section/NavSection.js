@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useLocation } from 'react-router-dom';
 // @mui
 import { Box, List, ListItemText } from '@mui/material';
 //
@@ -42,6 +42,8 @@ NavItem.propTypes = {
 
 function NavItem({ item }) {
   const { title, path, icon, iconLabel, info } = item;
+  const location = useLocation()
+
 
   return (
     <StyledNavItem
@@ -50,6 +52,7 @@ function NavItem({ item }) {
       sx={{
         color: '#FFFFFF',
         fontSize: '18px',
+        bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report' || location.pathname === '/dashboard/action-reports' )  && '#D72A34',
         '&.active': {
           color: 'grey',
           // bgcolor: '#66000000',
@@ -57,6 +60,9 @@ function NavItem({ item }) {
           fontWeight: 'fontWeightBold',
           // borderBottomLeftRadius: '26px',
         },
+        '&.hover': {
+          bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report' || location.pathname === '/dashboard/action-reports' )  && '#D72A34',
+        }
       }}
     >
       {/* {iconLabel === 'dashboard' && iconLabel != 'settings' && <StyledNav/>ItemIcon sx={{ fontSize: '20px'}}>{icon && icon}</StyledNavItemIcon>} */}
