@@ -124,7 +124,7 @@ const Step1 = ({state, handleChange}) => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Studentship Type</Typography>
           <select
             name="studentshipType"
@@ -138,7 +138,7 @@ const Step1 = ({state, handleChange}) => {
             <option value="Male">Boarding</option>
             <option value="Female">Day</option>
           </select>
-        </Grid>
+          </Grid> */}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Class</Typography>
           <select
@@ -165,7 +165,7 @@ const Step1 = ({state, handleChange}) => {
             <option value="Level 13">Level 13</option>
           </select>
         </Grid>
-        <Grid item xs={6}>
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Section</Typography>
           <select
             name="section"
@@ -180,7 +180,7 @@ const Step1 = ({state, handleChange}) => {
             <option value="B">B</option>
             <option value="C">C</option>
           </select>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
           <TextField
