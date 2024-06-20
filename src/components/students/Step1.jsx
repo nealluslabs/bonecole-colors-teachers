@@ -149,13 +149,20 @@ const Step1 = ({state, handleChange}) => {
             style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
             required
           >
-            <option value="">Select Class</option>
-            <option value="JSS 1">JSS 1</option>
-            <option value="JSS 2">JSS 2</option>
-            <option value="JSS 3">JSS 3</option>
-            <option value="SS 1">SS 1</option>
-            <option value="SS 2">SS 2</option>
-            <option value="SS 3">SS 3</option>
+           <option value="">Select Class</option>
+            <option value="Level 1">Level 1</option>
+            <option value="Level 2">Level 2</option>
+            <option value="Level 3">Level 3</option>
+            <option value="Level 4">Level 4</option>
+            <option value="Level 5">Level 5</option>
+            <option value="Level 6">Level 6</option>
+            <option value="Level 7">Level 7</option>
+            <option value="Level 8">Level 8</option>
+            <option value="Level 9">Level 9</option>
+            <option value="Level 10">Level 10</option>
+            <option value="Level 11">Level 11</option>
+            <option value="Level 12">Level 12</option>
+            <option value="Level 13">Level 13</option>
           </select>
         </Grid>
         <Grid item xs={6}>

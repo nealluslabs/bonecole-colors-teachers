@@ -89,7 +89,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
      <br/>
     <div className={classes.root}>
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Blood Group</Typography>
           <select
             name="bloodGroup"
@@ -109,8 +109,8 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="O+">O+</option>
             <option value="O-">O-</option>
           </select>
-        </Grid>
-        <Grid item xs={6}>
+        </Grid>*/}
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Religion</Typography>
           <select
             name="religion"
@@ -124,7 +124,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="Islam">Islam</option>
             <option value="Christianity">Christianity</option>
           </select>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Phone Number</Typography>
           <TextField
@@ -155,7 +155,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+       {/* <Grid item xs={6}>
           <Typography variant="subtitle1">Skin Colour</Typography>
           <select
             name="skinColor"
@@ -174,8 +174,8 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="Dark">Dark</option>
             <option value="Black">Black</option>
           </select>
-        </Grid>
-        <Grid item xs={6}>
+          </Grid> */}
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Eye Colour</Typography>
           <select
             name="eyeColor"
@@ -194,7 +194,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="Amber">Amber</option>
             <option value="Black">Black</option>
           </select>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Height</Typography>
           <select
@@ -262,7 +262,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+       {/* <Grid item xs={12}>
           <Typography variant="subtitle1">Medical History</Typography>
           <TextField
             name="medicalHistory"
@@ -286,7 +286,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
               },
             }}
           />
-        </Grid>
+          </Grid>*/}
         <Grid item xs={12}>
           <Typography variant="subtitle1">Any Special Instruction</Typography>
           <TextField

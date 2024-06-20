@@ -161,7 +161,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Studentship Type</Typography>
           <select
             name="studentshipType"
@@ -175,7 +175,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="Male">Boarding</option>
             <option value="Female">Day</option>
           </select>
-        </Grid>
+          </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Class</Typography>
           <select
@@ -186,13 +186,20 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
             required
           >
-            <option value="">Select Level</option>
-            <option value="JSS 1">JSS 1</option>
-            <option value="JSS 2">JSS 2</option>
-            <option value="JSS 3">JSS 3</option>
-            <option value="SS 1">SS 1</option>
-            <option value="SS 2">SS 2</option>
-            <option value="SS 3">SS 3</option>
+            <option value="">Select Class</option>
+            <option value="Level 1">Level 1</option>
+            <option value="Level 2">Level 2</option>
+            <option value="Level 3">Level 3</option>
+            <option value="Level 4">Level 4</option>
+            <option value="Level 5">Level 5</option>
+            <option value="Level 6">Level 6</option>
+            <option value="Level 7">Level 7</option>
+            <option value="Level 8">Level 8</option>
+            <option value="Level 9">Level 9</option>
+            <option value="Level 10">Level 10</option>
+            <option value="Level 11">Level 11</option>
+            <option value="Level 12">Level 12</option>
+            <option value="Level 13">Level 13</option>
            {/* {Array.from({ length: 12 }, (_, index) => (
               <option tion key={`level-${index + 1}`} value={`Level ${index + 1}`}>
                 Level {index + 1}
@@ -200,7 +207,8 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             ))} */}
           </select>
         </Grid>
-        <Grid item xs={6}>
+
+       {/* <Grid item xs={6}>
           <Typography variant="subtitle1">Section</Typography>
           <select
             name="section"
@@ -215,7 +223,8 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             <option value="B">B</option>
             <option value="C">C</option>
           </select>
-        </Grid>
+          </Grid>*/}
+
         <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
           <TextField

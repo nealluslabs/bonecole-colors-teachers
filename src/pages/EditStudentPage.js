@@ -7,7 +7,7 @@ import EditStudentToggleSwitch from "src/components/buttons/EditStudentToggleSwi
 import EditBasicInfo from "src/components/students/EditBasicInfo";
 import EditAdditionalInfo from "src/components/students/EditAdditionalInfo";
 import EditDocInfo from "src/components/students/EditDocInfo";
-import { updateStudent } from "src/redux/actions/student.action";
+import { updateStudent,uploadDocImages } from "src/redux/actions/student.action";
 
 
 export default function EditStudentPage() {
@@ -61,6 +61,14 @@ export default function EditStudentPage() {
         specialInstruction: studentData.specialInstruction,
       })
 
+
+
+  const [studentPassportFile, setStudentPassportFile] = useState({ selectedFile: null, selectedFileName: null });
+  const [anotherFieldFile, setAnotherFieldFile] = useState({ selectedFile: null, selectedFileName: null });
+  const [mothersIdFile, setMothersIdFile] = useState({ selectedFile: null, selectedFileName: null });
+  const [certificateFile, setCertificateFile] = useState({ selectedFile: null, selectedFileName: null });
+  const [medicalRecordFile, setMedicalFile] = useState({ selectedFile: null, selectedFileName: null });
+
       const handleChange = (e) => {
         const value = e.target.value;
         setState({
@@ -69,10 +77,103 @@ export default function EditStudentPage() {
         });
       }
 
-      const handleUpdate = () => {
-        setLoading(true);
-        dispatch(updateStudent(state, navigate, setLoading ))
+      const handleStudentPassportFile = (event) => {
+        if (event.target.files[0]) {
+          setStudentPassportFile({
+            selectedFile: event.target.files[0],
+            selectedFileName: event.target.files[0].name,
+          });
+        } else {
+          setStudentPassportFile({ selectedFile: null, selectedFileName: null });
+        }
+      };
+      const handleAnotherFieldFile = (event) => {
+        if (event.target.files[0]) {
+        setAnotherFieldFile({
+          selectedFile: event.target.files[0],
+          selectedFileName: event.target.files[0].name,
+        });
+      }else{
+        setAnotherFieldFile({ selectedFile: null, selectedFileName: null });
       }
+      };
+      const handleMothersIdFile = (event) => {
+        if (event.target.files[0]) {
+        setMothersIdFile({
+          selectedFile: event.target.files[0],
+          selectedFileName: event.target.files[0].name,
+        });
+      }else{
+        setMothersIdFile({ selectedFile: null, selectedFileName: null });
+      }
+      };
+      const handleCertificateFile = (event) => {
+        if (event.target.files[0]) {
+        setCertificateFile({
+          selectedFile: event.target.files[0],
+          selectedFileName: event.target.files[0].name,
+        });
+      }else{
+        setCertificateFile({ selectedFile: null, selectedFileName: null });
+      }
+      };
+      const handleMedicalFile = (event) => {
+        if (event.target.files[0]) {
+        setMedicalFile({
+          selectedFile: event.target.files[0],
+          selectedFileName: event.target.files[0].name,
+        });
+      }else{
+        setMedicalFile({ selectedFile: null, selectedFileName: null });
+      }
+      };
+
+    //  const handleUpdate = () => {
+    //    setLoading(true);
+    //    dispatch(updateStudent(state, navigate, setLoading ))
+    //  }
+
+
+      const handleUpdate = async (e) => {
+        e.preventDefault();
+        const files = [
+          studentPassportFile.selectedFile,
+          anotherFieldFile.selectedFile,
+          mothersIdFile.selectedFile,
+          certificateFile.selectedFile,
+          medicalRecordFile.selectedFile,
+        ].filter(file => file); 
+    
+        try {
+          setLoading(true);
+          const urls = await Promise.all(files.map((file) => {
+            if (file) {
+              return dispatch(uploadDocImages(file));
+            }
+            return null;
+          }));
+    
+          const [studentPassportFileUrl, anotherFieldFileUrl, mothersIdFileUrl, certificateFileUrl, medicalRecordFileUrl] =
+            urls;
+           
+    
+          const studentData = {
+            state,
+            studentPassportFileUrl: studentPassportFileUrl ? studentPassportFileUrl : state.studentPassportFileUrl,
+            anotherFieldFileUrl: anotherFieldFileUrl ? anotherFieldFileUrl : state.anotherFieldFileUrl,
+            mothersIdFileUrl: mothersIdFileUrl ? mothersIdFileUrl : state.mothersIdFileUrl,
+            certificateFileUrl: certificateFileUrl ? certificateFileUrl : state.certificateFileUrl,
+            medicalRecordFileUrl: medicalRecordFileUrl ? medicalRecordFileUrl : state.medicalRecordFileUrl,
+          };
+          setLoading(true);
+          dispatch(updateStudent(studentData, navigate, setLoading));
+        } catch (error) {
+          // setLoading(false);
+          console.error('Error uploading images: ', error);
+          // notifyErrorFxn("Error occured uploading Images");
+        }
+      };
+
   
     return (
       <>
@@ -92,7 +193,26 @@ export default function EditStudentPage() {
                 <div style={{background: '#F8F8F8',  padding: '10px'}}>
                  {activeButton === '1' &&  <EditBasicInfo state={state} handleChange={handleChange} handleUpdate={handleUpdate} loading={loading}/>}  
                  {activeButton === '2' && <EditAdditionalInfo state={state} handleChange={handleChange} handleUpdate={handleUpdate} loading={loading}/>}
-                 {activeButton === '3' && <EditDocInfo state={state} handleChange={handleChange} handleUpdate={handleUpdate} loading={loading}/>}  
+                 
+                 {activeButton === '3' && (
+                <EditDocInfo
+                  studentPassportFile={studentPassportFile}
+                  handleStudentPassportFile={handleStudentPassportFile}
+                  anotherFieldFile={anotherFieldFile}
+                  handleAnotherFieldFile={handleAnotherFieldFile}
+                  mothersIdFile={mothersIdFile}
+                  handleMothersIdFile={handleMothersIdFile}
+                  certificateFile={certificateFile}
+                  handleCertificateFile={handleCertificateFile}
+                  medicalRecordFile={medicalRecordFile}
+                  handleMedicalFile={handleMedicalFile}
+                  state={state}
+                  handleChange={handleChange}
+                  handleUpdate={handleUpdate}
+                  loading={loading}
+                />
+              )}
+                  
                   </div>
               </Grid>
               

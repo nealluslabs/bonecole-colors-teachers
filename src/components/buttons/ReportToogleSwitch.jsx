@@ -27,7 +27,7 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
       >
         Attendance Report
       </Button>
-      <Button
+     {/* <Button
         variant={activeButton === '2' ? 'contained' : 'outlined'}
         style={{
           minHeight: '50px',
@@ -41,7 +41,7 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
         onClick={handleTwo}
       >
         Performance Report
-      </Button>
+      </Button> */}
       <Button
         variant={activeButton === '3' ? 'contained' : 'outlined'}
         style={{

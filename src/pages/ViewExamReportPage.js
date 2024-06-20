@@ -87,12 +87,18 @@ export default function ViewExamReportPage() {
             <MenuItem value="">
               Select Class
             </MenuItem>
-        <MenuItem value={'JSS 1'}>JSS 1</MenuItem>
-        <MenuItem value={'JSS 2'}>JSS 2</MenuItem>
-        <MenuItem value={'JSS 3'}>JSS 3</MenuItem>
-        <MenuItem value={'SS 1'}>SS 1</MenuItem>
-        <MenuItem value={'SS 2'}>SS 2</MenuItem>
-        <MenuItem value={'SS 3'}>SS 3</MenuItem>
+            <MenuItem value={'Level 1'}>Level 1</MenuItem>
+        <MenuItem value={'Level 2'}>Level 2</MenuItem>
+        <MenuItem value={'Level 3'}>Level 3</MenuItem>
+        <MenuItem value={'Level 4'}>Level 4</MenuItem>
+        <MenuItem value={'Level 5'}>Level 5</MenuItem>
+        <MenuItem value={'Level 7'}>Level 7</MenuItem>
+        <MenuItem value={'Level 8'}>Level 8</MenuItem>
+        <MenuItem value={'Level 9'}>Level 9</MenuItem>
+        <MenuItem value={'Level 10'}>Level 10</MenuItem>
+        <MenuItem value={'Level 11'}>Level 11</MenuItem>
+        <MenuItem value={'Level 12'}>Level 12</MenuItem>
+        <MenuItem value={'Level 13'}>Level 13</MenuItem>
           </Select>
         </FormControl>
       </Grid>

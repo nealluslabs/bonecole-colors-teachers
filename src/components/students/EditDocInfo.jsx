@@ -45,8 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditDocInfo = ({state, handleChange, handleUpdate, loading}) => {
+const EditDocInfo = ({
+   state,  
+   studentPassportFile,
+  handleStudentPassportFile,
+  anotherFieldFile,
+  handleAnotherFieldFile,
+  mothersIdFile,
+  handleMothersIdFile,
+  certificateFile,
+  handleCertificateFile,
+  medicalRecordFile,
+  handleMedicalFile,
+   handleChange, 
+   handleUpdate, 
+   loading}) => {
   const classes = useStyles();
+console.log("STATE:::", state);
+
 
   return (
     <>
@@ -58,14 +74,14 @@ const EditDocInfo = ({state, handleChange, handleUpdate, loading}) => {
           style={{
             minWidth: '125px',
             backgroundColor: 'transparent',
-            border: '1px solid  #000000',
+            border: '1px solid #000000',
             paddingTop: '15px',
             paddingBottom: '15px',
             paddingLeft: '20px',
-            color: ' #D72A34'
+            color: '#000000'
           }}
           disabled={loading}
-          // onClick={handleUpdate}
+          onClick={handleUpdate}
         >
           {loading ? "Loading..." : "Edit"}
         </Button>
@@ -86,147 +102,211 @@ const EditDocInfo = ({state, handleChange, handleUpdate, loading}) => {
       </div>
     </div>
      <br/>
-    <div className={classes.root}>
-      <Grid container spacing={4}>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">First Name</Typography>
-          <TextField
-            name="fname"
-            placeholder="First name"
-            fullWidth
-            value={state.fname}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Last Name</Typography>
-          <TextField
-            name="lname"
-            placeholder="Last name"
-            fullWidth
-            value={state.lname}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Date Of Birth</Typography>
-          <TextField
-            type="date"
-            name="dob"
-            placeholder="01/01/1999"
-            fullWidth
-            value={state.dob}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Gender</Typography>
-          <select
-            name="gender"
-            value={state.gender}
-            onChange={handleChange}
-            className={classes.searchInput}
-            style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
-            required
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Registration ID</Typography>
-          <TextField
-            name="registrationId"
-            type="number"
-            placeholder="00037278488"
-            fullWidth
-            value={state.registrationId}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Studentship Type</Typography>
-          <select
-            name="studentshipType"
-            value={state.studentshipType}
-            onChange={handleChange}
-            className={classes.searchInput}
-            style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
-            required
-          >
-            <option value=""></option>
-            <option value="Male">Boarding</option>
-            <option value="Female">Day</option>
-          </select>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Class</Typography>
-          <select
-            name="class"
-            value={state.class}
-            onChange={handleChange}
-            className={classes.searchInput}
-            style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
-            required
-          >
-           <option value="">Select Class</option>
-            <option value="JSS 1">JSS 1</option>
-            <option value="JSS 2">JSS 2</option>
-            <option value="JSS 3">JSS 3</option>
-            <option value="SS 1">SS 1</option>
-            <option value="SS 2">SS 2</option>
-            <option value="SS 3">SS 3</option>
-          </select>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Section</Typography>
-          <select
-            name="section"
-            value={state.section}
-            onChange={handleChange}
-            className={classes.searchInput}
-            style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
-            required
-          >
-            <option value=""></option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
-        </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1">Guardian Name (if any)</Typography>
-          <TextField
-            name="guardianName"
-            placeholder="Enter name"
-            fullWidth
-            value={state.guardianName}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
-        </Grid>
-      </Grid>
-    </div>
+     <div className={classes.root}>
+<Grid container spacing={4} alignItems="center">
+  {/* First set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+        Student ID (Format: PNG, JPEG, JPG)
+      </Typography>
+      <TextField
+        name="fname"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={studentPassportFile.selectedFileName ? studentPassportFile.selectedFileName : state.studentPassportFile}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#000000',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleStudentPassportFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Second set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+        Another Field (Format: PNG, JPEG, JPG)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={anotherFieldFile.selectedFileName ? anotherFieldFile.selectedFileName : state.anotherFieldFile}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#000000',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleAnotherFieldFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Third set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      Mother’s ID (Format: PNG,JPEG, JPG)
+      </Typography>
+      <TextField
+        name="fname"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={mothersIdFile.selectedFileName ? mothersIdFile.selectedFileName : state.mothersIdFile}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#000000',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleMothersIdFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Fouth set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      All Certificates (Format: PDF)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={certificateFile.selectedFileName ? certificateFile.selectedFileName : state.certificateFile}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#000000',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleCertificateFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+  {/* Fifth set of TextField and Button */}
+  <Grid item container xs={6} direction="row" alignItems="center">
+    <Grid item xs={8}>
+      <Typography variant="subtitle1">
+      All Relevant Medical Records (Format: PDF)
+      </Typography>
+      <TextField
+        name="anotherField"
+        placeholder="Select a file"
+        disabled
+        fullWidth
+        value={medicalRecordFile.selectedFileName ? medicalRecordFile.selectedFileName : state.medicalRecordFile}
+        onChange={handleChange}
+        className={classes.searchInput}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </Grid>
+    <Grid item xs={4}>
+      <Button
+        component="label"
+        variant="contained"
+        style={{
+          minHeight: '52px',
+          minWidth: '145px',
+          backgroundColor: '#000000',
+          marginTop: '20px',
+        }}
+      >
+        <b>Choose</b>
+        <input
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleMedicalFile}
+        />
+      </Button>
+    </Grid>
+  </Grid>
+
+
+</Grid>
+</div>
     </>
   );
 };
