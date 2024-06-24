@@ -76,7 +76,7 @@ export default function Header({ onOpenNav }) {
           variant="contained"
           style={{ minHeight: '50px', minWidth: '145px', backgroundColor: ' #000000' }}
         >
-          SERACH
+          SEARCH
         </Button>
       </Box>
     </Grid>

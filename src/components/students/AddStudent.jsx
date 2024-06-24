@@ -1,14 +1,15 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import {Stepper, Step, StepButton, TextField, Button, Divider, Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Step1 from './Step1';
 import Step2 from './Step2'; // Import Step2 component
 import Step3 from './Step3'; // Import Step3 component
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createStudent, uploadDocImages } from 'src/redux/actions/student.action';
 import { notifyErrorFxn } from 'src/utils/toast-fxn';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 const steps = ['Basic Info', 'Additional Info', 'Doc Uploads'];
 
@@ -48,6 +49,24 @@ export default function AddStudent() {
   const [mothersIdFile, setMothersIdFile] = useState({selectedFile: [], selectedFileName: []});
   const [certificateFile, setCertificateFile] = useState({selectedFile: [], selectedFileName: []});
   const [medicalRecordFile, setMedicalFile] = useState({selectedFile: [], selectedFileName: []});
+
+
+
+ 
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const { user,school } = useSelector((state) => state.auth);
+
+
+  useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
 
 
   const totalSteps = () => {
@@ -239,7 +258,7 @@ export default function AddStudent() {
                   minWidth: '125px',
                   backgroundColor: 'transparent',
                   border: '1px solid #000000',
-                  color: '#962DFF',
+                  color: themeColor?themeColor:'#962DFF',
                   marginLeft: '4rem',
                   paddingTop: '15px',
                   paddingBottom: '15px',

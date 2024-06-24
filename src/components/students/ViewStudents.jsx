@@ -2,6 +2,8 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Divider, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const columns = [
   /*{
@@ -43,6 +45,22 @@ export default function ViewStudents({students}) {
     navigate('/dashboard/edit-student', { state: { student } });
   };
 
+  const dispatch = useDispatch()
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const { user,school } = useSelector((state) => state.auth);
+
+
+  React.useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -56,7 +74,7 @@ export default function ViewStudents({students}) {
                   <Button
                     onClick={() => handleActionClick(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: " #D72A34" }}
+                    style={{ minWidth: '85px', backgroundColor: themeColor?themeColor:" #D72A34" }}
                   >
                     Action
                   </Button>

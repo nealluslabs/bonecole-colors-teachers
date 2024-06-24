@@ -2,6 +2,8 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Divider, Grid } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 const columns = [
  /* {
@@ -40,6 +42,23 @@ export default function ViewStudentsReport({ students }) {
     navigate('/dashboard/action-reports', { state: { student } });
   };
 
+  const dispatch = useDispatch()
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const { user,school } = useSelector((state) => state.auth);
+
+
+  React.useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
+
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
@@ -53,14 +72,14 @@ export default function ViewStudentsReport({ students }) {
                   <Button
                     onClick={() => handleActionClick(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: " #D7234A", marginRight: '20px' }}
+                    style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34", marginRight: '20px' }}
                   >
                     View Result
                   </Button>
                   <Button
                     onClick={() => handleAddResult(params?.row)}
                     variant="contained"
-                    style={{ minWidth: '85px', backgroundColor: "#D7234A" }}
+                    style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34" }}
                   >
                     Add Result
                   </Button>

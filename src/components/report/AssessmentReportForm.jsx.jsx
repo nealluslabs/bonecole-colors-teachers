@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Button, Typography, Table, TableHead, TableBody, TableRow, TableCell, Checkbox } from '@mui/material';
 import TextField from '@material-ui/core/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createStudentResult } from 'src/redux/actions/student.action';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 const subjects = ['Mathematics', 'English', 'Biology', 'Physics', 'Home Keeping', 'Economics', 'Fine arts', 'French'];
 
@@ -59,6 +60,23 @@ const AssessmentReportForm = ({studentData}) => {
   const [scores, setScores] = useState({});
   const [cummulative, setCumulative] = useState(0);
   const [loading, setLoading] = useState(false);
+
+
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const {school } = useSelector((state) => state.auth);
+
+
+  useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
+
 
 
   const calculateFinalGrade = (totalScore) => {
@@ -195,8 +213,8 @@ const AssessmentReportForm = ({studentData}) => {
       <br />
       <Grid container style={{ backgroundColor: '#F9F9F9', padding: '20px', borderRadius: '14px' }}>
       <Grid item xs={6}>
-        <Typography variant="body1" align="left" style={{color: ' #D72A34', fontSize: '20px'}}>
-        <b><span style={{lineHeight: '3rem'}}>Cummulative:</span></b>       
+        <Typography variant="body1" align="left" style={{color: themeColor?themeColor:' #D72A34', fontSize: '20px'}}>
+        <b><span style={{lineHeight: '3rem'}}>Cumulative:</span></b>       
           <TextField
           type='number'
                   value={cummulative}
@@ -227,7 +245,7 @@ const AssessmentReportForm = ({studentData}) => {
           <Typography variant="body1" align="right" style={{ color: '#2AD776', fontSize: '20px' }}>
             <Button
               variant="contained"
-              style={{ minHeight: '50px', minWidth: '145px', backgroundColor: ' #D72A34' }}
+              style={{ minHeight: '50px', minWidth: '145px', backgroundColor: themeColor?themeColor:' #D72A34' }}
               onClick={handleEnterClick}
               disabled={loading}
             >

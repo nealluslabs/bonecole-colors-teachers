@@ -1,5 +1,5 @@
 import { db, fb, auth, storage } from '../../config/firebase';
-import { clearUser, loginFailed, loginSuccess, logoutFxn, signupFailed, storeUserData } from '../reducers/auth.slice';
+import { clearUser, loginFailed, loginSuccess, logoutFxn, signupFailed, storeUserData,saveSchool } from '../reducers/auth.slice';
 import { v4 as uuidv4 } from 'uuid';
 import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
 import { clearGroup } from '../reducers/group.slice';
@@ -105,11 +105,31 @@ export const fetchUserData = (id, type, navigate, setLoading) => async (dispatch
   user.get().then((doc) => {
   if (doc.exists) {
     // console.log("User Data:", doc.data());
+
+    db.collection('schools').doc(doc.data().schoolId).get()
+ .then((doc2)=>{ 
+
+ 
+  dispatch(saveSchool(doc2.data()))
+  dispatch(saveThemeColor(doc2.data().settings.themeColor))
+
+  dispatch(saveThemeImage(doc2.data().settings.themeImage))
+/**=============================================== */
+
+
     dispatch(storeUserData(doc.data()));
     if(type === "sigin"){
       notifySuccessFxn("Logged In😊");
       navigate('/dashboard/home', { replace: true });
     }
+
+
+  }).catch((error) => {
+    console.log("Error getting document:", error);
+    notifyErrorFxn("School that the teacher belongs to not found");
+  
+  });
+
   } else {
       setLoading(false);
       notifyErrorFxn("Unauthorized❌")

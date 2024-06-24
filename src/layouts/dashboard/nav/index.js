@@ -13,6 +13,8 @@ import NavSection from '../../../components/nav-section';
 //
 import navConfig from './config';
 import BONLOGO from '../../../assets/images/logo.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 
 // ----------------------------------------------------------------------
@@ -48,6 +50,26 @@ export default function Nav({ openNav, onCloseNav }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+
+  const dispatch = useDispatch()
+
+  const { themeColor,themeImage } = useSelector((state) => state.settings);
+  const { user,school } = useSelector((state) => state.auth);
+
+
+ useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
+
+
+
+
   const renderContent = (
     <Scrollbar
       sx={{
@@ -58,7 +80,7 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>{/* <Logo /> */}</Box>
       <Box sx={{ mb: 5, mx: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Link underline="none">
-          <img src={BONLOGO} onClick={()=>{navigate('/dashboard/home')}} width="170" height="40" alt="Logo" />
+          <img src={themeImage?themeImage:BONLOGO} onClick={()=>{navigate('/dashboard/home')}} width="170" height="40" alt="Logo" />
         </Link>
       </Box>
 

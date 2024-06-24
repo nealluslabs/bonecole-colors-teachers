@@ -49,14 +49,14 @@ function NavItem({ item }) {
   const dispatch = useDispatch()
 
   const { themeColor } = useSelector((state) => state.settings);
-  const { user } = useSelector((state) => state.auth);
+  const { user,school } = useSelector((state) => state.auth);
 
 
   useEffect(()=>{
 
  if(!themeColor){
- dispatch(saveThemeColor( user && user.settings &&  user.settings.themeColor))
- dispatch(saveThemeImage(user && user.settings &&  user.settings.themeImage))
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
  }
 
 
@@ -76,7 +76,7 @@ function NavItem({ item }) {
         '&.active': {
           color: 'grey',
           // bgcolor: '#66000000',
-          backgroundColor: path != '#' && ' #D72A34',
+          backgroundColor: path != '#' && themeColor?themeColor:"#D72A34",
           fontWeight: 'fontWeightBold',
           // borderBottomLeftRadius: '26px',
         },

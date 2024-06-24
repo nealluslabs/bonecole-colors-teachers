@@ -22,6 +22,7 @@ import AddStudent from 'src/components/students/AddStudent';
 import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
 import { getStudents } from 'src/redux/actions/student.action';
 import ViewStudentsReport from 'src/components/students/ViewStudentReport';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 
 
@@ -48,6 +49,23 @@ export default function ReportPage() {
     dispatch(getStudents());
     dispatch(fetchUserData(user?.id));
   }, [])
+
+ 
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const {school } = useSelector((state) => state.auth);
+
+
+ useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
+
 
 
   const [selectedOption, setSelectedOption] = useState('');
@@ -142,7 +160,7 @@ export default function ReportPage() {
             &nbsp; &nbsp;
       <Button
           variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#D72A34' }}
+          style={{ minHeight: '50px', minWidth: '100px', backgroundColor:themeColor?themeColor: '#D72A34' }}
         >
           Print
         </Button>

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Box, Typography, Button, Select, MenuItem } from '@mui/material';
 import TextField from '@material-ui/core/TextField';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +49,21 @@ const useStyles = makeStyles((theme) => ({
 
 const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  
+  const { themeColor } = useSelector((state) => state.settings);
+  const { user,school } = useSelector((state) => state.auth);
+
+
+  useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( school && school.settings &&  school.settings.themeColor))
+ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage))
+ }
+
+
+  },[])
 
   return (
     <>
@@ -73,7 +90,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           variant="contained"
           style={{
             minWidth: '125px',
-            backgroundColor: ' #D72A34',
+            backgroundColor:themeColor?themeColor: ' #D72A34',
             marginLeft: '1rem',
             paddingTop: '15px',
             paddingBottom: '15px',
