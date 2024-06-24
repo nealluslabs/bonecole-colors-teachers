@@ -92,7 +92,7 @@ export default function CreateCoolerPage() {
   return (
     <>
       <Helmet>
-        <title> Cooler | Create Cooler </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container maxWidth="xl">

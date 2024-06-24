@@ -48,7 +48,7 @@ export default function RegisterPage() {
   return (
     <>
       <Helmet>
-        <title> Register | Bonecole Teacher </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <StyledRoot style={{ flexDirection: 'row' }}>

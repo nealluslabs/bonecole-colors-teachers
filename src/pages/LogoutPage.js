@@ -27,7 +27,7 @@ export default function LogoutPage() {
   return (
     <>
       <Helmet>
-        <title> BON Teacher | logout </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container maxWidth="xl">

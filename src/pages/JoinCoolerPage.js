@@ -79,7 +79,7 @@ useEffect(() => {
   return (
     <>
       <Helmet>
-        <title> Cooler | Join Public Cooler </title>
+        <title> ERP - Teacher</title>
       </Helmet>
 
       <Container maxWidth="xl" style={{backgroundColor: '#6077F00F'}}>

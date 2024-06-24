@@ -59,7 +59,7 @@ const allCoolerGroup = allGroups?.length ? (
   return (
     <>
       <Helmet>
-        <title> Cooler | Groups </title>
+        <title> ERP - Teacher </title>
       </Helmet>
       <Container maxWidth="xl" style={{backgroundColor: '#609AF00F'}}>
       {/* <SearchBox style={{ width: '100%' }} /> */}

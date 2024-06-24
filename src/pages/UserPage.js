@@ -171,7 +171,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> MDLiaison | COMPANY </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container>

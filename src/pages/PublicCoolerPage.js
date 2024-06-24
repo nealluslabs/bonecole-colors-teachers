@@ -52,7 +52,7 @@ const publicCoolerGroup = publicGroups?.length ? (
   return (
     <>
       <Helmet>
-        <title> Cooler | Public-Coolers </title>
+        <title> ERP - Teacher </title>
       </Helmet>
       <Container maxWidth="xl">
       {/* <SearchBox style={{ width: '100%' }} /> */}

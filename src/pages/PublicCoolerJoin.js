@@ -55,7 +55,7 @@ export default function PublicCoolerJoin() {
   return (
     <>
       <Helmet>
-        <title> Cooler | Join Public Cooler </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container maxWidth="xl">

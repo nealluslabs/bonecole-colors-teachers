@@ -54,7 +54,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Cooler Web </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <StyledRoot>

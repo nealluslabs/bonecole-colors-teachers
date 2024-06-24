@@ -15,7 +15,7 @@ export default function InboxPage() {
   return (
     <>
       <Helmet>
-        <title> Cooler | INBOX </title>
+        <title> ERP - Teacher</title>
       </Helmet>
 
       <Container maxWidth="xl">

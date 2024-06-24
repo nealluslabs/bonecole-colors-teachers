@@ -11,7 +11,7 @@ export default function CoolerMembers() {
   return (
     <>
       <Helmet>
-        <title> Cooler | My-Coolers </title>
+        <title> ERP - Teacher</title>
       </Helmet>
 
       <Container maxWidth="xl">

@@ -61,7 +61,7 @@ export default function MembersPage() {
   return (
     <>
       <Helmet>
-        <title> Cooler | Members </title>
+        <title> ERP - Teacher </title>
       </Helmet>
         <center><h2>{groupData?.name.toUpperCase()}</h2></center>
       <Container maxWidth="xl">

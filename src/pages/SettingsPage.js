@@ -93,7 +93,7 @@ export default function SettingsPage() {
   return (
     <>
       <Helmet>
-        <title> Cooler | Settings </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container maxWidth="xl" style={{height: '100%', backgroundColor: '#6077F00F', border: '0px solid red' }}>

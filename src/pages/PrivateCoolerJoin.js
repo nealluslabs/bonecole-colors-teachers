@@ -38,7 +38,7 @@ export default function PrivateCoolerJoin() {
   return (
     <>
       <Helmet>
-        <title> Cooler | Join Private Cooler </title>
+        <title> ERP - Teacher </title>
       </Helmet>
 
       <Container maxWidth="xl">
