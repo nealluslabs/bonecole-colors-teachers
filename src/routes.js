@@ -26,6 +26,7 @@ import TeacherPage from './pages/TeacherPage';
 import AddEditReportPage from './pages/AddEditReportPage';
 import ViewExamReportPage from './pages/ViewExamReportPage';
 import EditStudentPage from './pages/EditStudentPage';
+import LogoutPage from './pages/LogoutPage';
 
 
 export default function Router() {
@@ -48,6 +49,7 @@ export default function Router() {
         { path: 'join-cooler', element: <JoinCoolerPage /> },
         { path: 'chat', element: <InboxPage /> },
         { path: 'settings', element: <SettingsPage /> },
+       
         // { path: 'my-cooler', element: <MyCoolersPage /> },
         { path: 'public-cooler', element: <PublicCoolerPage /> },
         { path: 'private-cooler', element: <PrivateCoolerPage /> },
@@ -57,6 +59,7 @@ export default function Router() {
         { path: 'upload-video', element: <UploadVideoPage /> },
       ],
     },
+    { path: 'logout', element: <LogoutPage /> },
     {
       path: 'login',
       element: <LoginPage />,

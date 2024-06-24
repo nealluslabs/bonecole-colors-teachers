@@ -35,9 +35,9 @@ const navConfig = [
     icon: icon('settings'),
   },
   {
-    title: 'logoout',
-    // path: '/dashboard/settings',
-    path: '#',
+    title: 'logout',
+     path: '/logout',
+    //path: '#',
     icon: icon('logout'),
   },
 ];

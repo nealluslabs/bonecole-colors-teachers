@@ -191,7 +191,8 @@ export const logout = (navigate) => async (dispatch) => {
     dispatch(logoutFxn());
     dispatch(clearUser());
     dispatch(clearGroup());
-    navigate('/login', { replace: true });
+  navigate('/login'/*, { replace: true }*/);
+  notifySuccessFxn("Logged out!")
     console.log('logout successful!');
   }).catch((error) => {
     // An error happened.

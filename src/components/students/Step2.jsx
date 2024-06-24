@@ -52,7 +52,7 @@ const Step2 = ({state, handleChange}) => {
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+       {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Blood Group</Typography>
           <select
             name="bloodGroup"
@@ -72,8 +72,8 @@ const Step2 = ({state, handleChange}) => {
             <option value="O+">O+</option>
             <option value="O-">O-</option>
           </select>
-        </Grid>
-        <Grid item xs={6}>
+         </Grid>*/}
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Religion</Typography>
           <select
             name="religion"
@@ -87,7 +87,7 @@ const Step2 = ({state, handleChange}) => {
             <option value="Islam">Islam</option>
             <option value="Christianity">Christianity</option>
           </select>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Phone Number</Typography>
           <TextField
@@ -118,7 +118,7 @@ const Step2 = ({state, handleChange}) => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Skin Colour</Typography>
           <select
             name="skinColor"
@@ -137,8 +137,8 @@ const Step2 = ({state, handleChange}) => {
             <option value="Dark">Dark</option>
             <option value="Black">Black</option>
           </select>
-        </Grid>
-        <Grid item xs={6}>
+        </Grid>*/}
+       {/* <Grid item xs={6}>
           <Typography variant="subtitle1">Eye Colour</Typography>
           <select
             name="eyeColor"
@@ -157,8 +157,8 @@ const Step2 = ({state, handleChange}) => {
             <option value="Amber">Amber</option>
             <option value="Black">Black</option>
           </select>
-        </Grid>
-        <Grid item xs={6}>
+        </Grid> */}
+        {/*<Grid item xs={6}>
           <Typography variant="subtitle1">Height</Typography>
           <select
             name="height"
@@ -175,7 +175,7 @@ const Step2 = ({state, handleChange}) => {
             <option value="5'9 to 6'0">5'9" to 6'0"</option>
             <option value="Above 6'0">Above 6'0"</option>
           </select>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={6}>
           <Typography variant="subtitle1">Nationality</Typography>
           <select
@@ -225,7 +225,7 @@ const Step2 = ({state, handleChange}) => {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+       {/* <Grid item xs={12}>
           <Typography variant="subtitle1">Medical History</Typography>
           <TextField
             name="medicalHistory"
@@ -249,7 +249,7 @@ const Step2 = ({state, handleChange}) => {
               },
             }}
           />
-        </Grid>
+          </Grid>*/}
         <Grid item xs={12}>
           <Typography variant="subtitle1">Any Special Instruction</Typography>
           <TextField
