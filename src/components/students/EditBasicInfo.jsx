@@ -225,7 +225,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           </select>
           </Grid>*/}
 
-        <Grid item xs={6}>
+      {/*  <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
           <TextField
             name="guardianName"
@@ -238,7 +238,8 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
               disableUnderline: true,
             }}
           />
-        </Grid>
+          </Grid> */}
+
       </Grid>
     </div>
     </>

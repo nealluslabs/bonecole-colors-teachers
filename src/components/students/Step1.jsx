@@ -181,7 +181,7 @@ const Step1 = ({state, handleChange}) => {
             <option value="C">C</option>
           </select>
         </Grid>*/}
-        <Grid item xs={6}>
+       {/* <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
           <TextField
             name="guardianName"
@@ -194,7 +194,7 @@ const Step1 = ({state, handleChange}) => {
               disableUnderline: true,
             }}
           />
-        </Grid>
+          </Grid>*/}
       </Grid>
     </div>
   );

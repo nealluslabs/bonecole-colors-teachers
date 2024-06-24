@@ -126,7 +126,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
           </select>
         </Grid>*/}
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Phone Number</Typography>
+          <Typography variant="subtitle1">Parent Phone Number</Typography>
           <TextField
             name="phoneNumber"
             type="number"
@@ -141,7 +141,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Email Address</Typography>
+          <Typography variant="subtitle1">Parent Email Address</Typography>
           <TextField
             name="email"
             type="email"
