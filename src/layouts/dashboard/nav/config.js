@@ -30,8 +30,8 @@ const navConfig = [
   },
   {
     title: 'settings',
-    // path: '/dashboard/settings',
-    path: '#',
+     path: '/dashboard/settings',
+   
     icon: icon('settings'),
   },
   {

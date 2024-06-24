@@ -67,7 +67,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           disabled={loading}
           onClick={handleUpdate}
         >
-          {loading ? "Loading..." : "Edit"}
+          {loading ? "Loading..." : "Cancel"}
         </Button>
         <Button
           variant="contained"
@@ -81,7 +81,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             color: 'white'
           }}
         >
-          Delete Info
+          Submit
         </Button>
       </div>
     </div>

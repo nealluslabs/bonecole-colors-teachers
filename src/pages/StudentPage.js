@@ -146,9 +146,9 @@ export default function StudentPage() {
             <MenuItem value="">
               Filter By
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+            <MenuItem value={"Level"}>Level</MenuItem>
+            <MenuItem value={"Gender"}>Gender</MenuItem>
+           
           </Select>
         </FormControl>
       </Grid>

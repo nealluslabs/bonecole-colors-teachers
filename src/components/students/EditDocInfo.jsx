@@ -83,7 +83,7 @@ console.log("STATE:::", state);
           disabled={loading}
           onClick={handleUpdate}
         >
-          {loading ? "Loading..." : "Edit"}
+          {loading ? "Loading..." : "Cancel"}
         </Button>
         <Button
           variant="contained"
@@ -97,7 +97,7 @@ console.log("STATE:::", state);
             color: 'white'
           }}
         >
-          Delete Info
+          Submit
         </Button>
       </div>
     </div>

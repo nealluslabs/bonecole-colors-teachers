@@ -1,167 +1,213 @@
-import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useTheme } from '@mui/material/styles';
-// import { Grid, Container, Typography, Paper, Button } from '@mui/material';
-import { Button, TextField } from '@mui/material';
-import {Box,Icon,Typography,CardMedia,CssBaseline,Grid,Container,FormControlLabel, Checkbox, makeStyles} from '@material-ui/core';
-import { usePaystackPayment, PaystackButton, PaystackConsumer } from 'react-paystack';
-import Modal from '@mui/material/Modal';
+import { Grid, Container, Typography, FormControl, Box, Select, MenuItem, Button } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import DEFAULTIMG from '../assets/images/rec.png';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { notifyErrorFxn } from 'src/utils/toast-fxn';
-import { updateProfile, uploadImage, uploadProfileImage } from 'src/redux/actions/auth.action';
+import { fetchMyGroups } from 'src/redux/actions/group.action';
+import { fetchUserData, updateUserSettings, uploadProfileSettings } from 'src/redux/actions/auth.action';
+
+import merge from 'lodash/merge';
+// @mui
+import { useTheme, styled } from '@mui/material/styles';
+import { fetchMyTransactions } from 'src/redux/actions/transaction.action';
+import CustomToggleSwitch from 'src/components/buttons/CustomToogleSwitch';
+import CustomSearchBar from 'src/components/global/CustomSearchBar';
+import SearchIcon from '@mui/icons-material/Search';
+import ViewStudents from 'src/components/students/ViewStudents';
+import AddStudent from 'src/components/students/AddStudent';
+import { getStudents } from 'src/redux/actions/student.action';
+import SettingsTopBox from 'src/components/students/SettingsTopBox';
+import SettingsBottomBox from 'src/components/students/SettingsBottomBox';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-  padding: '8px',
-   border: '0px solid grey',
-  },
-  paper: {
-    display: "flex",
-    width: "auto",
-  },
-  grid: {
-    width: "auto",
-  },
-  arrow: {
-    padding: theme.spacing(3),
-  },
-  box: {
-  //   padding: theme.spacing(3),
-    paddingLeft: theme.spacing(8),
-  },
-}));
 
 export default function SettingsPage() {
-  const classes = useStyles();
-    const dispatch = useDispatch(); 
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { user } = useSelector((state) => state.auth);
-    let today = new Date().toISOString().slice(0, 10);
-    let nextMonth = new Date(today);
-    nextMonth.setMonth(nextMonth.getMonth() + 1);
-    let nextMonthDate = nextMonth.toISOString().slice(0, 10);
+  const theme = useTheme();
+    
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
-    const type = location?.state?.type;
-    const [loading, setLoading] = useState(false);
-    const [selectedFile, setSelectedFile] = useState({selectedFile: [], selectedFileName: []});
-    const [file, setFile] = useState();
-     const [state, setState] = useState({
-      paymentLink: user?.paymentLink ? user?.paymentLink : "",
-      password: "",
-      imageUrl: user?.imageUrl ? user?.imageUrl : "",
-    })
+  const { themeColor,themeColorUnsaved,themeImageUnsaved,themeImageBlob } = useSelector((state) => state.settings);
 
-    const handleChange = (e) => {
-      const value = e.target.value;
-      setState({
-        ...state,
-        [e.target.name]: value
-      });
-    }
 
-    const handleselectedFile = event => {
-      setSelectedFile({
-          selectedFile: event.target.files[0],
-          selectedFileName: event.target.files[0].name
-      });
-      setFile(URL.createObjectURL(event.target.files[0]));
-  };
+  useEffect(()=>{
 
-    const settingsUpdate = (e) => {
-      e.preventDefault();
-    //   console.log("OLD SATE: ",state);
-      state.paymentLink = state.paymentLink == "" ? user?.paymentLink : state.paymentLink;
-    //   state.imageUrl = selectedFile.selectedFile == "" ? user?.imageUrl : selectedFile.selectedFile;
-    //   return;
-      setLoading(true);
-      const id = user.id;
-      const imageUrl = user.imageUrl;
-      if(selectedFile.selectedFile.length == 0){
-        // notifyErrorFxn("You have not uploaded Image");
-        dispatch(updateProfile(state, id, '', navigate, setLoading, imageUrl));
-      }else{
-        dispatch(uploadProfileImage(state, selectedFile.selectedFile, id, navigate, setLoading));
-      }
-     
+    if(!themeColor){
+    dispatch(saveThemeColor( user && user.settings &&  user.settings.themeColor))
+    dispatch(saveThemeImage(user && user.settings &&  user.settings.themeImage))
     }
    
+   
+     },[])
+
+
+  const { students } = useSelector((state) => state.student);
+
+  const preferredSettings = {
+    themeColorUnsaved:themeColorUnsaved,
+    themeImageUnsaved:themeImageUnsaved
+  }
+
+  useEffect(() => {
+    dispatch(fetchMyGroups(user?.coolers));
+    dispatch(fetchMyTransactions(user?.id));
+    console.log("Transac Changed.");
+  }, [user])
+
+  useEffect(() => {
+    dispatch(getStudents());
+    dispatch(fetchUserData(user?.id));
+  }, [])
+
+
+
+  const [selectedOption, setSelectedOption] = useState('');
+  const [activeButton, setActiveButton] = useState('viewStudents');
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleViewStudentsClick = () => {
+    setActiveButton('viewStudents');
+ 
+  };
+
+  const handleAddStudentsClick = () => {
+    setActiveButton('addStudents');
+  };
+
   return (
     <>
-      <Helmet>
-        <title> Bonecole - Teacher ERP </title>
-      </Helmet>
 
-      <Container maxWidth="xl" style={{height: '100%', backgroundColor: '#6077F00F', border: '0px solid red' }}>
-  <CssBaseline />
-  <form onSubmit={settingsUpdate}>
-    <Grid container spacing={2} style={{ marginTop: "2rem", marginBottom: "2rem" }}>
-      <Grid item xs={12} md={4} style={{border: '0px solid red'}}>
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center' }}>
-          <CardMedia
-            style={{ border: '0.2px solid black', backgroundColor: '#fff', width: '240px' }}
-            component="img"
-            height="240"
-            width="540"
-            image={file ? file : state.imageUrl !== "" ? state.imageUrl : DEFAULTIMG}
-            alt="IMG"
-          />
-          <Button component="label" variant="contained" style={{ minHeight: '45px', minWidth: '145px', backgroundColor: '#348AED', marginTop: '15px' }}>
-            <b>UPLOAD</b>
-            <input
-              type="file"
-              style={{ display: 'none' }}
-              onChange={handleselectedFile}
-            />
-          </Button>
-        </div>
+      <Container maxWidth="xl">
+       {/* <Grid container spacing={2} alignItems="center">
+     <CustomToggleSwitch activeButton={activeButton} setActiveButton={setActiveButton} handleViewStudentsClick={handleViewStudentsClick} handleAddStudentsClick={handleAddStudentsClick}/>
+     <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
+          <Select
+            value={selectedOption}
+            onChange={handleSelectChange}
+            displayEmpty
+            label=""
+            sx={{
+            
+              minWidth: 140,
+              p: 1,
+            }}
+          >
+            <MenuItem value="">
+              Select Class
+            </MenuItem>
+             <MenuItem value={'Level 1'}>Level 1</MenuItem>
+        <MenuItem value={'Level 2'}>Level 2</MenuItem>
+        <MenuItem value={'Level 3'}>Level 3</MenuItem>
+        <MenuItem value={'Level 4'}>Level 4</MenuItem>
+        <MenuItem value={'Level 5'}>Level 5</MenuItem>
+        <MenuItem value={'Level 7'}>Level 7</MenuItem>
+        <MenuItem value={'Level 8'}>Level 8</MenuItem>
+        <MenuItem value={'Level 9'}>Level 9</MenuItem>
+        <MenuItem value={'Level 10'}>Level 10</MenuItem>
+        <MenuItem value={'Level 11'}>Level 11</MenuItem>
+        <MenuItem value={'Level 12'}>Level 12</MenuItem>
+        <MenuItem value={'Level 13'}>Level 13</MenuItem>
+          </Select>
+        </FormControl>
       </Grid>
-      <Grid item xs={12} md={8}>
-        <Grid container direction="column" spacing={6} style={{ paddingLeft: '100px', paddingRight: '100px' }}>
-          <Grid item xs>
-          <p style={{ fontSize: '17px', width: '40%' }}>Payment Link</p>
-            <div style={{ display: 'flex',}}>
-              <TextField
-                id="outlined-basic"
-                fullWidth
-                // label="Enter Payment Link"
-                variant="outlined"
-                name="paymentLink"
-                value={state.paymentLink}
-                style={{background: 'white'}}
-                onChange={handleChange}
-              />
-            </div>
-            <p style={{ fontSize: '17px', width: '40%' }}>Password</p>
-            <div style={{ display: 'flex' }}>
-              <TextField
-                id="outlined-basic"
-                fullWidth
-                // label="Enter Password"
-                variant="outlined"
-                name="password"
-                value={state.password}
-                onChange={handleChange}
-                style={{background: 'white'}}
-              />
-            </div>
-          </Grid>
-          {/* <div style={{ border: '1px solid grey', width: '100%' }}></div> */}
-          <center>
-            <Button type="submit" disabled={loading} variant="contained" style={{ minHeight: '45px', minWidth: '100px', backgroundColor: '#348AED' }}>
-              <b>{loading ? "Loading..." : "UPDATE"}</b>
+     <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
+          <Select
+            value={selectedOption}
+            onChange={handleSelectChange}
+            displayEmpty
+            label=""
+            sx={{
+           
+              minWidth: 140,
+              p: 1,
+            }}
+          >
+            <MenuItem value="">
+              Select Section
+            </MenuItem>
+            <MenuItem value={1}>Option 1</MenuItem>
+            <MenuItem value={2}>Option 2</MenuItem>
+            <MenuItem value={3}>Option 3</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+      &nbsp; &nbsp;
+      <Box sx={{ width: '20%' }}>
+        <CustomSearchBar  title={"Search Student"} />
+      </Box>
+      <Box sx={{ flexGrow: 1}}>
+        <Button
+          variant="contained"
+          style={{ minHeight: '50px', minWidth: '45px', backgroundColor: '#000000' }}
+        >
+          <SearchIcon />
+        </Button>
+      </Box>
+
+      <Grid item sx={{mb: 2}}>
+     <FormControl sx={{ minWidth: 140 }}>
+          <Select
+            value={selectedOption}
+            onChange={handleSelectChange}
+            displayEmpty
+            label=""
+            sx={{
+            //   minHeight: 30,
+              minWidth: 120,
+              p: 1,
+            }}
+          >
+            <MenuItem value="">
+              Filter By
+            </MenuItem>
+            <MenuItem value={1}>Option 1</MenuItem>
+            <MenuItem value={2}>Option 2</MenuItem>
+            <MenuItem value={3}>Option 3</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+
+          </Grid> */}
+          <br/>
+          
+        <Grid container spacing={2}>
+            <Grid item xs={8} md={12} lg={12}>
+              <div style={{background: '#F8F8F8',  padding: '10px'}}>
+               { <SettingsTopBox />}
+                </div>
+                
+                 <br/>
+                
+
+                {/*<div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <SettingsBottomBox />
+               </div>*/}
+
+
+          <center style={{marginTop:"1rem"}}>
+            <Button disabled={false} variant="contained" onClick={()=>{
+              if(themeImageBlob){
+                dispatch(uploadProfileSettings(preferredSettings,themeImageBlob,user && user.adminId? user.adminId:user && user.id ))
+              }else{
+              dispatch(updateUserSettings(preferredSettings,user && user.adminId? user.adminId:user && user.id ))
+              }
+            }}
+              style={{ minWidth: '125px', backgroundColor: themeColor?themeColor:"#D72A34", marginLeft:  '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+              Submit
             </Button>
           </center>
-        </Grid>
-      </Grid>
-    </Grid>
-  </form>
-</Container>
 
+            </Grid>
+            
+          </Grid>
+      </Container>
     </>
   );
 }

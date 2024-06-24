@@ -9,6 +9,9 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import SavingsIcon from '@mui/icons-material/Savings';
 import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 // ----------------------------------------------------------------------
 
 NavSection.propTypes = {
@@ -43,6 +46,22 @@ NavItem.propTypes = {
 function NavItem({ item }) {
   const { title, path, icon, iconLabel, info } = item;
   const location = useLocation()
+  const dispatch = useDispatch()
+
+  const { themeColor } = useSelector((state) => state.settings);
+  const { user } = useSelector((state) => state.auth);
+
+
+  useEffect(()=>{
+
+ if(!themeColor){
+ dispatch(saveThemeColor( user && user.settings &&  user.settings.themeColor))
+ dispatch(saveThemeImage(user && user.settings &&  user.settings.themeImage))
+ }
+
+
+  },[])
+
 
 
   return (
@@ -52,7 +71,8 @@ function NavItem({ item }) {
       sx={{
         color: '#FFFFFF',
         fontSize: '18px',
-        bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report' || location.pathname === '/dashboard/action-reports' )  && '#D72A34',
+         bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports' )  &&  (themeColor?themeColor:"#D72A34")|| title==='student' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
+        
         '&.active': {
           color: 'grey',
           // bgcolor: '#66000000',
@@ -61,7 +81,7 @@ function NavItem({ item }) {
           // borderBottomLeftRadius: '26px',
         },
         '&.hover': {
-          bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report' || location.pathname === '/dashboard/action-reports' )  && '#D72A34',
+          bgcolor:title==='reports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports'  )  &&  (themeColor?themeColor:"#D72A34")|| title==='student' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
         }
       }}
     >

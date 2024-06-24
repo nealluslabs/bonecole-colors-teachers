@@ -6,6 +6,7 @@ import storage from './storage';
 import authReducer from './reducers/auth.slice';
 import studentReducer from './reducers/student.slice';
 import groupReducer from './reducers/group.slice';
+import settingsReducer from './reducers/settings.slice';
 import inboxReducer from './reducers/chat.slice';
 import transactionReducer from './reducers/transactions.slice';
 // import chatReducer from '../chat-src/redux/slices/chat';
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   auth: authReducer,
   group: groupReducer,
   student: studentReducer,
+  settings: settingsReducer,
   // chat: chatReducer,
   inbox: inboxReducer,
   transaction: transactionReducer

@@ -3,6 +3,7 @@ import { clearUser, loginFailed, loginSuccess, logoutFxn, signupFailed, storeUse
 import { v4 as uuidv4 } from 'uuid';
 import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
 import { clearGroup } from '../reducers/group.slice';
+import { saveThemeColor, saveThemeImage } from '../reducers/settings.slice';
 
 
   export const signin = (user, navigate, setLoading) => async (dispatch) => {
@@ -183,6 +184,149 @@ export const updateProfile = (profileData, userID, file, navigate, setLoading, u
     setLoading(false);
     console.log("ERR-: ", err);
   })
+}
+
+
+
+
+
+
+export const uploadProfileSettings = (userPreferences, file, userID) => async (dispatch) => {
+  const imageName = uuidv4() + '.' + file?.name?.split('.')?.pop();
+  console.log('File Name-->: ', imageName);
+  const uploadTask = storage.ref(`theme_images/${imageName}`).put(file);
+  uploadTask.on(
+    "state_changed",
+    snapshot => {
+      const progress = Math.round(
+        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      );
+      // setProgress(progress);
+    },
+    error => {
+      console.log(error);
+    },
+    () => {
+      storage
+        .ref("theme_images")
+        .child(imageName)
+        .getDownloadURL()
+        .then(url => {
+          console.log('Image URL: ', url);
+          dispatch(updateUserSettings(userPreferences, userID, url));
+        });
+    }
+  );
+}
+
+
+
+
+export const updateUserSettings = (userPreferences, userID,url) => async (dispatch) => {
+  // return  
+
+  db.collection('admin').doc(userID).get().then((dac)=>{
+
+  if(url){
+    userPreferences = {...userPreferences,themeImageUnsaved:url}
+  }
+
+  console.log("STORED URL-->",url)
+
+
+if(!userPreferences.themeImageUnsaved ||userPreferences.themeImageUnsaved[0] !== '#' )
+{
+
+  db.collection('admin').doc(userID).update({
+    settings:{themeColor:userPreferences.themeColorUnsaved,
+              themeImage: dac.data().settings.themeImage
+            }
+    }
+    
+   ).then((res)=>{
+        if(userPreferences?.password){
+         //update password start
+         const user = auth.currentUser;
+         user.updatePassword(userPreferences.password)
+           .then(() => {
+             //setLoading(false);
+             console.log("our first update to the database went swimmingly");
+            // notifySuccessFxn("Updated successfully");
+            // navigate('/dashboard/home', { replace: true });
+           })
+           .catch((error) => {
+             //setLoading(false);
+             console.error("Error updating ,first update to db: ", error);
+             notifyErrorFxn(error.message);
+           });
+        //update password end
+        }else{
+         //setLoading(false);
+         console.error("No Password to update");
+         notifySuccessFxn("Updated successfully");
+         //navigate('/dashboard/home', { replace: true });
+        }
+      
+   }).catch((err) => {
+     //setLoading(false);
+     console.log("ERR-: ", err);
+   })
+
+
+}
+
+
+  else{
+  db.collection('admin').doc(userID).update({
+    settings:{themeColor:userPreferences.themeColorUnsaved,
+      themeImage: userPreferences.themeImageUnsaved,
+    }
+   
+  }).then((res)=>{
+       if(userPreferences?.password){
+        //update password start
+        const user = auth.currentUser;
+        user.updatePassword(userPreferences.password)
+          .then(() => {
+            //setLoading(false);
+            console.log("our first update to the database went swimmingly");
+           
+           // navigate('/dashboard/home', { replace: true });
+          })
+          .catch((error) => {
+            //setLoading(false);
+            console.error("Error updating ,first update to db: ", error);
+            notifyErrorFxn(error.message);
+          });
+       //update password end
+       }else{
+        //setLoading(false);
+        console.error("No Password to update");
+        notifySuccessFxn("Updated successfully");
+        //navigate('/dashboard/home', { replace: true });
+       }
+     
+  }).catch((err) => {
+    //setLoading(false);
+    console.log("ERR-: ", err);
+  })
+
+}
+
+
+  }) //END OF INITIAL GET OF ADMIN DATA
+
+
+  db.collection('admin').doc(userID).get().then((doc)=>{
+
+    dispatch(saveThemeImage(doc.data().settings.themeImage))
+    dispatch(saveThemeColor(doc.data().settings.themeColor))
+
+  }).then(()=>{
+    notifySuccessFxn("Updated successfully");
+  })
+
+
 }
 
 

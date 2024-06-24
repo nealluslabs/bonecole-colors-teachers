@@ -72,7 +72,7 @@ export default function ViewExamReportPage() {
         </Typography>
       </Box>
         <Grid item sx={{mb: 2}}>
-     <FormControl sx={{ minWidth: 140 }}>
+     {/*<FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -100,10 +100,10 @@ export default function ViewExamReportPage() {
         <MenuItem value={'Level 12'}>Level 12</MenuItem>
         <MenuItem value={'Level 13'}>Level 13</MenuItem>
           </Select>
-        </FormControl>
+          </FormControl>*/}
       </Grid>
      <Grid item sx={{mb: 2}}>
-     <FormControl sx={{ minWidth: 140 }}>
+     {/*<FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -122,7 +122,7 @@ export default function ViewExamReportPage() {
             <MenuItem value={2}>Option 2</MenuItem>
             <MenuItem value={3}>Option 3</MenuItem>
           </Select>
-        </FormControl>
+        </FormControl>*/}
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%',}}>
@@ -153,9 +153,9 @@ export default function ViewExamReportPage() {
             <MenuItem value="">
               Filter By
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+            <MenuItem value={"Subject"}>Subject</MenuItem>
+            <MenuItem value={"Grade (Descending)"}>Grade (Descending)</MenuItem>
+           
           </Select>
         </FormControl>
       </Grid>
