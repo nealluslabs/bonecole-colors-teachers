@@ -22,7 +22,7 @@ export default function Page404() {
   return (
     <>
       <Helmet>
-        <title>  ERP - Teacher</title>
+        <title>  Bonecole - Teacher ERP</title>
       </Helmet>
 
       <Container>

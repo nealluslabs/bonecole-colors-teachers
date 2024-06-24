@@ -57,7 +57,7 @@ export default function MyCoolersPage() {
   return (
     <>
       <Helmet>
-        <title> ERP - Teacher </title>
+        <title> Bonecole - Teacher ERP </title>
       </Helmet>
       <Container maxWidth="xl" style={{backgroundColor: '#609AF00F'}}>
       {/* <SearchBox style={{ width: '100%' }} /> */}

@@ -51,7 +51,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> ERP - Teacher </title>
+        <title> Bonecole - Teacher ERP </title>
       </Helmet>
 
       <StyledRoot style={{ flexDirection: 'row' }}>
