@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover, Grid } from '@mui/material';
@@ -8,6 +8,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'src/redux/actions/auth.action';
 import { useNavigate } from 'react-router-dom';
+import { saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 // ----------------------------------------------------------------------
 
@@ -19,7 +20,17 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
-  const { user } = useSelector((state) => state.auth);
+  const { user,school } = useSelector((state) => state.auth);
+  const {themeImage} = useSelector((state) => state.settings);
+
+  console.log(user.profileImage)
+  const [profileImg,setProfileImg] = useState(user && user.profileImage)
+ 
+  useEffect(()=>{
+   setProfileImg(user && user.profileImage)
+  },[user])
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,7 +61,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={user?.imageUrl} alt="photoURL" />
+        <Avatar src={profileImg} alt="photoURL" />
       </IconButton>
       <ArrowDropDownIcon sx={{color: 'black'}} onClick={handleOpen}/>
       <Popover
@@ -80,7 +91,7 @@ export default function AccountPopover() {
           alignItems="flex-start"
         >
           <Grid sx={{mt: 1, ml: 1}}>
-          <Avatar src={user?.imageUrl} alt="photoURL" />
+          <Avatar src={profileImg} alt="photoURL" />
           </Grid>
           <Box sx={{ my: 1.5, px: 1 }}>
           <Typography variant="subtitle2" noWrap>

@@ -6,10 +6,11 @@ import Typography from '@mui/material/Typography';
 import Step1 from './Step1';
 import Step2 from './Step2'; // Import Step2 component
 import Step3 from './Step3'; // Import Step3 component
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createStudent, uploadDocImages } from 'src/redux/actions/student.action';
 import { notifyErrorFxn } from 'src/utils/toast-fxn';
+import { saveNewPassword } from 'src/redux/reducers/settings.slice';
 
 const steps = ['Basic Info', 'Additional Info', 'Doc Uploads'];
 
@@ -242,6 +243,9 @@ export default function SettingsTopBox() {
   };
   
 
+
+  const { newPassword } = useSelector((state) => state.settings);
+
   return (
     <Box sx={{ width: '100%' }}>
     {/*  <div style={{ display: 'flex', width: '100%' }}>
@@ -309,8 +313,8 @@ export default function SettingsTopBox() {
             name="lname"
             placeholder="New Password"
             fullWidth
-            value={state.lname}
-            onChange={handleChange}
+            value={newPassword}
+            onChange={(event)=>{dispatch(saveNewPassword(event.target.value))}}
             className={classes.searchInput}
             InputProps={{
               disableUnderline: true,

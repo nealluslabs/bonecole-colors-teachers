@@ -288,91 +288,15 @@ dispatch(saveThemeImageBlob(event.target.files[0]))
         ) : (
           <>
             <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '#000000', fontSize: '18px' }}>
-              <b>{activeStep === 0 && 'Preferences'}</b>
+              <b>{activeStep === 0 && 'Profile'}</b>
             </Typography>
-           {/*<Divider />*/}
+         
             <br />
             {/* Render the appropriate step content */}
-            <Grid container style={{display:"flex",justifyContent:"center",gap:"2rem"}}  spacing={4}>
-        <Grid item xs={5}>
-          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Color</Typography>
-          {/*<TextField
-            name="fname"
-            placeholder="Color"
-            fullWidth
-            value={state.fname}
-            onChange={handleChange}
-            className={classes.searchInput}
-            InputProps={{
-              disableUnderline: true,
-                
-              style:{
-               
-                width:"100%",
-                height:"3rem",
-                backgroundColor:"white",
-                border:"0px solid lightgrey",
-                padding:"10px"
-              }
-            }}
-          />*/}
-
-
-        
-
-
-   {<Select
-          style={{backgroundColor:"#FFFFFF",borderRadius:"0.4rem",width:"100%",padding:"10px",height:"3rem", border:"1px solid lightgrey",}}
-         inputProps={{
-          classes: {
-              icon: classes.icon,
-          },
-
-          style:{
-               
-            width:"100%",
-            height:"3rem",
-            backgroundColor:"white",
-            border:"0px solid lightgrey",
-            padding:"10px"
-          }
-      }}
-        
-          labelId="hi-label"
-          id="hi"
-          value={surveyAnswer}
-          displayEmpty
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em style={{color:"lightgray"}}>Pick a Color</em>;
-            }
-
-            return selected;
-          }}
-          onChange={(event) => {
-            setSurveyAnswer(event.target.value === "#FFC300" ? "Yellow":event.target.value === "#D72A34"?"Red":event.target.value ==="#0096FF" && "Blue");
-            dispatch(saveThemeColorUnsaved(event.target.value));
-          }}
-        >
+            <Grid container style={{display:"flex",justifyContent:"flex-start",gap:"2rem"}}  spacing={4}>
        
-    <MenuItem disabled value="">Pick a Color</MenuItem> 
-  <MenuItem  value={"#FFC300"}>Yellow</MenuItem>
-  <MenuItem   value={"#D72A34"}>Red</MenuItem>
-  <MenuItem   value={"#0096FF"}>Blue</MenuItem>
-  
- 
-
-
-       
-        </Select>
-        }
-
-
-
-
-        </Grid>
-        <Grid item xs={5} style={{position:"relative"}}>
-          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Logo</Typography>
+        <Grid item xs={5} style={{position:"relative",left:"6rem"}}>
+          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Profile Picture</Typography>
           <TextField
             name="lname"
             placeholder="Logo"

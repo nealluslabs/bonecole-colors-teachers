@@ -29,7 +29,7 @@ export default function SettingsPage() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
-  const { themeColor,themeColorUnsaved,themeImageUnsaved,themeImageBlob } = useSelector((state) => state.settings);
+  const { themeColor,themeColorUnsaved,themeImageUnsaved,themeImageBlob,newPassword } = useSelector((state) => state.settings);
 
 
   useEffect(()=>{
@@ -46,8 +46,10 @@ export default function SettingsPage() {
   const { students } = useSelector((state) => state.student);
 
   const preferredSettings = {
-    themeColorUnsaved:themeColorUnsaved,
-    themeImageUnsaved:themeImageUnsaved
+    themeColorUnsaved:"",
+    themeImageUnsaved:"",
+    password:newPassword,
+    profileImage:user && user.profileImage?user.profileImage:""
   }
 
   useEffect(() => {
@@ -184,19 +186,20 @@ export default function SettingsPage() {
                 </div>
                 
                  <br/>
+
                 
 
-                {/*<div style={{background: '#F8F8F8',  padding: '10px'}}>
+                <div style={{background: '#F8F8F8',  padding: '10px'}}>
                 <SettingsBottomBox />
-               </div>*/}
+               </div>
 
 
           <center style={{marginTop:"1rem"}}>
             <Button disabled={false} variant="contained" onClick={()=>{
               if(themeImageBlob){
-                dispatch(uploadProfileSettings(preferredSettings,themeImageBlob,user && user.adminId? user.adminId:user && user.id ))
+                dispatch(uploadProfileSettings(preferredSettings,themeImageBlob,user && user.teacherId? user.teacherId:user && user.id ))
               }else{
-              dispatch(updateUserSettings(preferredSettings,user && user.adminId? user.adminId:user && user.id ))
+              dispatch(updateUserSettings(preferredSettings,user && user.teacherId? user.teacherId:user && user.id ))
               }
             }}
               style={{ minWidth: '125px', backgroundColor: themeColor?themeColor:"#D72A34", marginLeft:  '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>

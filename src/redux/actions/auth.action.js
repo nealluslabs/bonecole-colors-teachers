@@ -214,7 +214,7 @@ export const updateProfile = (profileData, userID, file, navigate, setLoading, u
 export const uploadProfileSettings = (userPreferences, file, userID) => async (dispatch) => {
   const imageName = uuidv4() + '.' + file?.name?.split('.')?.pop();
   console.log('File Name-->: ', imageName);
-  const uploadTask = storage.ref(`theme_images/${imageName}`).put(file);
+  const uploadTask = storage.ref(`profile_images/${imageName}`).put(file);
   uploadTask.on(
     "state_changed",
     snapshot => {
@@ -228,7 +228,7 @@ export const uploadProfileSettings = (userPreferences, file, userID) => async (d
     },
     () => {
       storage
-        .ref("theme_images")
+        .ref("profile_images")
         .child(imageName)
         .getDownloadURL()
         .then(url => {
@@ -245,22 +245,22 @@ export const uploadProfileSettings = (userPreferences, file, userID) => async (d
 export const updateUserSettings = (userPreferences, userID,url) => async (dispatch) => {
   // return  
 
-  db.collection('admin').doc(userID).get().then((dac)=>{
+  db.collection('teachers').doc(userID).get().then((dac)=>{
 
   if(url){
-    userPreferences = {...userPreferences,themeImageUnsaved:url}
+    userPreferences = {...userPreferences,profileImage:url}
   }
 
   console.log("STORED URL-->",url)
 
 
-if(!userPreferences.themeImageUnsaved ||userPreferences.themeImageUnsaved[0] !== '#' )
+if(!url )
 {
 
-  db.collection('admin').doc(userID).update({
-    settings:{themeColor:userPreferences.themeColorUnsaved,
-              themeImage: dac.data().settings.themeImage
-            }
+  db.collection('teachers').doc(userID).update({
+   
+              profileImage: dac.data().profileImage? dac.data().profileImage:""
+           
     }
     
    ).then((res)=>{
@@ -271,19 +271,23 @@ if(!userPreferences.themeImageUnsaved ||userPreferences.themeImageUnsaved[0] !==
            .then(() => {
              //setLoading(false);
              console.log("our first update to the database went swimmingly");
-            // notifySuccessFxn("Updated successfully");
+             notifySuccessFxn("Updated successfully");
             // navigate('/dashboard/home', { replace: true });
            })
            .catch((error) => {
              //setLoading(false);
              console.error("Error updating ,first update to db: ", error);
              notifyErrorFxn(error.message);
+             return
            });
         //update password end
         }else{
          //setLoading(false);
-         console.error("No Password to update");
-         notifySuccessFxn("Updated successfully");
+          //setLoading(false);
+          if(!userPreferences.password){
+            console.error("No Password to update");
+            notifySuccessFxn("Updated successfully");
+            }
          //navigate('/dashboard/home', { replace: true });
         }
       
@@ -297,10 +301,10 @@ if(!userPreferences.themeImageUnsaved ||userPreferences.themeImageUnsaved[0] !==
 
 
   else{
-  db.collection('admin').doc(userID).update({
-    settings:{themeColor:userPreferences.themeColorUnsaved,
-      themeImage: userPreferences.themeImageUnsaved,
-    }
+  db.collection('teachers').doc(userID).update({
+   
+      profileImage: url,
+    
    
   }).then((res)=>{
        if(userPreferences?.password){
@@ -310,43 +314,58 @@ if(!userPreferences.themeImageUnsaved ||userPreferences.themeImageUnsaved[0] !==
           .then(() => {
             //setLoading(false);
             console.log("our first update to the database went swimmingly");
-           
+            notifySuccessFxn("Updated successfully");
            // navigate('/dashboard/home', { replace: true });
           })
           .catch((error) => {
             //setLoading(false);
             console.error("Error updating ,first update to db: ", error);
             notifyErrorFxn(error.message);
+            return
           });
        //update password end
        }else{
         //setLoading(false);
+        if(!userPreferences.password){
         console.error("No Password to update");
         notifySuccessFxn("Updated successfully");
+        }
         //navigate('/dashboard/home', { replace: true });
        }
      
   }).catch((err) => {
-    //setLoading(false);
+   
     console.log("ERR-: ", err);
   })
 
 }
 
 
-  }) //END OF INITIAL GET OF ADMIN DATA
+  }) //END OF INITIAL GET OF teachers DATA
 
 
-  db.collection('admin').doc(userID).get().then((doc)=>{
+  db.collection('teachers').doc(userID).get().then((doc)=>{
 
-    dispatch(saveThemeImage(doc.data().settings.themeImage))
-    dispatch(saveThemeColor(doc.data().settings.themeColor))
+    //dispatch(saveThemeImage(doc.data().settings.profileImage))
+    //dispatch(saveThemeColor(doc.data().settings.themeColor))
+    dispatch(storeUserData(doc.data()));
 
   }).then(()=>{
-    notifySuccessFxn("Updated successfully");
+    //notifySuccessFxn("Updated successfully");
+    console.log("final process of teacher update is complete, it may or may not have been successful")
   })
 
 
+
+
+
+
+
+
+
+
+
+  
 }
 
 

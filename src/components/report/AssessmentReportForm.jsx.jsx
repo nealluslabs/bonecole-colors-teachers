@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '10px',
     // justifyContent: 'center',
     borderRadius: '1px',
-    width: '30%',
-    height: '20%',
+    width: '22%',
+    height: '10%',
     '& .MuiInputBase-input': {
       color: 'grey',
     },
@@ -165,6 +165,9 @@ const AssessmentReportForm = ({studentData}) => {
                   className={classes.searchInput}
                   InputProps={{
                     disableUnderline: true,
+                    style:{
+                      height:"1.1rem"
+                    }
                   }}
                 />
               </TableCell>
@@ -177,6 +180,9 @@ const AssessmentReportForm = ({studentData}) => {
                   className={classes.searchInput}
                   InputProps={{
                     disableUnderline: true,
+                    style:{
+                      height:"1.1rem"
+                    }
                   }}
                 />
               </TableCell>
@@ -189,6 +195,9 @@ const AssessmentReportForm = ({studentData}) => {
                   className={classes.searchInput}
                   InputProps={{
                     disableUnderline: true,
+                    style:{
+                      height:"1.1rem"
+                    }
                   }}
                 />
               </TableCell>
@@ -196,12 +205,16 @@ const AssessmentReportForm = ({studentData}) => {
                 <TextField
                   value={scores[subject]?.finalGrade || ''}
                   disabled={true}
+                  
                   onChange={(e) => handleScoreChange(subject, 'finalGrade', e.target.value)}
                   multiline
                   rows={1}
                   className={classes.searchInput}
                   InputProps={{
                     disableUnderline: true,
+                    style:{
+                      height:"1.1rem"
+                    }
                   }}
                 />
               </TableCell>

@@ -13,6 +13,7 @@ import NotificationsPopover from './NotificationsPopover';
 import Searchbar2 from './Searchbar2';
 import { useSelector } from 'react-redux';
 import CustomSearchBar from 'src/components/global/CustomSearchBar';
+import { useEffect, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -46,7 +47,14 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
-  const { user } = useSelector((state) => state.auth);
+  const { user,school } = useSelector((state) => state.auth);
+ const [profileImg,setProfileImg] = useState(user && user.profileImage)
+
+ useEffect(()=>{
+  setProfileImg(user && user.profileImage)
+ },[user])
+
+
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -61,7 +69,7 @@ export default function Header({ onOpenNav }) {
           <Iconify icon="eva:menu-2-fill" />
         </IconButton>
         <Typography variant="h4" sx={{color: ' #000000', fontSize: '36px' }}>
-       <b> Dashboard</b>
+        <b> {school && school.name}</b>
          {/* Welcome {user?.firstName + " " + user?.lastName}🖐🏽 */}
         </Typography>
 
@@ -84,7 +92,7 @@ export default function Header({ onOpenNav }) {
         {/* <Searchbar2 /> */}
         <Box sx={{ flexGrow: 1 }} />
         <Typography variant="h6" sx={{color: ' #000000', fontSize: '16px' }}>
-        Teacher &nbsp;
+        {user && user.fname + " " + user.lname} &nbsp;
         </Typography>
         <Stack
           direction="row"

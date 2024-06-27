@@ -5,6 +5,7 @@ const initialState = {
       themeColorUnsaved:null,
       themeImage:"",
       themeImageUnsaved:null,
+      newPassword:"",
       themeImageBlob:"",
       isLoading: false,
 };
@@ -31,6 +32,10 @@ const settingsSlice = createSlice({
   saveThemeImageBlob: (state, action) => {
     state.themeImageBlob= action.payload;
 },
+saveNewPassword: (state, action) => {
+  state.newPassword= action.payload;
+},
+
  
     isItLoading: (state, action) => {
       state.isLoading = action.payload;
@@ -51,6 +56,7 @@ export const {
  saveThemeColorUnsaved,
  saveThemeImageUnsaved,
  saveThemeImageBlob,
+ saveNewPassword,
  clearGroup
 
 } = actions;
