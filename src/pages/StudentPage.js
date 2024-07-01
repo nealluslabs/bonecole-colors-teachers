@@ -153,7 +153,7 @@ export default function StudentPage() {
             }}
           >
 
-     <p  onMouseLeave={()=>{setMainMenuOpen(false)}}>  
+     {/*<p  onMouseLeave={()=>{setMainMenuOpen(false)}}>  */}
             <MenuItem value="">
               Filter By
             </MenuItem>
@@ -162,7 +162,7 @@ export default function StudentPage() {
           
             { levelFilter &&
         <div>
-        <FormControl style={{ width: 120,/* position:"absolute",left:"-6rem",top:"3rem"*/ }}>
+        <FormControl style={{ width: 120, position:"relative"/*,left:"0rem",top:"3rem"*/ }}>
           <Select onMouseLeave={()=>{setLevelFilter(false)}}
             value={selectedOption}
             onChange={handleSelectChange}
@@ -252,7 +252,7 @@ export default function StudentPage() {
          }
 
 
-        </p> 
+      {/*</p> */}
 
           </Select>
         </FormControl>
