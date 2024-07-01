@@ -205,7 +205,7 @@ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-      Mother’s ID (Format: PNG,JPEG, JPG)
+      Parent’s ID (Format: PNG,JPEG, JPG)
       </Typography>
       <TextField
         name="fname"

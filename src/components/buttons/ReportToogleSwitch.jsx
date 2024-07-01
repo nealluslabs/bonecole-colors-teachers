@@ -13,17 +13,17 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
       }}
     >
       <Button
-        variant={activeButton === '1' ? 'contained' : 'outlined'}
+        variant={/*activeButton === '1' ? 'contained' :*/ 'outlined'}
         style={{
           minHeight: '50px',
           minWidth: '180px',
-          backgroundColor: activeButton === '1' ? ' #000000' : 'transparent',
-          color: activeButton === '1' ? '#fff' : ' #000000',
+          backgroundColor: /*activeButton === '1' ? ' #000000' :*/ 'transparent',
+          color:/* activeButton === '1' ? '#fff' :*/ ' #000000',
           border: 'none',
           borderRadius: '20px',
           marginRight: '4px',
         }}
-        onClick={handleOne}
+        /*onClick={handleOne}*/
       >
         Attendance Report
       </Button>

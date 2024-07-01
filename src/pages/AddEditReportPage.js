@@ -37,7 +37,7 @@ export default function AddEditReportPage() {
 
 
   const [selectedOption, setSelectedOption] = useState('');
-  const [activeButton, setActiveButton] = useState('1');
+  const [activeButton, setActiveButton] = useState('3');
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
