@@ -258,7 +258,7 @@ export default function AddStudent() {
                   minWidth: '125px',
                   backgroundColor: 'transparent',
                   border: '1px solid #000000',
-                  color: themeColor?themeColor:'#962DFF',
+                  color: '#000000',
                   marginLeft: '4rem',
                   paddingTop: '15px',
                   paddingBottom: '15px',
@@ -271,7 +271,7 @@ export default function AddStudent() {
                 {activeStep === 2 ? <Button disabled={loading} variant="contained" onClick={handleSubmit} style={{ minWidth: '125px', backgroundColor: "  #000000", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
                {loading ? "Loading..." : "Save"}
               </Button> :
-              <Button disabled={loading} variant="contained" onClick={handleNext} style={{ minWidth: '125px', backgroundColor: "  #000000", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
+              <Button disabled={loading} variant="contained" onClick={handleNext} style={{ minWidth: '125px',  backgroundColor: themeColor?themeColor:"#D72A34", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
               Next
             </Button>}
 
