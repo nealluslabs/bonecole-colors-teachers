@@ -142,7 +142,7 @@ const AssessmentReportForm = ({studentData}) => {
           <TableRow>
             <TableCell>#</TableCell>
             <TableCell>Subject</TableCell>
-            <TableCell>Continuous Assessment</TableCell>
+            {/*<TableCell>Continuous Assessment</TableCell>*/}
             <TableCell>Test scores</TableCell>
             <TableCell>Exam Scores</TableCell>
             <TableCell>Final Grade</TableCell>
@@ -155,7 +155,9 @@ const AssessmentReportForm = ({studentData}) => {
                 <Checkbox />
               </TableCell>
               <TableCell>{subject}</TableCell>
-              <TableCell>
+             
+              {/*
+                <TableCell>
                 <TextField
                   value={scores[subject]?.ca || ''}
                   onChange={(e) => handleScoreChange(subject, 'ca', e.target.value)}
@@ -171,6 +173,8 @@ const AssessmentReportForm = ({studentData}) => {
                   }}
                 />
               </TableCell>
+              */}
+              
               <TableCell>
                 <TextField
                   value={scores[subject]?.testScores || ''}

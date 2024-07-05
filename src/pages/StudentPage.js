@@ -42,18 +42,24 @@ export default function StudentPage() {
 
 
 
-  const [selectedOption, setSelectedOption] = useState('');
-  const [activeButton, setActiveButton] = useState('viewStudents');
-
-  const [levelFilter,setLevelFilter] = useState(false)
+  const [mainOpenMenu,setMainMenuOpen] = useState(false)
+    const [levelFilter,setLevelFilter] = useState(false)
   const [genderFilter,setGenderFilter] = useState(false)
   const [statusFilter,setStatusFilter] = useState(false)
 
-  const [mainMenuOpen,setMainMenuOpen] = useState(false)
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedValue, setSelectedValue] = useState('');
 
+  const [activeButton, setActiveButton] = useState('viewStudents');
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
+    setSelectedValue(event.target.value);
+  };
+
+  const handleSelectChange1 = (event) => {
+  
+    setSelectedValue(event.target.value);
   };
 
   const handleViewStudentsClick = () => {
@@ -137,13 +143,11 @@ export default function StudentPage() {
         </Button>
       </Box>
 
-      <Grid item sx={{mb: 2,position:"relative",paddingBottom:"0.5rem",paddingRight:"0.5rem"}} onMouseEnter={()=>{setMainMenuOpen(false)}} onMouseLeave={()=>{setMainMenuOpen(false)}}  >
-     <FormControl sx={{ minWidth: 140}}  >
-          <Select onClick={()=>{setMainMenuOpen(true)}} onMouseLeave={()=>{setMainMenuOpen(false)}}
-           
-           // value={selectedOption}
-            //onChange={handleSelectChange}
-            open={mainMenuOpen}
+      <Grid item sx={{mb: 2,position:"relative",width:"9rem"}}>
+     <FormControl sx={{ minWidth: 140, position:"absolute",left:"0rem",top:"0rem" }}>
+          <Select
+            value={selectedValue}
+            onChange={handleSelectChange}
             displayEmpty
             label=""
             sx={{
@@ -152,17 +156,46 @@ export default function StudentPage() {
               p: 1,
             }}
           >
-
-     {/*<p  onMouseLeave={()=>{setMainMenuOpen(false)}}>  */}
+          
+          
+           {/* <p  onMouseLeave={()=>{setMainMenuOpen(false)}}>  */}
             <MenuItem value="">
               Filter By
             </MenuItem>
-            <MenuItem onClick={()=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true)}} value={"Level"}>Level</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Level"}>Level</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Gender"}>Gender</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Status"}>Status</MenuItem>
 
-          
-            { levelFilter &&
-        <div>
-        <FormControl style={{ width: 120, position:"relative"/*,left:"0rem",top:"3rem"*/ }}>
+            <MenuItem style={{display:"none"}} value={'Level 1'}>Level 1</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 2'}>Level 2</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 3'}>Level 3</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 4'}>Level 4</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 5'}>Level 5</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 7'}>Level 7</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 8'}>Level 8</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 9'}>Level 9</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 10'}>Level 10</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 11'}>Level 11</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 12'}>Level 12</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 13'}>Level 13</MenuItem>
+
+        <MenuItem style={{display:"none"}}   value={"Male"}>Male</MenuItem>
+        <MenuItem style={{display:"none"}}   value={"Female"}>Female</MenuItem>
+
+
+        <MenuItem style={{display:"none"}}  value={"Paid"}>Paid</MenuItem>
+        <MenuItem style={{display:"none"}}  value={"Unpaid"}>Unpaid</MenuItem>
+
+           {/*</p>*/}
+
+          </Select>
+        </FormControl>
+
+
+         {/*1 LEVEL FILTER DROPDOWN */}
+        { levelFilter &&
+        <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}}>
+        <FormControl style={{ width: 120}}>
           <Select onMouseLeave={()=>{setLevelFilter(false)}}
             value={selectedOption}
             onChange={handleSelectChange}
@@ -198,75 +231,62 @@ export default function StudentPage() {
 
 
 
-
-            <MenuItem onClick={()=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true)}} value={"Gender"}>Gender</MenuItem>
-
-            
-
-            { genderFilter &&
-        <FormControl sx={{ width: 120 }}>
-          <Select  onMouseLeave={()=>{setGenderFilter(false)}}
-            value={selectedOption}
-            onChange={handleSelectChange}
-            displayEmpty
-            label=""
-            sx={{
-            //   minHeight: 30,
-              minWidth: 120,
-              p: 1,
-            }}
-          >
-           
-            
-            <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Male"}>Male</MenuItem>
-            <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Female"}>Female</MenuItem>
-           
-          </Select>
-        </FormControl>
-         }
-
-            <MenuItem onClick={()=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true)}} value={"Status"}>Status</MenuItem>
-              
+                           {/*2 GENDER FILTER DROPDOWN */}
+                             { genderFilter &&
+                                  <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}} >
+                                     <FormControl sx={{ width: 120 }}>
+                                       <Select  onMouseLeave={()=>{setGenderFilter(false)}}
+                                         value={selectedOption}
+                                         onChange={handleSelectChange}
+                                         displayEmpty
+                                         label=""
+                                         sx={{
+                                         //   minHeight: 30,
+                                           minWidth: 120,
+                                           p: 1,
+                                         }}
+                                       >
+                                        
+                                         
+                                         <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Male"}>Male</MenuItem>
+                                         <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Female"}>Female</MenuItem>
+                                        
+                                       </Select>
+                                     </FormControl>
+                                 </div>
+                                      }
+                             
 
 
-            { statusFilter &&
-        <FormControl sx={{ minWidth: 140,position:"absolute" }}>
-          <Select  onMouseLeave={()=>{setStatusFilter(false)}}
-            value={selectedOption}
-            onChange={handleSelectChange}
-            displayEmpty
-            label=""
-            sx={{
-            //   minHeight: 30,
-              minWidth: 120,
-              p: 1,
-            }}
-          >
-           
-            
-            <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Paid"}>Paid</MenuItem>
-            <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Unpaid"}>Unpaid</MenuItem>
-           
-          </Select>
-        </FormControl>
-         }
+                      {/*3 STATUS FILTER DROPDOWN */}
+                     { statusFilter &&
+                         <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}} >
+                             <FormControl sx={{ minWidth: 140}}>
+                               <Select  onMouseLeave={()=>{setStatusFilter(false)}}
+                                 value={selectedOption}
+                                 onChange={handleSelectChange}
+                                 displayEmpty
+                                 label=""
+                                 sx={{
+                                 //   minHeight: 30,
+                                   minWidth: 120,
+                                   p: 1,
+                                 }}
+                               >
+                                
+                                 
+                                 <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Paid"}>Paid</MenuItem>
+                                 <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Unpaid"}>Unpaid</MenuItem>
+                                
+                               </Select>
+                             </FormControl>
+                          </div>   
+                              }
 
-
-      {/*</p> */}
-
-          </Select>
-        </FormControl>
-
-
-       
-         
-
-
-
-     
 
 
       </Grid>
+
 
           </Grid>
           <br/>
