@@ -127,7 +127,7 @@ const Step3 = ({
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-        Another Field (Format: PNG, JPEG, JPG)
+        Livret Scolaire (Format: PNG, JPEG, JPG)
       </Typography>
       <TextField
         name="anotherField"
