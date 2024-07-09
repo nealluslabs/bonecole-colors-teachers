@@ -211,7 +211,7 @@ export default function JobList() {
               page={page}
               SelectProps={{
                 inputProps: {
-                  'aria-label': 'rows per page',
+                  'aria-label': 'lignes par page',
                 },
                 native: true,
               }}

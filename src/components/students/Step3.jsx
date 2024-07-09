@@ -87,7 +87,7 @@ const Step3 = ({
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-        Student ID (Format: PNG, JPEG, JPG)
+      Carte d'étudiant (Format: PNG, JPEG, JPG)
       </Typography>
       <TextField
         name="fname"
@@ -113,7 +113,7 @@ const Step3 = ({
           marginTop: '20px',
         }}
       >
-        <b>Choose</b>
+        <b>choisir</b>
         <input
           type="file"
           style={{ display: 'none' }}
@@ -153,7 +153,7 @@ const Step3 = ({
           marginTop: '20px',
         }}
       >
-        <b>Choose</b>
+        <b>choisir</b>
         <input
           type="file"
           style={{ display: 'none' }}
@@ -167,7 +167,8 @@ const Step3 = ({
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-      Parent’s ID (Format: PNG,JPEG, JPG)
+      
+     Carte d'identité des parents (Format: PNG,JPEG, JPG)
       </Typography>
       <TextField
         name="fname"
@@ -193,7 +194,7 @@ const Step3 = ({
           marginTop: '20px',
         }}
       >
-        <b>Choose</b>
+        <b>choisir</b>
         <input
           type="file"
           style={{ display: 'none' }}
@@ -207,7 +208,7 @@ const Step3 = ({
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-      All Certificates (Format: PDF)
+      Tous les certificats (Format : PDF)
       </Typography>
       <TextField
         name="anotherField"
@@ -233,7 +234,7 @@ const Step3 = ({
           marginTop: '20px',
         }}
       >
-        <b>Choose</b>
+        <b>choisir</b>
         <input
           type="file"
           style={{ display: 'none' }}
@@ -247,7 +248,7 @@ const Step3 = ({
   <Grid item container xs={6} direction="row" alignItems="center">
     <Grid item xs={8}>
       <Typography variant="subtitle1">
-      All Relevant Medical Records (Format: PDF)
+      Tous les dossiers médicaux pertinents (Format: PDF)
       </Typography>
       <TextField
         name="anotherField"
@@ -273,7 +274,7 @@ const Step3 = ({
           marginTop: '20px',
         }}
       >
-        <b>Choose</b>
+        <b>choisir</b>
         <input
           type="file"
           style={{ display: 'none' }}

@@ -63,12 +63,12 @@ export default function RegisterPage() {
           <img src={BONLOGO} width="240" height="45" />
           </div>
             <Typography variant="h4" gutterBottom>
-            Registration
+            Inscription
             </Typography>
             <RegisterForm />
             <Typography variant="body2" sx={{ mt: 2 }}>
-             Already have an account? {''}
-              <Link href='/login' variant="subtitle2">Login</Link>
+            Vous avez déjà un compte? {''}
+              <Link href='/login' variant="subtitle2">Se Connecter</Link>
             </Typography>
           </StyledContent>
         </Container>

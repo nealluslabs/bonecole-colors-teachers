@@ -89,7 +89,7 @@ export default function ViewStudentPage() {
             }}
           >
             <MenuItem value="">
-              Select Class
+              Sélectionner Classe
             </MenuItem>
             <MenuItem value={'Level 1'}>Level 1</MenuItem>
         <MenuItem value={'Level 2'}>Level 2</MenuItem>
@@ -130,7 +130,7 @@ export default function ViewStudentPage() {
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%',}}>
-        <CustomSearchBar  title={"Search Student"} />
+        <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
@@ -155,7 +155,7 @@ export default function ViewStudentPage() {
             }}
           >
             <MenuItem value="">
-              Filter By
+              Filtrer Par
             </MenuItem>
             <MenuItem value={1}>Option 1</MenuItem>
             <MenuItem value={2}>Option 2</MenuItem>

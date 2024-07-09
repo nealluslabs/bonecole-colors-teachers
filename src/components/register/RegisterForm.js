@@ -61,14 +61,15 @@ export default function RegisterForm() {
     <>
       <form onSubmit={userSignup}>
       <Stack spacing={3}>
-        <TextField name="sname" required label="Institution Name" value={sname} onChange={(e) => setSName(e.target.value)}/>
-        <TextField name="fname" required label="First Name" value={fname} onChange={(e) => setFName(e.target.value)}/>
-        <TextField name="lname" required label="Last Name" value={lname} onChange={(e) => setLName(e.target.value)}/>
-        <TextField name="email" required label="Email address" type="email" onChange={(e) => setEmail(e.target.value)}/>
-        <TextField name="phone" required label="Phone" type="number" onChange={(e) => setPhone(e.target.value)}/>
+        <TextField name="sname" required label="Nom de l'institution" value={sname} onChange={(e) => setSName(e.target.value)}/>
+        <TextField name="fname" required label="Prénom" value={fname} onChange={(e) => setFName(e.target.value)}/>
+        <TextField name="lname" required label="nom de famille" value={lname} onChange={(e) => setLName(e.target.value)}/>
+        <TextField name="email" required label="adresse e-mail" type="email" onChange={(e) => setEmail(e.target.value)}/>
+        <TextField name="phone" required label="Téléphone" type="number" onChange={(e) => setPhone(e.target.value)}/>
+       
         <TextField
           name="password"
-          label="Password"
+          label="Mot de Passe"
           required
           type={showPassword ? 'text' : 'password'}
           onChange={(e) => setPassword(e.target.value)}
@@ -89,7 +90,7 @@ export default function RegisterForm() {
           alignItems="flex-start"
           >
           <Avatar
-              alt="Profile Picture"
+              alt="Photo de Profil"
               src={file}
               sx={{ width: 56, height: 56 }}
             />
@@ -120,7 +121,7 @@ export default function RegisterForm() {
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" disabled={loading} style={{backgroundColor: '#D72A34', color: 'white'}}>
-        {loading ? "Loading..." : "Register"}
+        {loading ? "Loading..." : "Registre"}
       </LoadingButton>
       </form>
     </>

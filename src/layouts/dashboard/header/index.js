@@ -76,7 +76,7 @@ export default function Header({ onOpenNav }) {
         <Box sx={{ flexGrow: 1 }} />
         <Grid item xs={12} sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ width: '100%' }}>
-        <CustomSearchBar title="Search anything..."/>
+        <CustomSearchBar title="Chercher n'importe quoi..."/>
       </Box>
       &nbsp; &nbsp;
       <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>

@@ -79,7 +79,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
       <div id={id}>
         <div className="ql-formats">
           {!isSimple && (
-            <select className="ql-font" defaultValue="">
+            <Sélectionner ClasseName="ql-font" defaultValue="">
               <option value="">Font</option>
               {FONT_FAMILY.map((font) => (
                 <option key={font} value={font}>
@@ -90,7 +90,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
           )}
 
           {!isSimple && (
-            <select className="ql-size" defaultValue="16px">
+            <Sélectionner ClasseName="ql-size" defaultValue="16px">
               {FONT_SIZE.map((size) => (
                 <option key={size} value={size}>
                   {size}
@@ -99,7 +99,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
             </select>
           )}
 
-          <select className="ql-header" defaultValue="">
+          <Sélectionner ClasseName="ql-header" defaultValue="">
             {HEADINGS.map((heading, index) => (
               <option key={heading} value={index + 1}>
                 {heading}
@@ -118,8 +118,8 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
 
         {!isSimple && (
           <div className="ql-formats">
-            <select className="ql-color" />
-            <select className="ql-background" />
+            <Sélectionner ClasseName="ql-color" />
+            <Sélectionner ClasseName="ql-background" />
           </div>
         )}
 
@@ -146,7 +146,7 @@ export default function EditorToolbar({ id, isSimple, ...other }) {
 
         <div className="ql-formats">
           <button type="button" className="ql-direction" value="rtl" />
-          <select className="ql-align" />
+          <Sélectionner ClasseName="ql-align" />
         </div>
 
         <div className="ql-formats">

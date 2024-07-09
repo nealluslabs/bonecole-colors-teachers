@@ -14,10 +14,10 @@ const columns = [
     },
   },*/
   /*{ field: 'registrationId', headerName: 'Registration ID', width: 200 },*/
-  { field: 'fname', headerName: 'First Name', width: 200 },
-  { field: 'lname', headerName: 'Last Name', width: 200 },
-  { field: 'gender', headerName: 'Gender', width: 200 },
-  { field: 'dob', headerName: 'DOB', width: 200 },
+  { field: 'fname', headerName: 'Prénom', width: 200 },
+  { field: 'lname', headerName: 'Nom de Famille', width: 200 },
+  { field: 'gender', headerName: 'Genre', width: 200 },
+  { field: 'dob', headerName: 'Date de Naissance', width: 200 },
   {
     field: 'actions',
     headerName: '',

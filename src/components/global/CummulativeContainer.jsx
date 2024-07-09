@@ -6,12 +6,12 @@ const CummulativeContainer = ({result}) => {
     <Grid container style={{ backgroundColor: '#F9F9F9', padding: '20px', borderRadius: '14px' }}>
       <Grid item xs={6}>
         <Typography variant="body1" align="left" style={{color: ' #D72A34', fontSize: '20px'}}>
-        <b>Cumulative Score: &nbsp; &nbsp; &nbsp;{/*result?.totalCumulative*/"08/20"}</b>
+        <b>Score Cumulé: &nbsp; &nbsp; &nbsp;{/*result?.totalCumulative*/"08/20"}</b>
         </Typography>
       </Grid>
       <Grid item xs={6}>
         <Typography variant="body1" align="right" style={{color: '#2AD776', fontSize: '20px'}}  >
-          <b>Passed</b>
+          <b>Passé</b>
         </Typography>
       </Grid>
     </Grid>

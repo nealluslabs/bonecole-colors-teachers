@@ -89,7 +89,7 @@ const Step2 = ({state, handleChange}) => {
           </select>
         </Grid>*/}
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Parent Phone Number</Typography>
+          <Typography variant="subtitle1">Numéro de téléphone des parents</Typography>
           <TextField
             name="phoneNumber"
             type="number"
@@ -104,7 +104,7 @@ const Step2 = ({state, handleChange}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1"> Parent Email Address</Typography>
+          <Typography variant="subtitle1">Adresse Email des Parents</Typography>
           <TextField
             name="email"
             type="email"
@@ -177,7 +177,7 @@ const Step2 = ({state, handleChange}) => {
           </select>
         </Grid>*/}
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Nationality</Typography>
+          <Typography variant="subtitle1">Nationalité</Typography>
           <select
             name="nationality"
             value={state.nationality}
@@ -186,7 +186,7 @@ const Step2 = ({state, handleChange}) => {
             style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
             required
           >
-            <option value="">Select Nationality</option>
+            <option value="">Sélectionner la Nationalité</option>
             {countriesList.map((nationality) => (
               <option key={nationality.code} value={nationality.name}>
                 {nationality.name}
@@ -196,7 +196,7 @@ const Step2 = ({state, handleChange}) => {
         </Grid>
 
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Admission Date</Typography>
+          <Typography variant="subtitle1">Date d'admission</Typography>
           <TextField
             name="admissionDate"
             type="date"
@@ -211,7 +211,7 @@ const Step2 = ({state, handleChange}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Admission Terminated</Typography>
+          <Typography variant="subtitle1">Admission Terminée</Typography>
           <TextField
             name="admissionTerminated"
             type="date"
@@ -251,7 +251,10 @@ const Step2 = ({state, handleChange}) => {
           />
           </Grid>*/}
         <Grid item xs={12}>
-          <Typography variant="subtitle1">Any Special Instruction</Typography>
+          <Typography variant="subtitle1">
+          Toute Instruction Particulière
+          </Typography>
+
           <TextField
             name="specialInstruction"
             placeholder="Give detailed info"

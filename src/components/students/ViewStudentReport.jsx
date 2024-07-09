@@ -15,15 +15,15 @@ const columns = [
   },*/
   {
     field: 'studentName', 
-    headerName: 'Student',
+    headerName: 'Étudiant',
     width: 200,
     renderCell: (params) => {
       const fullName = `${params.row.fname} ${params.row.lname}`;
       return <div>{fullName}</div>;
     },
   },
-  { field: 'gender', headerName: 'Gender', width: 200 },
-  { field: 'class', headerName: 'Class', width: 200 },
+  { field: 'gender', headerName: 'Genre', width: 200 },
+  { field: 'class', headerName: 'Classe', width: 200 },
   { field: 'section', headerName: 'Section', width: 200 },
   {
     field: 'actions',
@@ -74,14 +74,14 @@ export default function ViewStudentsReport({ students }) {
                     variant="contained"
                     style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34", marginRight: '20px' }}
                   >
-                    View Result
+                    Voir Résultat
                   </Button>
                   <Button
                     onClick={() => handleAddResult(params?.row)}
                     variant="contained"
                     style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34" }}
                   >
-                    Add Result
+                    Ajouter Résultat
                   </Button>
                 </div>
               ),

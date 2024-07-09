@@ -26,7 +26,7 @@ const EditStudentToggleSwitch = ({ activeButton, setActiveButton, handleOne, han
         }}
         onClick={handleOne}
       >
-        Basic Info
+        informations de base
       </Button>
       <Button
         variant={activeButton === '2' ? 'contained' : 'outlined'}
@@ -41,7 +41,7 @@ const EditStudentToggleSwitch = ({ activeButton, setActiveButton, handleOne, han
         }}
         onClick={handleTwo}
       >
-        Additional Info
+        Information Additionnelle
       </Button>
       <Button
         variant={activeButton === '3' ? 'contained' : 'outlined'}
@@ -56,7 +56,7 @@ const EditStudentToggleSwitch = ({ activeButton, setActiveButton, handleOne, han
         }}
         onClick={handleThree}
       >
-        Doc Uploads
+        Téléchargements de Docs
       </Button>
     </Box>
   );

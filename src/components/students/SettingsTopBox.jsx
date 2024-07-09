@@ -12,7 +12,7 @@ import { createStudent, uploadDocImages } from 'src/redux/actions/student.action
 import { notifyErrorFxn } from 'src/utils/toast-fxn';
 import { saveNewPassword } from 'src/redux/reducers/settings.slice';
 
-const steps = ['Basic Info', 'Additional Info', 'Doc Uploads'];
+const steps = ['informations de base', 'Information Additionnelle', 'Téléchargements de Docs'];
 
 export default function SettingsTopBox() {
 
@@ -277,7 +277,7 @@ export default function SettingsTopBox() {
         ) : (
           <>
             <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '#000000', fontSize: '18px' }}>
-              <b>{'Set Password'}</b>
+              <b>{'Définir le Mot de Passe'}</b>
             
             </Typography>
             {/*<Divider />*/}
@@ -285,10 +285,10 @@ export default function SettingsTopBox() {
             
             <Grid container spacing={4} style={{display:"flex",justifyContent:"center",gap:"2rem"}}>
         <Grid item xs={5}>
-          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Old Password</Typography>
+          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Ancien Mot de Passe</Typography>
           <TextField
             name="fname"
-            placeholder="Old Password"
+            placeholder="Ancien Mot de Passe"
             fullWidth
             value={state.fname}
             onChange={handleChange}
@@ -308,10 +308,10 @@ export default function SettingsTopBox() {
           />
         </Grid>
         <Grid item xs={5}>
-          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>New Password</Typography>
+          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Nouveau Mot de Passe</Typography>
           <TextField
             name="lname"
-            placeholder="New Password"
+            placeholder="Nouveau Mot de Passe"
             fullWidth
             value={newPassword}
             onChange={(event)=>{dispatch(saveNewPassword(event.target.value))}}

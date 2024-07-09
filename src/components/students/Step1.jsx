@@ -52,7 +52,7 @@ const Step1 = ({state, handleChange}) => {
     <div className={classes.root}>
       <Grid container spacing={4}>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">First Name</Typography>
+          <Typography variant="subtitle1">Prenom</Typography>
           <TextField
             name="fname"
             placeholder="First name"
@@ -66,7 +66,7 @@ const Step1 = ({state, handleChange}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Last Name</Typography>
+          <Typography variant="subtitle1">Nom de Famille</Typography>
           <TextField
             name="lname"
             placeholder="Last name"
@@ -80,7 +80,7 @@ const Step1 = ({state, handleChange}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Date Of Birth</Typography>
+          <Typography variant="subtitle1">Date de Naissance</Typography>
           <TextField
             type="date"
             name="dob"
@@ -95,7 +95,7 @@ const Step1 = ({state, handleChange}) => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Gender</Typography>
+          <Typography variant="subtitle1">Genre</Typography>
           <select
             name="gender"
             value={state.gender}
@@ -140,7 +140,7 @@ const Step1 = ({state, handleChange}) => {
           </select>
           </Grid> */}
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Class</Typography>
+          <Typography variant="subtitle1">Classe</Typography>
           <select
             name="class"
             value={state.class}
@@ -149,20 +149,20 @@ const Step1 = ({state, handleChange}) => {
             style={{ minHeight: '50px', fontSize: '17px', outline: '1px solid #eee' }}
             required
           >
-           <option value="">Select Class</option>
-            <option value="Level 1">Level 1</option>
-            <option value="Level 2">Level 2</option>
-            <option value="Level 3">Level 3</option>
-            <option value="Level 4">Level 4</option>
-            <option value="Level 5">Level 5</option>
-            <option value="Level 6">Level 6</option>
-            <option value="Level 7">Level 7</option>
-            <option value="Level 8">Level 8</option>
-            <option value="Level 9">Level 9</option>
-            <option value="Level 10">Level 10</option>
-            <option value="Level 11">Level 11</option>
-            <option value="Level 12">Level 12</option>
-            <option value="Level 13">Level 13</option>
+           <option value="">Sélectionner une Classe</option>
+            <option value="Level 1">Niveau 1</option>
+            <option value="Level 2">Niveau 2</option>
+            <option value="Level 3">Niveau 3</option>
+            <option value="Level 4">Niveau 4</option>
+            <option value="Level 5">Niveau 5</option>
+            <option value="Level 6">Niveau 6</option>
+            <option value="Level 7">Niveau 7</option>
+            <option value="Level 8">Niveau 8</option>
+            <option value="Level 9">Niveau 9</option>
+           <option value="Level 10">Niveau 10</option>
+           <option value="Level 11">Niveau 11</option>
+           <option value="Level 12">Niveau 12</option>
+           <option value="Level 13">Niveau 13</option>
           </select>
         </Grid>
         {/*<Grid item xs={6}>

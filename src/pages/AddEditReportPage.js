@@ -82,7 +82,7 @@ export default function AddEditReportPage() {
             }}
           >
             <MenuItem value="">
-              Select Class
+              Sélectionner Classe
             </MenuItem>
             <MenuItem value={'Level 1'}>Level 1</MenuItem>
         <MenuItem value={'Level 2'}>Level 2</MenuItem>
@@ -123,7 +123,7 @@ export default function AddEditReportPage() {
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%',}}>
-        <CustomSearchBar  title={"Search Student"} />
+        <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
@@ -147,11 +147,11 @@ export default function AddEditReportPage() {
               p: 1,
             }}
           >
-            <MenuItem value="">
-              Filter By
+           <MenuItem value="">
+             Filtrer Par
             </MenuItem>
-            <MenuItem value={"Subject"}>Subject</MenuItem>
-            <MenuItem value={"Grade (Descending)"}>Grade (Descending)</MenuItem>
+            <MenuItem value={"Subject"}>Sujet</MenuItem>
+            <MenuItem value={"Grade (Descending)"}>Note (décroissante)</MenuItem>
            
           </Select>
         </FormControl>

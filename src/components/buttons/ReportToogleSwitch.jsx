@@ -25,7 +25,7 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
         }}
         /*onClick={handleOne}*/
       >
-        Attendance Report
+        Rapport de Présence
       </Button>
      {/* <Button
         variant={activeButton === '2' ? 'contained' : 'outlined'}
@@ -54,7 +54,7 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
         }}
         onClick={handleThree}
       >
-       Exam Results
+       Résultats d'examen
       </Button>
     </Box>
   );

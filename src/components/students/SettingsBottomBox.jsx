@@ -13,7 +13,7 @@ import { notifyErrorFxn } from 'src/utils/toast-fxn';
 import { saveThemeColor, saveThemeImage,saveThemeColorUnsaved, saveThemeImageUnsaved,  saveThemeImageBlob } from 'src/redux/reducers/settings.slice';
 import BONLOGO from 'src/assets/images/logo.png'
 
-const steps = ['Basic Info', 'Additional Info', 'Doc Uploads'];
+const steps = ['informations de base', 'Information Additionnelle', 'Téléchargements de Docs'];
 
 
 const useStyles = makeStyles((theme) => ({
@@ -288,7 +288,7 @@ dispatch(saveThemeImageBlob(event.target.files[0]))
         ) : (
           <>
             <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '#000000', fontSize: '18px' }}>
-              <b>{activeStep === 0 && 'Profile'}</b>
+              <b>{activeStep === 0 && 'Profil'}</b>
             </Typography>
          
             <br />
@@ -296,7 +296,7 @@ dispatch(saveThemeImageBlob(event.target.files[0]))
             <Grid container style={{display:"flex",justifyContent:"flex-start",gap:"2rem"}}  spacing={4}>
        
         <Grid item xs={5} style={{position:"relative",left:"6rem"}}>
-          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Profile Picture</Typography>
+          <Typography variant="subtitle1" style={{marginBottom:"1rem"}}>Photo de Profil</Typography>
           <TextField
             name="lname"
             placeholder="Logo"

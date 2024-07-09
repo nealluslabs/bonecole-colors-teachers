@@ -66,12 +66,12 @@ export default function LoginPage() {
           <img src={BONLOGO} width="240" height="45" />
           </div>
             <Typography variant="h4" gutterBottom>
-              Login
+              Se Connecter
             </Typography>
             <LoginForm />
             <Typography variant="body2" sx={{ mt: 2 }}>
-              Don’t have an account yet? {''}
-              <Link href='/register' variant="subtitle2">Register here</Link>
+            Vous n'avez pas encore de compte?  {''}
+              <Link href='/register' variant="subtitle2">Inscrivez-vous ici</Link>
             </Typography>
 
             {/* <Divider sx={{ my: 3 }}>

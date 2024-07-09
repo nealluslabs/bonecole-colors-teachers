@@ -91,20 +91,20 @@ export default function StudentPage() {
             }}
           >
             <MenuItem value="">
-              Select Class
+            Sélectionner une Classe
             </MenuItem>
-            <MenuItem value={'Level 1'}>Level 1</MenuItem>
-        <MenuItem value={'Level 2'}>Level 2</MenuItem>
-        <MenuItem value={'Level 3'}>Level 3</MenuItem>
-        <MenuItem value={'Level 4'}>Level 4</MenuItem>
-        <MenuItem value={'Level 5'}>Level 5</MenuItem>
-        <MenuItem value={'Level 7'}>Level 7</MenuItem>
-        <MenuItem value={'Level 8'}>Level 8</MenuItem>
-        <MenuItem value={'Level 9'}>Level 9</MenuItem>
-        <MenuItem value={'Level 10'}>Level 10</MenuItem>
-        <MenuItem value={'Level 11'}>Level 11</MenuItem>
-        <MenuItem value={'Level 12'}>Level 12</MenuItem>
-        <MenuItem value={'Level 13'}>Level 13</MenuItem>
+            <MenuItem value={'Level 1'}>Niveau 1</MenuItem>
+        <MenuItem value={'Level 2'}>Niveau 2</MenuItem>
+        <MenuItem value={'Level 3'}>Niveau 3</MenuItem>
+        <MenuItem value={'Level 4'}>Niveau 4</MenuItem>
+        <MenuItem value={'Level 5'}>Niveau 5</MenuItem>
+        <MenuItem value={'Level 7'}>Niveau 7</MenuItem>
+        <MenuItem value={'Level 8'}>Niveau 8</MenuItem>
+        <MenuItem value={'Level 9'}>Niveau 9</MenuItem>
+        <MenuItem value={'Level 10'}>Niveau 10</MenuItem>
+        <MenuItem value={'Level 11'}>Niveau 11</MenuItem>
+        <MenuItem value={'Level 12'}>Niveau 12</MenuItem>
+        <MenuItem value={'Level 13'}>Niveau 13</MenuItem>
           </Select>
         </FormControl>
       </Grid>
@@ -132,7 +132,7 @@ export default function StudentPage() {
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%' }}>
-        <CustomSearchBar  title={"Search Student"} />
+        <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
@@ -160,31 +160,31 @@ export default function StudentPage() {
           
            {/* <p  onMouseLeave={()=>{setMainMenuOpen(false)}}>  */}
             <MenuItem value="">
-              Filter By
+            Filtrer Par
             </MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Level"}>Level</MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Gender"}>Gender</MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Status"}>Status</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Level"}>Niveau</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Gender"}>Genre</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Status"}>Statut</MenuItem>
 
-            <MenuItem style={{display:"none"}} value={'Level 1'}>Level 1</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 2'}>Level 2</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 3'}>Level 3</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 4'}>Level 4</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 5'}>Level 5</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 7'}>Level 7</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 8'}>Level 8</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 9'}>Level 9</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 10'}>Level 10</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 11'}>Level 11</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 12'}>Level 12</MenuItem>
-        <MenuItem style={{display:"none"}} value={'Level 13'}>Level 13</MenuItem>
+            <MenuItem style={{display:"none"}} value={'Level 1'}>Niveau 1</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 2'}>Niveau 2</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 3'}>Niveau 3</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 4'}>Niveau 4</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 5'}>Niveau 5</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 7'}>Niveau 7</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 8'}>Niveau 8</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 9'}>Niveau 9</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 10'}>Niveau 10</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 11'}>Niveau 11</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 12'}>Niveau 12</MenuItem>
+        <MenuItem style={{display:"none"}} value={'Level 13'}>Niveau 13</MenuItem>
 
-        <MenuItem style={{display:"none"}}   value={"Male"}>Male</MenuItem>
-        <MenuItem style={{display:"none"}}   value={"Female"}>Female</MenuItem>
+        <MenuItem style={{display:"none"}}   value={"Male"}>Mâle</MenuItem>
+        <MenuItem style={{display:"none"}}   value={"Female"}>Femelle</MenuItem>
 
 
-        <MenuItem style={{display:"none"}}  value={"Paid"}>Paid</MenuItem>
-        <MenuItem style={{display:"none"}}  value={"Unpaid"}>Unpaid</MenuItem>
+        <MenuItem style={{display:"none"}}  value={"Paid"}>Payé</MenuItem>
+        <MenuItem style={{display:"none"}}  value={"Unpaid"}>Non Payé</MenuItem>
 
            {/*</p>*/}
 

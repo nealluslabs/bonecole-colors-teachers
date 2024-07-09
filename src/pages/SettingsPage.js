@@ -101,7 +101,7 @@ export default function SettingsPage() {
             }}
           >
             <MenuItem value="">
-              Select Class
+              Sélectionner Classe
             </MenuItem>
              <MenuItem value={'Level 1'}>Level 1</MenuItem>
         <MenuItem value={'Level 2'}>Level 2</MenuItem>
@@ -142,7 +142,7 @@ export default function SettingsPage() {
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%' }}>
-        <CustomSearchBar  title={"Search Student"} />
+        <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
@@ -203,7 +203,7 @@ export default function SettingsPage() {
               }
             }}
               style={{ minWidth: '125px', backgroundColor: themeColor?themeColor:"#D72A34", marginLeft:  '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
-              Submit
+              Soumettre
             </Button>
           </center>
 

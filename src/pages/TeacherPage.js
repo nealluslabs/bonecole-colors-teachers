@@ -111,7 +111,7 @@ export default function TeacherPage() {
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%' }}>
-        <CustomSearchBar  title={"Search Student"} />
+        <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
       <Box sx={{ flexGrow: 1}}>
         <Button
@@ -136,7 +136,7 @@ export default function TeacherPage() {
             }}
           >
             <MenuItem value="">
-              Filter By
+              Filtrer Par
             </MenuItem>
             <MenuItem value={1}>Option 1</MenuItem>
             <MenuItem value={2}>Option 2</MenuItem>

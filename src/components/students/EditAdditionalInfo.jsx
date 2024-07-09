@@ -71,7 +71,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <Typography variant="subtitle1">Additional Info</Typography>
+      <Typography variant="subtitle1">Information Additionnelle</Typography>
       <div>
         <Button
           variant="contained"
@@ -145,7 +145,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
           </select>
         </Grid>*/}
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Parent Phone Number</Typography>
+          <Typography variant="subtitle1">Numéro de téléphone des parents</Typography>
           <TextField
             name="phoneNumber"
             type="number"
@@ -233,7 +233,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
           </select>
         </Grid>
         <Grid item xs={6}>
-          <Typography variant="subtitle1">Nationality</Typography>
+          <Typography variant="subtitle1">Nationalité</Typography>
           <select
             name="nationality"
             value={state.nationality}

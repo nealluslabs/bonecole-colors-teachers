@@ -30,11 +30,11 @@ export default function LoginForm() {
     <>
      <form onSubmit={userSignin}>
       <Stack spacing={3}>
-        <TextField required name="email" type="email" label="Email address" onChange={(e) => setEmail(e.target.value)}/>
+        <TextField required name="email" type="email" label="adresse e-mail" onChange={(e) => setEmail(e.target.value)}/>
 
         <TextField
           name="password"
-          label="Password"
+          label="mot de passe"
           required
           onChange={(e) => setPassword(e.target.value)}
           type={showPassword ? 'text' : 'password'}
@@ -58,7 +58,7 @@ export default function LoginForm() {
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" disabled={loading} style={{backgroundColor: '#D72A34', color: 'white'}}>
-        {loading ? "Loading..." : "Login"}
+        {loading ? "chargement..." : "Se Connecter"}
       </LoadingButton>
       </form>
     </>

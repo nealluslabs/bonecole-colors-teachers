@@ -141,11 +141,11 @@ const AssessmentReportForm = ({studentData}) => {
         <TableHead>
           <TableRow>
             <TableCell>#</TableCell>
-            <TableCell>Subject</TableCell>
+            <TableCell>Sujet</TableCell>
             {/*<TableCell>Continuous Assessment</TableCell>*/}
-            <TableCell>Test scores</TableCell>
-            <TableCell>Exam Scores</TableCell>
-            <TableCell>Final Grade</TableCell>
+            <TableCell>Résultats des Tests</TableCell>
+            <TableCell>Résultats des Examens</TableCell>
+            <TableCell>Note Finale</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -231,7 +231,7 @@ const AssessmentReportForm = ({studentData}) => {
       <Grid container style={{ backgroundColor: '#F9F9F9', padding: '20px', borderRadius: '14px' }}>
       <Grid item xs={6}>
         <Typography variant="body1" align="left" style={{color: themeColor?themeColor:' #D72A34', fontSize: '20px'}}>
-        <b><span style={{lineHeight: '3rem'}}>Cumulative:</span></b>       
+        <b><span style={{lineHeight: '3rem'}}>Cumulatif:</span></b>       
           <TextField
           type='number'
                   value={cummulative}
@@ -266,7 +266,7 @@ const AssessmentReportForm = ({studentData}) => {
               onClick={handleEnterClick}
               disabled={loading}
             >
-              {loading ? "Loading" : "Enter"}
+              {loading ? "Loading" : "Entrer"}
             </Button>
           </Typography>
         </Grid>

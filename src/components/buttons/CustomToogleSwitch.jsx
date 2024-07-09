@@ -27,7 +27,7 @@ const CustomToggleSwitch = ({activeButton, setActiveButton, handleViewStudentsCl
         }}
         onClick={handleViewStudentsClick}
       >
-        View Students
+        Voir étudiants
       </Button>
       <Button
         variant={activeButton === 'addStudents' ? 'contained' : 'outlined'}
@@ -41,7 +41,7 @@ const CustomToggleSwitch = ({activeButton, setActiveButton, handleViewStudentsCl
         }}
         onClick={handleAddStudentsClick}
       >
-        Add Students
+        Ajouter étudiant
       </Button>
     </Box>
   );

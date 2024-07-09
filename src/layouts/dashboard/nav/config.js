@@ -7,7 +7,7 @@ const icon = (name) => <img src={`/assets/icons2/${name}.png`} sx={{ width: 1, h
 
 const navConfig = [
   {
-    title: 'student',
+    title: 'étudiante',
     path: '/dashboard/home',
     icon: icon('student'),
     // icon: icon('dashboard'),
@@ -24,18 +24,18 @@ const navConfig = [
   // },
 
   {
-    title: 'reports',
+    title: 'rapports',
     path: '/dashboard/reports',
     icon: icon('report'),
   },
   {
-    title: 'settings',
+    title: 'paramètres',
      path: '/dashboard/settings',
    
     icon: icon('settings'),
   },
   {
-    title: 'logout',
+    title: 'Se déconnecter',
      path: '/logout',
     //path: '#',
     icon: icon('logout'),

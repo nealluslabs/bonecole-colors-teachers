@@ -11,7 +11,7 @@ import { createStudent, uploadDocImages } from 'src/redux/actions/student.action
 import { notifyErrorFxn } from 'src/utils/toast-fxn';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
-const steps = ['Basic Info', 'Additional Info', 'Doc Uploads'];
+const steps = ['informations de base', 'Information Additionnelle', 'Téléchargements de Docs'];
 
 export default function AddStudent() {
   const [activeStep, setActiveStep] = useState(0);
@@ -238,9 +238,9 @@ export default function AddStudent() {
         ) : (
           <>
             <Typography sx={{ mt: 2, mb: 1, py: 1, ml: 5, color: '  #000000', fontSize: '18px' }}>
-              <b>{activeStep === 0 && 'Basic Information'}</b>
-              <b>{activeStep === 1 && 'Additional Information'}</b>
-              <b>{activeStep === 2 && 'Document Uploads'}</b>
+              <b>{activeStep === 0 && 'informations de base'}</b>
+              <b>{activeStep === 1 && 'Informations Supplémentaires'}</b>
+              <b>{activeStep === 2 && 'Téléchargements de Documents'}</b>
             </Typography>
             <Divider />
             <br />
@@ -265,14 +265,14 @@ export default function AddStudent() {
                   paddingLeft: '20px',
                 }}
               >
-                Previous
+                Précédent
               </Button>
 
                 {activeStep === 2 ? <Button disabled={loading} variant="contained" onClick={handleSubmit} style={{ minWidth: '125px', backgroundColor: "  #000000", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
-               {loading ? "Loading..." : "Save"}
+               {loading ? "Loading..." : "Sauvegarder"}
               </Button> :
               <Button disabled={loading} variant="contained" onClick={handleNext} style={{ minWidth: '125px',  backgroundColor: themeColor?themeColor:"#D72A34", marginLeft: activeStep === 0 ? '4rem' : '1rem', paddingTop: '15px', paddingBottom: '15px', paddingLeft: '20px' }}>
-              Next
+              Suivant
             </Button>}
 
               </Grid>
