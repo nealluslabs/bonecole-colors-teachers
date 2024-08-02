@@ -26,6 +26,7 @@ export default function ViewExamReportPage() {
   const dispatch = useDispatch();
   const location = useLocation();
   const { user } = useSelector((state) => state.auth);
+  const { themeColor } = useSelector((state) => state.settings);
   const studentData = location.state?.student;
 
   useEffect(() => {
@@ -128,13 +129,30 @@ export default function ViewExamReportPage() {
       <Box sx={{ width: '20%',}}>
         <CustomSearchBar  title={"Rechercher étudiant"} />
       </Box>
-      <Box sx={{ flexGrow: 1}}>
+      <Box sx={{ flexGrow: 1,display:"flex"}}>
         <Button
           variant="contained"
           style={{ minHeight: '50px', minWidth: '45px', backgroundColor: ' #000000', }}
         >
           <SearchIcon />
         </Button>
+
+        <Box sx={{marginLeft:"1rem"}}>
+      <Button
+          variant="contained"
+          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}
+          >
+          Exporter
+        </Button>
+            &nbsp; &nbsp;
+      <Button
+          variant="contained"
+          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: themeColor?themeColor:"#D72A34" }}
+        >
+          Imprimer
+        </Button>
+      </Box>
+
       </Box>
 
       <Grid item sx={{mb: 2}}>
