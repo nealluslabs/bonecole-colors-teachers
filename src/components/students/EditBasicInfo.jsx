@@ -258,6 +258,23 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           />
           </Grid> */}
 
+              <Button
+                  disabled={loading}
+                  variant="contained"
+                  //onClick={handleSubmit}
+                  style={{
+                    minWidth: '125px',
+                    backgroundColor: '#000000',
+                    paddingTop: '15px',
+                    paddingBottom: '15px',
+                    paddingLeft: '20px',
+                    marginLeft: '30px',
+                    marginTop: '2rem',
+                  }}
+                >
+                  {loading ? 'Chargement...' : 'Supprimer'}
+                </Button>
+
       </Grid>
     </div>
     </>
