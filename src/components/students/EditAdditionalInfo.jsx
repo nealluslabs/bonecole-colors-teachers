@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import { countriesList } from 'src/utils/countries';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
+import { deleteStudent } from 'src/redux/actions/student.action';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +54,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
   const classes = useStyles();
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { themeColor } = useSelector((state) => state.settings);
   const { user,school } = useSelector((state) => state.auth);
@@ -72,7 +75,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Typography variant="subtitle1">Information Additionnelle</Typography>
-      <div>
+     {/* <div>
         <Button
           variant="contained"
           style={{
@@ -82,7 +85,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             paddingTop: '15px',
             paddingBottom: '15px',
             paddingLeft: '20px',
-            color: /*'#D72A34'*/'#000000'
+            color: '#000000'
           }}
           disabled={loading}
           onClick={handleUpdate}
@@ -103,7 +106,8 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
         >
           Submit
         </Button>
-      </div>
+      </div> */}
+
     </div>
      <br/>
     <div className={classes.root}>
@@ -331,6 +335,46 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
             }}
           />
         </Grid>
+
+
+        <Grid style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
+     <Button
+         onClick={()=>{dispatch(deleteStudent(state,navigate))}}
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: 'transparent',
+            border: '1px solid #000000',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: '#000000'
+          }}
+          disabled={loading}
+         
+        >
+          {loading ? "Chargement..." : "Supprimer"}
+        </Button>
+        <Button
+         // onClick={()=>{dispatch(updateStudent(state))}}
+
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: themeColor?themeColor:"#D72A34",
+            marginLeft: '1rem',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: 'white'
+          }}
+          onClick={handleUpdate}
+        >
+          Soumettre
+        </Button>
+     </Grid>
+
+
       </Grid>
     </div>
     </>

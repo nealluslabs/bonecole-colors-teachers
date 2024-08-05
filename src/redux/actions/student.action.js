@@ -151,6 +151,28 @@ export const getStudents = () => async (dispatch) => {
   }
 };
 
+export const deleteStudent = (studentData, navigate) => async (dispatch) => {
+
+  db.collection('students')
+  .doc(studentData.studentId)
+  .delete(
+    dispatch(getStudents())
+  )
+  .then((res)=>{
+   
+  })
+  .then((res) => {
+    //setLoading(false);
+    notifySuccessFxn('Student has been deleted!');
+     navigate('/dashboard/reports', { replace: true });
+  })
+  .catch((err) => {
+    //setLoading(false);
+    console.log('ERR-: ', err);
+  });
+
+}
+
 
 export const updateStudent = (studentData, navigate, setLoading) => async (dispatch) => {
   db.collection('students')
@@ -160,23 +182,28 @@ export const updateStudent = (studentData, navigate, setLoading) => async (dispa
       lname: studentData.lname,
       dob: studentData.dob,
       gender: studentData.gender,
-      studentshipType: studentData.studentshipType,
+      //studentshipType: studentData.studentshipType,
       registrationId: studentData.registrationId,
       class: studentData.class,
       section: studentData.section,
-      guardianName: studentData.guardianName,
-      bloodGroup: studentData.bloodGroup,
-      religion: studentData.religion,
+      //guardianName: studentData.guardianName,
+      //bloodGroup: studentData.bloodGroup,
+      //religion: studentData.religion,
       phoneNumber: studentData.phoneNumber,
       email: studentData.email,
-      skinColor: studentData.skinColor,
-      eyeColor: studentData.eyeColor,
-      height: studentData.height,
+      //skinColor: studentData.skinColor,
+      //eyeColor: studentData.eyeColor,
+      //height: studentData.height,
       nationality: studentData.nationality,
       admissionDate: studentData.admissionDate,
       admissionTerminated: studentData.admissionTerminated,
       medicalHistory: studentData.medicalHistory,
       specialInstruction: studentData.specialInstruction,
+      studentPassportFileUrl: studentData.studentPassportFile ?? "",
+      anotherFieldFileUrl: studentData.anotherFieldFile ?? "",
+      mothersIdFileUrl: studentData.mothersIdFile ?? "",
+      certificateFileUrl: studentData.certificateFile ?? "",
+      medicalRecordFileUrl: studentData.medicalRecordFile ?? "",
     })
     .then((res) => {
       setLoading(false);

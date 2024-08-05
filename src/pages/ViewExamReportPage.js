@@ -16,7 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ViewReport from 'src/components/report/ViewExamReport';
 import ViewExamReport from 'src/components/report/ViewExamReport';
 import CummulativeContainer from 'src/components/global/CummulativeContainer';
-
+import html2pdf from 'html2pdf.js';
 
 
 export default function ViewExamReportPage() {
@@ -59,12 +59,41 @@ export default function ViewExamReportPage() {
     setActiveButton('3');
   };
 
+
+  function printPageArea(areaID){
+    var printContent = document.getElementById(areaID).innerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+
+    setTimeout(window.location.reload(), 0);
+}
+
+
+const downloadPageContent = (areaID) => {
+  // Get the HTML content of the current page
+  const content = document.getElementById(areaID).outerHTML;
+
+  const options = {
+    margin: 0.5,
+    filename: 'page.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: window.devicePixelRatio },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+  };
+
+  // Convert the HTML content to PDF
+  html2pdf().from(content).set(options).save();
+};
+
+
   console.log("DATAA:::::::", studentData);
 
   return (
     <>
 
-      <Container maxWidth="xl">
+      <Container id="printableArea" maxWidth="xl">
         <Grid container spacing={2} alignItems="center">
         <Box >
         <Typography variant="h4" sx={{color: ' #000000', fontSize: '36px' }}>
@@ -138,19 +167,17 @@ export default function ViewExamReportPage() {
         </Button>
 
         <Box sx={{marginLeft:"1rem"}}>
-      <Button
-          variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}
-          >
-          Exporter
-        </Button>
-            &nbsp; &nbsp;
-      <Button
-          variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: themeColor?themeColor:"#D72A34" }}
-        >
-          Imprimer
-        </Button>
+        <Button
+              onClick={()=>{downloadPageContent("printableArea")}}
+               variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
+                Exporter
+              </Button>
+              &nbsp; &nbsp;
+              <Button
+               onClick={()=>{printPageArea("printableArea");} }
+              variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: themeColor?themeColor:"#D72A34" }}>
+                Imprimer
+              </Button>
       </Box>
 
       </Box>

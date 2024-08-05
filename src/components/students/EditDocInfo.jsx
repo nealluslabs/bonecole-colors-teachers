@@ -4,6 +4,8 @@ import { Grid, Box, Typography, Button, Select, MenuItem } from '@mui/material';
 import TextField from '@material-ui/core/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
+import { deleteStudent } from 'src/redux/actions/student.action';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +66,8 @@ const EditDocInfo = ({
    loading}) => {
   const classes = useStyles();
  const dispatch = useDispatch();
+ const navigate = useNavigate();
+
 console.log("STATE:::", state);
 
 const { themeColor } = useSelector((state) => state.settings);
@@ -85,7 +89,8 @@ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Typography variant="subtitle1">Doc Info</Typography>
-      <div>
+      
+      {/*<div>
         <Button
           variant="contained"
           style={{
@@ -116,7 +121,8 @@ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage
         >
           Submit
         </Button>
-      </div>
+        </div> */}
+
     </div>
      <br/>
      <div className={classes.root}>
@@ -320,6 +326,43 @@ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage
       </Button>
     </Grid>
   </Grid>
+
+  <Grid xs={12} style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
+     <Button
+         onClick={()=>{dispatch(deleteStudent(state,navigate))}}
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: 'transparent',
+            border: '1px solid #000000',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: '#000000'
+          }}
+          disabled={loading}
+         
+        >
+          {loading ? "Chargement..." : "Supprimer"}
+        </Button>
+        <Button
+         // onClick={()=>{dispatch(updateStudent(state))}}
+
+          variant="contained"
+          style={{
+            minWidth: '125px',
+            backgroundColor: themeColor?themeColor:"#D72A34",
+            marginLeft: '1rem',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            paddingLeft: '20px',
+            color: 'white'
+          }}
+          onClick={handleUpdate}
+        >
+          Soumettre
+        </Button>
+     </Grid>
 
 
 </Grid>

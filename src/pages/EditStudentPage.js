@@ -42,23 +42,27 @@ export default function EditStudentPage() {
         lname: studentData.lname,
         dob: studentData.dob,
         gender: studentData.gender,
-        studentshipType: studentData.studentshipType,
+        //studentshipType: studentData.studentshipType,
         registrationId: studentData.registrationId,
         class: studentData.class,
         section: studentData.section,
         guardianName: studentData.guardianName,
-        bloodGroup: studentData.bloodGroup,
-        religion: studentData.religion,
+        //bloodGroup: studentData.bloodGroup,
+        //religion: studentData.religion,
         phoneNumber: studentData.phoneNumber,
         email: studentData.email,
-        skinColor: studentData.skinColor,
-        eyeColor: studentData.eyeColor,
-        height: studentData.height,
+        //skinColor: studentData.skinColor,
+        //eyeColor: studentData.eyeColor,
+        //height: studentData.height,
         nationality: studentData.nationality,
         admissionDate: studentData.admissionDate,
         admissionTerminated: studentData.admissionTerminated,
         medicalHistory: studentData.medicalHistory,
         specialInstruction: studentData.specialInstruction,
+        studentPassportFile: studentData.studentPassportFileUrl,
+        anotherFieldFile: studentData.anotherFieldFileUrl,
+        mothersIdFile: studentData.mothersIdFileUrl,
+        medicalRecordFile: studentData.medicalRecordFileUrl,
       })
 
 
@@ -158,7 +162,7 @@ export default function EditStudentPage() {
            
     
           const studentData = {
-            state,
+            ...state,
             studentPassportFileUrl: studentPassportFileUrl ? studentPassportFileUrl : state.studentPassportFileUrl,
             anotherFieldFileUrl: anotherFieldFileUrl ? anotherFieldFileUrl : state.anotherFieldFileUrl,
             mothersIdFileUrl: mothersIdFileUrl ? mothersIdFileUrl : state.mothersIdFileUrl,
@@ -166,6 +170,8 @@ export default function EditStudentPage() {
             medicalRecordFileUrl: medicalRecordFileUrl ? medicalRecordFileUrl : state.medicalRecordFileUrl,
           };
           setLoading(true);
+
+          console.log("student data right b4 it is sent is-->",studentData)
           dispatch(updateStudent(studentData, navigate, setLoading));
         } catch (error) {
           // setLoading(false);

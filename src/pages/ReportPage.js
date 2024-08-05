@@ -23,7 +23,7 @@ import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
 import { getStudents } from 'src/redux/actions/student.action';
 import ViewStudentsReport from 'src/components/students/ViewStudentReport';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
-
+import html2pdf from 'html2pdf.js';
 
 
 export default function ReportPage() {
@@ -112,6 +112,37 @@ export default function ReportPage() {
   const handleThree = () => {
     setActiveButton('3');
   };
+  
+
+
+  function printPageArea(areaID){
+    var printContent = document.getElementById(areaID).innerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+
+    setTimeout(window.location.reload(), 0);
+}
+
+
+const downloadPageContent = (areaID) => {
+  // Get the HTML content of the current page
+  const content = document.getElementById(areaID).outerHTML;
+
+  const options = {
+    margin: 0.5,
+    filename: 'page.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: window.devicePixelRatio },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+  };
+
+  // Convert the HTML content to PDF
+  html2pdf().from(content).set(options).save();
+};
+
+
 
   return (
     <>
@@ -176,19 +207,17 @@ export default function ReportPage() {
 
       &nbsp; &nbsp;
       <Box sx={{ }}>
-      <Button
-          variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor: ' #000000' }}
-          >
-          Exporter
-        </Button>
-            &nbsp; &nbsp;
-      <Button
-          variant="contained"
-          style={{ minHeight: '50px', minWidth: '100px', backgroundColor:themeColor?themeColor: '#D72A34' }}
-        >
-          Imprimer
-        </Button>
+          <Button
+              onClick={()=>{downloadPageContent("printableArea")}}
+               variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
+                Exporter
+              </Button>
+              &nbsp; &nbsp;
+              <Button
+               onClick={()=>{printPageArea("printableArea");} }
+              variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: themeColor?themeColor:"#D72A34" }}>
+                Imprimer
+              </Button>
       </Box>
           </Grid>
           <br/>
@@ -404,7 +433,7 @@ export default function ReportPage() {
 
       </Grid>
 
-            <Grid item xs={8} md={12} lg={12}>
+            <Grid id="printableArea" item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
               {activeButton === '1' &&  <ViewStudentsReport students={students}/>}  
               {activeButton === '2' &&  <ViewStudentsReport students={students}/>}  
