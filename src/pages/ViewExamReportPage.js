@@ -16,7 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ViewReport from 'src/components/report/ViewExamReport';
 import ViewExamReport from 'src/components/report/ViewExamReport';
 import CummulativeContainer from 'src/components/global/CummulativeContainer';
-/*import html2pdf from 'html2pdf.js';*/
+import html2pdf from 'html2pdf.js';
 
 
 export default function ViewExamReportPage() {
@@ -84,7 +84,7 @@ const downloadPageContent = (areaID) => {
   };
 
   // Convert the HTML content to PDF
-  //html2pdf().from(content).set(options).save();
+  html2pdf().from(content).set(options).save();
 };
 
 

@@ -23,7 +23,7 @@ import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
 import { getStudents } from 'src/redux/actions/student.action';
 import ViewStudentsReport from 'src/components/students/ViewStudentReport';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
-/*import html2pdf from 'html2pdf.js';*/
+import html2pdf from 'html2pdf.js';
 
 
 export default function ReportPage() {
@@ -139,7 +139,7 @@ const downloadPageContent = (areaID) => {
   };
 
   // Convert the HTML content to PDF
- // html2pdf().from(content).set(options).save();
+  html2pdf().from(content).set(options).save();
 };
 
 
