@@ -16,7 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ViewReport from 'src/components/report/ViewExamReport';
 import ViewExamReport from 'src/components/report/ViewExamReport';
 import CummulativeContainer from 'src/components/global/CummulativeContainer';
-import html2pdf from 'html2pdf.js';
+/*import html2pdf from 'html2pdf.js';*/
 
 
 export default function ViewExamReportPage() {
@@ -168,7 +168,7 @@ const downloadPageContent = (areaID) => {
 
         <Box sx={{marginLeft:"1rem"}}>
         <Button
-              onClick={()=>{downloadPageContent("printableArea")}}
+              onClick={()=>{/*downloadPageContent("printableArea")*/}}
                variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
                 Exporter
               </Button>

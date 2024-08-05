@@ -23,7 +23,7 @@ import ReportToogleSwitch from 'src/components/buttons/ReportToogleSwitch';
 import { getStudents } from 'src/redux/actions/student.action';
 import ViewStudentsReport from 'src/components/students/ViewStudentReport';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
-import html2pdf from 'html2pdf.js';
+/*import html2pdf from 'html2pdf.js';*/
 
 
 export default function ReportPage() {
@@ -208,7 +208,7 @@ const downloadPageContent = (areaID) => {
       &nbsp; &nbsp;
       <Box sx={{ }}>
           <Button
-              onClick={()=>{downloadPageContent("printableArea")}}
+              onClick={()=>{/*downloadPageContent("printableArea")*/}}
                variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
                 Exporter
               </Button>
