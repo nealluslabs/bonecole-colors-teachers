@@ -36,8 +36,8 @@ export default function ReportPage() {
 
 
   useEffect(() => {
-    dispatch(fetchMyGroups(user?.coolers));
-    dispatch(fetchMyTransactions(user?.id));
+    //dispatch(fetchMyGroups(user?.coolers));
+    //dispatch(fetchMyTransactions(user?.id));
     console.log("Transac Changed.");
   }, [user])
 
@@ -139,7 +139,7 @@ const downloadPageContent = (areaID) => {
   };
 
   // Convert the HTML content to PDF
-  html2pdf().from(content).set(options).save();
+ // html2pdf().from(content).set(options).save();
 };
 
 

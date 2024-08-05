@@ -29,8 +29,8 @@ export default function StudentPage() {
   const { students } = useSelector((state) => state.student);
 
   useEffect(() => {
-    dispatch(fetchMyGroups(user?.coolers));
-    dispatch(fetchMyTransactions(user?.id));
+  //  dispatch(fetchMyGroups(user?.coolers));
+  //  dispatch(fetchMyTransactions(user?.id));
     console.log("Transac Changed.");
   }, [user])
   console.log("STUDENTS:::::", students);

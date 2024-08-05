@@ -26,8 +26,8 @@ export default function AddEditReportPage() {
   const studentData = location.state?.student;
 
   useEffect(() => {
-    dispatch(fetchMyGroups(user?.coolers));
-    dispatch(fetchMyTransactions(user?.id));
+   // dispatch(fetchMyGroups(user?.coolers));
+   // dispatch(fetchMyTransactions(user?.id));
     console.log("Transac Changed.");
   }, [user])
 

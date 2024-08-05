@@ -33,8 +33,8 @@ export default function TeacherPage() {
   const { transactions } = useSelector((state) => state.transaction);
 
   useEffect(() => {
-    dispatch(fetchMyGroups(user?.coolers));
-    dispatch(fetchMyTransactions(user?.id));
+   // dispatch(fetchMyGroups(user?.coolers));
+   // dispatch(fetchMyTransactions(user?.id));
     console.log("Transac Changed.");
   }, [user])
 
