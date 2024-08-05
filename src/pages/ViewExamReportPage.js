@@ -168,7 +168,7 @@ const downloadPageContent = (areaID) => {
 
         <Box sx={{marginLeft:"1rem"}}>
         <Button
-              onClick={()=>{/*downloadPageContent("printableArea")*/}}
+              onClick={()=>{downloadPageContent("printableArea")}}
                variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
                 Exporter
               </Button>
