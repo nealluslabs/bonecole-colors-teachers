@@ -69,10 +69,10 @@ export default function LoginPage() {
               Se Connecter
             </Typography>
             <LoginForm />
-            <Typography variant="body2" sx={{ mt: 2 }}>
+           {/* <Typography variant="body2" sx={{ mt: 2 }}>
             Vous n'avez pas encore de compte?  {''}
               <Link href='/register' variant="subtitle2">Inscrivez-vous ici</Link>
-            </Typography>
+      </Typography>*/}
 
             {/* <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
