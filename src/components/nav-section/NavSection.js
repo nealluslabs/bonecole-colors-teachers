@@ -71,7 +71,7 @@ function NavItem({ item }) {
       sx={{
         color: '#FFFFFF',
         fontSize: '18px',
-         bgcolor:title==='rapports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports' )  &&  (themeColor?themeColor:"#D72A34")|| title==='student' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
+         bgcolor:title==='rapports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports' )  &&  (themeColor?themeColor:"#D72A34")|| title==='étudiante' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
         
         '&.active': {
           color: 'white',
@@ -82,7 +82,7 @@ function NavItem({ item }) {
           // borderBottomLeftRadius: '26px',
         },
         '&.hover': {
-          bgcolor:title==='rapports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports'  )  &&  (themeColor?themeColor:"#D72A34")|| title==='student' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
+          bgcolor:title==='rapports' &&  (location.pathname === '/dashboard/view-exam-report'||location.pathname === '/dashboard/action-reports'  )  &&  (themeColor?themeColor:"#D72A34")|| title==='étudiante' &&  (location.pathname === '/dashboard/edit-student' )  &&  (themeColor?themeColor:"#D72A34"),
         }
       }}
     >
