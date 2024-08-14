@@ -165,7 +165,7 @@ const Step1 = ({state, handleChange}) => {
            <option value="Level 13">Niveau 13</option>
           </select>
         </Grid>
-        {/*<Grid item xs={6}>
+        <Grid item xs={6}>
           <Typography variant="subtitle1">Section</Typography>
           <select
             name="section"
@@ -176,11 +176,11 @@ const Step1 = ({state, handleChange}) => {
             required
           >
             <option value=""></option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Secondary">Secondary</option>
+           
           </select>
-        </Grid>*/}
+        </Grid>
        {/* <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
           <TextField

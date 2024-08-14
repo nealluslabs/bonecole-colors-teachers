@@ -85,7 +85,14 @@ export const createStudent = async (studentData, navigate, setLoading) => {
       studentshipType: studentData?.state?.studentshipType,
       registrationId: studentData?.state?.registrationId,
       class: studentData?.state?.class,
-      section: studentData?.state?.section,
+      section:studentData.state.class && (
+        studentData.state.class =="Niveau 1"||
+        studentData.state.class =="Niveau 2"||
+        studentData.state.class =="Niveau 3"||
+        studentData.state.class =="Niveau 4"||
+        studentData.state.class =="Niveau 5"||
+        studentData.state.class =="Niveau 6" ) 
+       ? "Elementary":"Secondary",
       guardianName: studentData?.state?.guardianName,
       bloodGroup: studentData?.state?.bloodGroup,
       religion: studentData?.state?.religion,
@@ -185,7 +192,14 @@ export const updateStudent = (studentData, navigate, setLoading) => async (dispa
       //studentshipType: studentData.studentshipType,
       registrationId: studentData.registrationId,
       class: studentData.class,
-      section: studentData.section,
+      section:studentData.class && (
+        studentData.class =="Niveau 1"||
+        studentData.class =="Niveau 2"||
+        studentData.class =="Niveau 3"||
+        studentData.class =="Niveau 4"||
+        studentData.class =="Niveau 5"||
+        studentData.class =="Niveau 6" ) 
+       ? "Elementary":"Secondary",
       //guardianName: studentData.guardianName,
       //bloodGroup: studentData.bloodGroup,
       //religion: studentData.religion,

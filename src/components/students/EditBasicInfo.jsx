@@ -162,8 +162,8 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             required
           >
             <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option value="Mâle">Mâle</option>
+            <option value="Femelle">Femelle</option>
           </select>
         </Grid>
         <Grid item xs={6}>
@@ -207,19 +207,19 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             required
           >
             <option value="">Sélectionner une Classe</option>
-             <option value="Level 1">Niveau 1</option>
-             <option value="Level 2">Niveau 2</option>
-             <option value="Level 3">Niveau 3</option>
-             <option value="Level 4">Niveau 4</option>
-             <option value="Level 5">Niveau 5</option>
-             <option value="Level 6">Niveau 6</option>
-             <option value="Level 7">Niveau 7</option>
-             <option value="Level 8">Niveau 8</option>
-             <option value="Level 9">Niveau 9</option>
-            <option value="Level 10">Niveau 10</option>
-            <option value="Level 11">Niveau 11</option>
-            <option value="Level 12">Niveau 12</option>
-            <option value="Level 13">Niveau 13</option>
+             <option value="Niveau 1">Niveau 1</option>
+             <option value="Niveau 2">Niveau 2</option>
+             <option value="Niveau 3">Niveau 3</option>
+             <option value="Niveau 4">Niveau 4</option>
+             <option value="Niveau 5">Niveau 5</option>
+             <option value="Niveau 6">Niveau 6</option>
+             <option value="Niveau 7">Niveau 7</option>
+             <option value="Niveau 8">Niveau 8</option>
+             <option value="Niveau 9">Niveau 9</option>
+            <option value="Niveau 10">Niveau 10</option>
+            <option value="Niveau 11">Niveau 11</option>
+            <option value="Niveau 12">Niveau 12</option>
+            <option value="Niveau 13">Niveau 13</option>
 
            {/* {Array.from({ length: 12 }, (_, index) => (
               <option tion key={`level-${index + 1}`} value={`Level ${index + 1}`}>
@@ -229,7 +229,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
           </select>
         </Grid>
 
-       {/* <Grid item xs={6}>
+        <Grid item xs={6}>
           <Typography variant="subtitle1">Section</Typography>
           <select
             name="section"
@@ -240,11 +240,11 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             required
           >
             <option value=""></option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Secondary">Secondary</option>
+           
           </select>
-          </Grid>*/}
+          </Grid>
 
       {/*  <Grid item xs={6}>
           <Typography variant="subtitle1">Guardian Name (if any)</Typography>
@@ -260,7 +260,7 @@ const EditBasicInfo = ({state, handleChange, handleUpdate, loading}) => {
             }}
           />
           </Grid> */}
-    <Grid style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
+    <Grid xs={12} style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
      <Button
          onClick={()=>{dispatch(deleteStudent(state,navigate))}}
           variant="contained"
