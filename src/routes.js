@@ -27,6 +27,7 @@ import AddEditReportPage from './pages/AddEditReportPage';
 import ViewExamReportPage from './pages/ViewExamReportPage';
 import EditStudentPage from './pages/EditStudentPage';
 import LogoutPage from './pages/LogoutPage';
+import ViewAttendanceReportPage from './pages/ViewAttendanceReportPage';
 
 
 export default function Router() {
@@ -39,6 +40,7 @@ export default function Router() {
         { path: 'home', element: <StudentPage /> },
         { path: 'view-student', element: <ViewStudentPage /> },
         { path: 'view-exam-report', element: <ViewExamReportPage /> },
+        { path: 'view-attendance-report', element: <ViewAttendanceReportPage /> },
         { path: 'teachers', element: <TeacherPage /> },
         { path: 'reports', element: <ReportPage /> },
         { path: 'action-reports', element: <AddEditReportPage /> },

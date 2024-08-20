@@ -24,6 +24,7 @@ import { getStudents } from 'src/redux/actions/student.action';
 import ViewStudentsReport from 'src/components/students/ViewStudentReport';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 import html2pdf from 'html2pdf.js';
+import ViewStudentAttendanceReport from 'src/components/students/ViewStudentAttendanceReport';
 
 
 export default function ReportPage() {
@@ -149,7 +150,9 @@ const downloadPageContent = (areaID) => {
 
       <Container maxWidth="xl">
         <Grid container spacing={2} alignItems="center">
+
      <ReportToogleSwitch activeButton={activeButton} setActiveButton={setActiveButton} handleOne={handleOne} handleTwo={handleTwo} handleThree={handleThree} />
+    
      <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
           <Select
@@ -436,8 +439,8 @@ const downloadPageContent = (areaID) => {
             <Grid id="printableArea" item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
               {activeButton === '1' &&  <ViewStudentsReport students={students}/>}  
-              {activeButton === '2' &&  <ViewStudentsReport students={students}/>}  
-              {activeButton === '3' &&  <ViewStudentsReport students={students}/>}  
+              {activeButton === '2' &&  <ViewStudentAttendanceReport students={students}/>}  
+              {/*activeButton === '3' &&  <ViewStudentsReport students={students}/>*/}  
                 </div>
             </Grid>
             

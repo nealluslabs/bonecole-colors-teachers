@@ -17,13 +17,13 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
         style={{
           minHeight: '50px',
           minWidth: '180px',
-          backgroundColor: /*activeButton === '1' ? ' #000000' :*/ 'transparent',
-          color:/* activeButton === '1' ? '#fff' :*/ ' #000000',
+          backgroundColor: activeButton === '2' ? ' #000000' : 'transparent',
+          color: activeButton === '2' ? '#fff' : ' #000000',
           border: 'none',
           borderRadius: '20px',
           marginRight: '4px',
         }}
-        /*onClick={handleOne}*/
+        onClick={handleTwo}
       >
         Rapport de Présence
       </Button>
