@@ -43,16 +43,16 @@ const ReportToogleSwitch = ({ activeButton, setActiveButton, handleOne, handleTw
         Performance Report
       </Button> */}
       <Button
-        variant={activeButton === '3' ? 'contained' : 'outlined'}
+        variant={activeButton === '1' ? 'contained' : 'outlined'}
         style={{
           minHeight: '50px',
           minWidth: '180px',
-          backgroundColor: activeButton === '3' ? ' #000000' : 'transparent',
-          color: activeButton === '3' ? '#fff' : ' #000000',
+          backgroundColor: activeButton === '1' ? ' #000000' : 'transparent',
+          color: activeButton === '1' ? '#fff' : ' #000000',
           border: 'none',
           borderRadius: '20px',
         }}
-        onClick={handleThree}
+        onClick={handleOne}
       >
        Résultats d'examen
       </Button>

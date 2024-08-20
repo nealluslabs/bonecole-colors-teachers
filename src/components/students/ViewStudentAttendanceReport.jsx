@@ -74,15 +74,17 @@ export default function ViewStudentAttendanceReport({ students }) {
                     variant="contained"
                     style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34", marginRight: '20px' }}
                   >
-                    Voir Résultat
+                     Voir fréquentation
                   </Button>
-                  <Button
+                  
+                 {/* <Button
                     onClick={() => handleAddResult(params?.row)}
                     variant="contained"
                     style={{ minWidth: '85px', backgroundColor:themeColor?themeColor: "#D72A34" }}
                   >
                     Ajouter Résultat
-                  </Button>
+                  </Button> */}
+
                 </div>
               ),
             };
