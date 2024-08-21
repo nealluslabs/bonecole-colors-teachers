@@ -102,7 +102,7 @@ const downloadPageContent = (areaID) => {
 
         </Typography>
       </Box>
-      {/*
+      
         <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
           <Select
@@ -117,28 +117,28 @@ const downloadPageContent = (areaID) => {
             }}
           >
             <MenuItem value="">
-              Sélectionner Classe
+            Sélectionner l'année
             </MenuItem>
-            <MenuItem value={'Level 1'}>Level 1</MenuItem>
-        <MenuItem value={'Level 2'}>Level 2</MenuItem>
-        <MenuItem value={'Level 3'}>Level 3</MenuItem>
-        <MenuItem value={'Level 4'}>Level 4</MenuItem>
-        <MenuItem value={'Level 5'}>Level 5</MenuItem>
-        <MenuItem value={'Level 7'}>Level 7</MenuItem>
-        <MenuItem value={'Level 8'}>Level 8</MenuItem>
-        <MenuItem value={'Level 9'}>Level 9</MenuItem>
-        <MenuItem value={'Level 10'}>Level 10</MenuItem>
-        <MenuItem value={'Level 11'}>Level 11</MenuItem>
-        <MenuItem value={'Level 12'}>Level 12</MenuItem>
-        <MenuItem value={'Level 13'}>Level 13</MenuItem>
+            <MenuItem value={'Année 1'}>Année 1</MenuItem>
+        <MenuItem value={'Année 2'}>Année 2</MenuItem>
+        <MenuItem value={'Année 3'}>Année 3</MenuItem>
+        <MenuItem value={'Année 4'}>Année 4</MenuItem>
+        <MenuItem value={'Année 5'}>Année 5</MenuItem>
+        <MenuItem value={'Année 7'}>Année 7</MenuItem>
+        <MenuItem value={'Année 8'}>Année 8</MenuItem>
+        <MenuItem value={'Année 9'}>Année 9</MenuItem>
+        <MenuItem value={'Année 10'}>Année 10</MenuItem>
+        <MenuItem value={'Année 11'}>Année 11</MenuItem>
+        <MenuItem value={'Année 12'}>Année 12</MenuItem>
+        <MenuItem value={'Année 13'}>Année 13</MenuItem>
           </Select>
           </FormControl>
       </Grid>
-     */}
+     
 
 
      <Grid item sx={{mb: 2}}>
-     {/*<FormControl sx={{ minWidth: 140 }}>
+     <FormControl sx={{ minWidth: 140 }}>
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -151,13 +151,13 @@ const downloadPageContent = (areaID) => {
             }}
           >
             <MenuItem value="">
-              Select Section
+             sélectionner  Terme
             </MenuItem>
-            <MenuItem value={1}>Option 1</MenuItem>
-            <MenuItem value={2}>Option 2</MenuItem>
-            <MenuItem value={3}>Option 3</MenuItem>
+            <MenuItem value={1}>Terme 1</MenuItem>
+            <MenuItem value={2}>Terme 2</MenuItem>
+            <MenuItem value={3}>Terme 3</MenuItem>
           </Select>
-        </FormControl>*/}
+        </FormControl>
       </Grid>
       &nbsp; &nbsp;
       <Box sx={{ width: '20%',}}>
@@ -171,7 +171,7 @@ const downloadPageContent = (areaID) => {
           <SearchIcon />
         </Button>
 
-        <Box sx={{marginLeft:"1rem"}}>
+        {/*<Box sx={{marginLeft:"1rem"}}>
         <Button
               onClick={()=>{downloadPageContent("printableArea")}}
                variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: '#000000' }}>
@@ -183,7 +183,7 @@ const downloadPageContent = (areaID) => {
               variant="contained" style={{ minHeight: '50px', minWidth: '100px', backgroundColor: themeColor?themeColor:"#D72A34" }}>
                 Imprimer
               </Button>
-      </Box>
+      </Box>*/}
 
       </Box>
 
