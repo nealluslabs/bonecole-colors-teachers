@@ -16,9 +16,9 @@ export default function ViewExamReport({ result }) {
     /*{ field: 'id', headerName: '#', width: 150 },*/
     { field: 'subject', headerName: 'Subject', width: 200 },
     /*{ field: 'ca', headerName: 'Continuous Assessment', width: 200 },*/
-    { field: 'exam1', headerName: 'Exam 1', width: 200 },
-    { field: 'exam2', headerName: 'Exam 2', width: 200 },
-    { field: 'exam3', headerName: 'Exam 3', width: 200 },
+    { field: 'exam1', headerName: 'First Exam', width: 200 },
+    { field: 'exam2', headerName: 'Second Exam', width: 200 },
+    { field: 'exam3', headerName: 'Third Exam', width: 200 },
     { field: 'finalGrade', headerName: 'Final Grade', width: 200 },
   ] :
   
@@ -28,8 +28,8 @@ export default function ViewExamReport({ result }) {
     /*{ field: 'id', headerName: '#', width: 150 },*/
     { field: 'subject', headerName: 'Subject', width: 200 },
     /*{ field: 'ca', headerName: 'Continuous Assessment', width: 200 },*/
-    { field: 'exam1', headerName: 'Exam 1', width: 200 },
-    { field: 'exam2', headerName: 'Exam 2', width: 200 },
+    { field: 'exam1', headerName: 'First Exam', width: 200 },
+    { field: 'exam2', headerName: 'Second Exam', width: 200 },
     { field: 'finalGrade', headerName: 'Final Grade', width: 200 },
   ]
 
@@ -40,7 +40,7 @@ export default function ViewExamReport({ result }) {
     /*{ field: 'id', headerName: '#', width: 150 },*/
     { field: 'subject', headerName: 'Subject', width: 200 },
     /*{ field: 'ca', headerName: 'Continuous Assessment', width: 200 },*/
-    { field: 'exam1', headerName: 'Exam 1', width: 200 },
+    { field: 'exam1', headerName: 'First Exam', width: 200 },
    
     { field: 'finalGrade', headerName: 'Final Grade', width: 200 },
   ]
