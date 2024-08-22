@@ -184,6 +184,8 @@ const downloadPageContent = (areaID) => {
 
       <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
+     {studentData && studentData.class &&  Number(studentData.class.slice(studentData.class.length-2,studentData.class.length)) >= 7 ?
+        
           <Select
             value={selectedOption}
             onChange={handleSelectChange}
@@ -198,10 +200,49 @@ const downloadPageContent = (areaID) => {
             <MenuItem value="">
              Filtrer Par
             </MenuItem>
-            <MenuItem value={"Subject"}>Sujet</MenuItem>
-            <MenuItem value={"Grade (Descending)"}>Note (décroissante)</MenuItem>
+
+         
            
+            <MenuItem value={"Terme 1"}>Terme 1</MenuItem>
+            <MenuItem value={"Terme 2"}>Terme 2</MenuItem>
+           
+         
           </Select>
+
+
+  
+         :
+         
+         <Select
+         value={selectedOption}
+         onChange={handleSelectChange}
+         displayEmpty
+         label=""
+         sx={{
+         //   minHeight: 30,
+           minWidth: 120,
+           p: 1,
+         }}
+       >
+         <MenuItem value="">
+          Filtrer Par
+         </MenuItem>
+
+      
+        
+       
+         <MenuItem value={"Terme 1"}>Terme 1</MenuItem>
+         <MenuItem value={"Terme 2"}>Terme 2</MenuItem>
+         <MenuItem value={"Terme 3"}>Terme 3</MenuItem>
+           
+      
+       </Select>
+         
+                   
+         }
+
+
+
         </FormControl>
       </Grid>
           </Grid>
@@ -215,7 +256,8 @@ const downloadPageContent = (areaID) => {
             </Grid>
           </Grid>
           <br/><br/>
-         <CummulativeContainer result={studentData.results[0]}/>
+          {console.log("STUDENT DATA RIGHT BEFORE CUMULATIVE-->",studentData)}
+         <CummulativeContainer result={studentData/*.results[0]*/}/>
       </Container>
     </>
   );
