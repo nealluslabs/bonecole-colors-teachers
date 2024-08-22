@@ -109,6 +109,7 @@ export const createStudent = async (studentData, navigate, setLoading) => {
       studentPassportFileUrl: studentData.studentPassportFileUrl,
       anotherFieldFileUrl: studentData.anotherFieldFileUrl,
       mothersIdFileUrl: studentData.mothersIdFileUrl,
+      schoolId:studentData.schoolId,
       certificateFileUrl: studentData.certificateFileUrl,
       medicalRecordFileUrl: studentData.medicalRecordFileUrl,
       accountCreated: today.toLocaleDateString('en-US', options),

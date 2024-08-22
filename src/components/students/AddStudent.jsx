@@ -57,6 +57,8 @@ export default function AddStudent() {
   const { themeColor } = useSelector((state) => state.settings);
   const { user,school } = useSelector((state) => state.auth);
 
+  console.log("the school, WHEN ADDING STUDENT is-->",user)
+
 
   useEffect(()=>{
 
@@ -198,7 +200,7 @@ export default function AddStudent() {
   
       const [studentPassportFileUrl, anotherFieldFileUrl, mothersIdFileUrl, certificateFileUrl, medicalRecordFileUrl] = urls;
   
-      const studentData = { state,  studentPassportFileUrl, anotherFieldFileUrl, mothersIdFileUrl, certificateFileUrl, medicalRecordFileUrl};
+      const studentData = { state,  studentPassportFileUrl, anotherFieldFileUrl, mothersIdFileUrl, certificateFileUrl, medicalRecordFileUrl,schoolId:user.schoolId};
       dispatch(createStudent(studentData, navigate, setLoading));
     } catch (error) {
       // setLoading(false);

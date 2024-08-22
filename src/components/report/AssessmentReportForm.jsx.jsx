@@ -132,6 +132,8 @@ const AssessmentReportForm = ({studentData}) => {
       const teacherId = user.teacherId;
       const finalGrade = 'A';
       const data ={ scores, totalCumulative, finalGrade, studentId, teacherId };
+
+      console.log("data being sent to create a new result is--->" , data)
       dispatch(createStudentResult(data, navigate, setLoading));
     };
 
