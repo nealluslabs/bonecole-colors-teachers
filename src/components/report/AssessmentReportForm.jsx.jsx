@@ -58,14 +58,53 @@ const AssessmentReportForm = ({studentData}) => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [scores, setScores] = useState({});
-  const [cummulative, setCumulative] = useState(0);
+  const [cumulative, setCumulative] = useState(0);
   const [loading, setLoading] = useState(false);
 
 
 
   const { themeColor } = useSelector((state) => state.settings);
   const {school } = useSelector((state) => state.auth);
+  
+  console.log("student data IS--->",studentData)
 
+  console.log("school DEETS ARE-->",school)
+
+  console.log("USER DEETS ARE-->",user)
+
+  const [numberOfExamsToDisplay,setNumberOfExamsToDisplay] = useState(1)
+
+  useEffect(()=>{
+
+  
+
+  const indexOflevelMatch = school &&  school.levels.map((item)=>(item.levelName)).indexOf(studentData.class)
+
+   if(indexOflevelMatch !== -1){
+
+    setNumberOfExamsToDisplay(Number(school.levels[indexOflevelMatch].examsPerTerm)   )
+   }
+   else{
+   console.log("LEVELS MAY NOT EXIST ON THIS SCHOOL, PLS CHECK")
+    setNumberOfExamsToDisplay(1)
+   }
+   
+     },[studentData,school])
+   
+  
+
+  /*OKAY SO THE PREVAILING LOGIC IS THAT 
+  
+  I WILL CHECK THE STUDENTS LEVEL, CHECK THE NUMBER OF EXAMS FOR THAT LEVEL
+  
+  AND THEN USE THAT INFO TO DISPLAY THE NUMBER OF COLUMNS IN THE TABLES
+
+  BUT FOR NOW,
+   I AM JUST PULLING THE NUMBER OF EXAMS SPECIFIED FROM THE SCHOOL DATABASE
+
+   AND USING THAT TO REGULATE THE TABLE
+  
+  */
 
   useEffect(()=>{
 
@@ -97,12 +136,21 @@ const AssessmentReportForm = ({studentData}) => {
       },
     };
        // Calculate and set the final grade based on entered scores
-       if (scoreType === 'ca' || scoreType === 'testScores' || scoreType === 'examScores') {
+       if (scoreType === 'ca' || scoreType === 'testScores' || scoreType === 'examScores'|| scoreType === 'exam1'|| scoreType === 'exam2'|| scoreType === 'exam3' ) {
         const ca = parseFloat(updatedScores[subject]?.ca || 0);
         const testScores = parseFloat(updatedScores[subject]?.testScores || 0);
         const examScores = parseFloat(updatedScores[subject]?.examScores || 0);
+        const exam1 = parseFloat(updatedScores[subject]?.exam1 || 0);
+        const exam2 = parseFloat(updatedScores[subject]?.exam2 || 0);
+        const exam3 = parseFloat(updatedScores[subject]?.exam3 || 0);
+
   
-        const totalScore = ca + testScores + examScores;
+        const totalScore =   
+        numberOfExamsToDisplay===  2 ? ca +  exam1 + exam2:
+        numberOfExamsToDisplay===  3 ? ca +  exam1 + exam2 + exam3:
+                                                                    ca +  exam1                           
+          
+
         const finalGrade = calculateFinalGrade(totalScore);
         updatedScores[subject].finalGrade = finalGrade;
       }
@@ -117,13 +165,21 @@ const AssessmentReportForm = ({studentData}) => {
         const ca = parseFloat(scores[subject]?.ca || 0);
         const testScores = parseFloat(scores[subject]?.testScores || 0);
         const examScores = parseFloat(scores[subject]?.examScores || 0);
+        const exam1 = parseFloat(scores[subject]?.exam1 || 0);
+        const exam2 = parseFloat(scores[subject]?.exam2 || 0);
+        const exam3 = parseFloat(scores[subject]?.exam3 || 0);
   
-        const totalScore = ca + testScores + examScores;
+        const totalScore =   
+        numberOfExamsToDisplay===  2 ? ca +  exam1 + exam2:
+        numberOfExamsToDisplay===  3 ? ca +  exam1 + exam2 + exam3:
+                                                                    ca +  exam1  
+
         const finalGrade = calculateFinalGrade(totalScore);
         scores[subject].finalGrade = finalGrade;
   
         totalCumulative += totalScore;
       }
+
       setCumulative(totalCumulative);
       console.log('Scores:', scores);
       console.log('Cumulative:', totalCumulative);
@@ -145,8 +201,9 @@ const AssessmentReportForm = ({studentData}) => {
             <TableCell>#</TableCell>
             <TableCell>Sujet</TableCell>
             {/*<TableCell>Continuous Assessment</TableCell>*/}
-            <TableCell>Résultats des Tests</TableCell>
-            <TableCell>Résultats des Examens</TableCell>
+            <TableCell>Résultats des Examens 1</TableCell>
+         {numberOfExamsToDisplay===  2 &&  <TableCell>Résultats des Examens 2</TableCell> }
+          {numberOfExamsToDisplay===  3 &&   <TableCell>Résultats des Examens 3</TableCell>  }
             <TableCell>Note Finale</TableCell>
           </TableRow>
         </TableHead>
@@ -179,8 +236,8 @@ const AssessmentReportForm = ({studentData}) => {
               
               <TableCell>
                 <TextField
-                  value={scores[subject]?.testScores || ''}
-                  onChange={(e) => handleScoreChange(subject, 'testScores', e.target.value)}
+                  value={scores[subject]?.exam1 || ''}
+                  onChange={(e) => handleScoreChange(subject, 'exam1', e.target.value)}
                   multiline
                   rows={1}
                   className={classes.searchInput}
@@ -192,10 +249,12 @@ const AssessmentReportForm = ({studentData}) => {
                   }}
                 />
               </TableCell>
+
+      {numberOfExamsToDisplay===  2 &&
               <TableCell>
                 <TextField
-                  value={scores[subject]?.examScores || ''}
-                  onChange={(e) => handleScoreChange(subject, 'examScores', e.target.value)}
+                  value={scores[subject]?.exam2 || ''}
+                  onChange={(e) => handleScoreChange(subject, 'exam2', e.target.value)}
                   multiline
                   rows={1}
                   className={classes.searchInput}
@@ -207,6 +266,26 @@ const AssessmentReportForm = ({studentData}) => {
                   }}
                 />
               </TableCell>
+          }
+
+          {numberOfExamsToDisplay===  3 &&
+              <TableCell>
+                <TextField
+                  value={scores[subject]?.exam3 || ''}
+                  onChange={(e) => handleScoreChange(subject, 'exam3', e.target.value)}
+                  multiline
+                  rows={1}
+                  className={classes.searchInput}
+                  InputProps={{
+                    disableUnderline: true,
+                    style:{
+                      height:"1.1rem"
+                    }
+                  }}
+                />
+              </TableCell>
+               }
+
               <TableCell>
                 <TextField
                   value={scores[subject]?.finalGrade || ''}
@@ -236,7 +315,7 @@ const AssessmentReportForm = ({studentData}) => {
         <b><span style={{lineHeight: '3rem'}}>Cumulatif:</span></b>       
           <TextField
           type='number'
-                  value={cummulative}
+                  value={cumulative}
                   onChange={(e) => setCumulative(e.target.value)}
                   multiline
                   rows={1}
@@ -248,7 +327,7 @@ const AssessmentReportForm = ({studentData}) => {
                 />
           <TextField
           type='number'
-                  value={cummulative}
+                  value={cumulative}
                   onChange={(e) => setCumulative(e.target.value)}
                   multiline
                   rows={1}

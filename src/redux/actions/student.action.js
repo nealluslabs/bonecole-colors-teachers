@@ -38,33 +38,34 @@ export const uploadDocImages = (file) => async (dispatch) => {
 
 export const createStudentResult = async (data, navigate, setLoading) => {
   try {
-    setLoading(true);
+    //setLoading(true);
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     var today = new Date();
 
     console.log("DATA:::", data);
 
-    const resultRef = await db.collection('result').add({
+    /*const resultRef =*/  db.collection('result').add({
         studentId: data.studentId,
         teacherId: data.teacherId,
         totalCumulative: data.totalCumulative,
         finalGrade: data.finalGrade,
         dateCreated: today.toLocaleDateString('en-US', options),
         subjects: data.scores,
-      });
+      }).then(async(res)=>{ 
 
-    await db.collection('result').doc(resultRef.id).update({
-      resultId: resultRef.id,
-    });
+          db.collection('result').doc(res.id).update({
+           resultId: res.id,
+         });
+  })
 
     console.log('Saved Successfully');
     notifySuccessFxn('Result Saved Successfully');
     navigate('/dashboard/home');
-    setLoading(true);
+    //setLoading(true);
   } catch (error) {
     console.log('Error creating result:', error);
     notifyErrorFxn('Error creating result');
-    setLoading(false);
+    //setLoading(false);
   }
 };
 
