@@ -64,16 +64,43 @@ export default function ReportPage() {
 
    let studentsFilteredByLevel = students.filter((item)=> (item.class && Number(item.class.slice(item.class.length-2,item.class.length)) ===  Number(selectedLevel.slice(selectedLevel.length-2,selectedLevel.length)) ))
   
-    console.log("students filtered by level--->",studentsFilteredByLevel)
+    console.log("selected level last 2 digits--->",Number(selectedLevel.slice(selectedLevel.length-2,selectedLevel.length)))
 
    setStudentsToDisplay(studentsFilteredByLevel )
 
      }
 
-    /*FILTERING BY PAYMENT */ 
+/*FILTERING BY GENDER */ 
+     if(selectedGender){
+
+
+      let studentsFilteredByGender = students.filter((item)=> (item.gender && item.gender===  selectedGender ))
+     
+       console.log("students filtered by level--->",studentsFilteredByGender)
+   
+      setStudentsToDisplay(studentsFilteredByGender)
+   
+        }
+
+
+   /*FILTERING BY PAYMENT STATUS */   
+   
+   if(selectedStatus){
+
+
+    let studentsFilteredByStatus = students.filter((item)=> (item.paymentStatus && item.paymentStatus ===  selectedStatus))
+   
+     console.log("students filtered by lpayment status--->",studentsFilteredByStatus)
+ 
+    setStudentsToDisplay(studentsFilteredByStatus)
+ 
+      }
+
 
     
-  }, [selectedLevel])
+
+    
+  }, [selectedLevel,selectedGender,selectedStatus])
 
 
  
@@ -115,6 +142,17 @@ export default function ReportPage() {
 
   const handleSelectLevelChange = (event) => {
     setSelectedLevel(event.target.value);
+   
+  };
+
+  const handleSelectGenderChange = (event) => {
+    setSelectedGender(event.target.value);
+   
+  };
+
+
+  const handleSelectStatusChange = (event) => {
+    setSelectedStatus(event.target.value);
    
   };
 
@@ -190,8 +228,8 @@ const downloadPageContent = (areaID) => {
      <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
           <Select
-            value={selectedOption}
-            onChange={handleSelectChange}
+            value={selectedLevel}
+            onChange={handleSelectLevelChange}
             displayEmpty
             label=""
             sx={{
@@ -203,18 +241,19 @@ const downloadPageContent = (areaID) => {
             <MenuItem value="">
               Sélectionner Classe
             </MenuItem>
-            <MenuItem value={'Level 1'}>Level 1</MenuItem>
-        <MenuItem value={'Level 2'}>Level 2</MenuItem>
-        <MenuItem value={'Level 3'}>Level 3</MenuItem>
-        <MenuItem value={'Level 4'}>Level 4</MenuItem>
-        <MenuItem value={'Level 5'}>Level 5</MenuItem>
-        <MenuItem value={'Level 7'}>Level 7</MenuItem>
-        <MenuItem value={'Level 8'}>Level 8</MenuItem>
-        <MenuItem value={'Level 9'}>Level 9</MenuItem>
-        <MenuItem value={'Level 10'}>Level 10</MenuItem>
-        <MenuItem value={'Level 11'}>Level 11</MenuItem>
-        <MenuItem value={'Level 12'}>Level 12</MenuItem>
-        <MenuItem value={'Level 13'}>Level 13</MenuItem>
+            <MenuItem value={false}>effacer le filtre</MenuItem>
+            <MenuItem value={'Niveau 1'}>Niveau 1</MenuItem>
+        <MenuItem value={'Niveau 2'}>Niveau 2</MenuItem>
+        <MenuItem value={'Niveau 3'}>Niveau 3</MenuItem>
+        <MenuItem value={'Niveau 4'}>Niveau 4</MenuItem>
+        <MenuItem value={'Niveau 5'}>Niveau 5</MenuItem>
+        <MenuItem value={'Niveau 7'}>Niveau 7</MenuItem>
+        <MenuItem value={'Niveau 8'}>Niveau 8</MenuItem>
+        <MenuItem value={'Niveau 9'}>Niveau 9</MenuItem>
+        <MenuItem value={'Niveau 10'}>Niveau 10</MenuItem>
+        <MenuItem value={'Niveau 11'}>Niveau 11</MenuItem>
+        <MenuItem value={'Niveau 12'}>Niveau 12</MenuItem>
+        <MenuItem value={'Niveau 13'}>Niveau 13</MenuItem>
           </Select>
         </FormControl>
       </Grid>
@@ -346,9 +385,9 @@ const downloadPageContent = (areaID) => {
             <MenuItem value="">
               Filtrer Par
             </MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Niveau"}>Niveau</MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Genre"}>Genre</MenuItem>
-            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Statut"}>Statut</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Niveau 1"}>Niveau</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Mâle"}>Genre</MenuItem>
+            <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"payé"}>Statut</MenuItem>
    
           
         <MenuItem style={{display:"none"}} value={'Niveau 1'}>Niveau 1</MenuItem>
@@ -392,7 +431,7 @@ const downloadPageContent = (areaID) => {
               p: 1,
             }}
           >
-          
+            <MenuItem onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={false}>effacer le filtre</MenuItem>
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 1"}>Niveau 1</MenuItem>
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 2"}>Niveau 2</MenuItem>
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 3"}>Niveau 3</MenuItem>
@@ -421,8 +460,8 @@ const downloadPageContent = (areaID) => {
                                   <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}} >
                                      <FormControl sx={{ width: 120 }}>
                                        <Select  onMouseLeave={()=>{setGenderFilter(false)}}
-                                         value={selectedOption}
-                                         onChange={handleSelectChange}
+                                         value={selectedGender}
+                                         onChange={handleSelectGenderChange}
                                          displayEmpty
                                          label=""
                                          sx={{
@@ -432,7 +471,7 @@ const downloadPageContent = (areaID) => {
                                          }}
                                        >
                                         
-                                         
+                                        <MenuItem onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={false}>effacer le filtre</MenuItem>
                                          <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Mâle"}>Mâle</MenuItem>
                                          <MenuItem  onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={"Femelle"}>Femelle</MenuItem>
                                         
@@ -448,8 +487,8 @@ const downloadPageContent = (areaID) => {
                          <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}} >
                              <FormControl sx={{ minWidth: 140}}>
                                <Select  onMouseLeave={()=>{setStatusFilter(false)}}
-                                 value={selectedOption}
-                                 onChange={handleSelectChange}
+                                 value={selectedStatus}
+                                 onChange={handleSelectStatusChange}
                                  displayEmpty
                                  label=""
                                  sx={{
@@ -459,7 +498,7 @@ const downloadPageContent = (areaID) => {
                                  }}
                                >
                                 
-                                 
+                                <MenuItem onClick={()=>{setGenderFilter(false);setMainMenuOpen(false)}} value={false}>effacer le filtre</MenuItem>
                                  <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Payé"}>Payé</MenuItem>
                                  <MenuItem onClick={()=>{setStatusFilter(false);setMainMenuOpen(false)}} value={"Non Payé"}>Non Payé</MenuItem>
                                 

@@ -4,7 +4,7 @@ import { Grid, Button, Typography, Table, TableHead, TableBody, TableRow, TableC
 import TextField from '@material-ui/core/TextField';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createStudentResult } from 'src/redux/actions/student.action';
+import { createStudentResult, updateStudentAttendance } from 'src/redux/actions/student.action';
 import { saveThemeColor, saveThemeImage } from 'src/redux/reducers/settings.slice';
 
 const subjects = ['Mathematics', 'English', 'Biology', 'Physics', 'Home Keeping', 'Economics', 'Fine arts', 'French'];
@@ -60,11 +60,14 @@ const AttendanceReportForm = ({studentData}) => {
   const [scores, setScores] = useState({});
   const [cummulative, setCumulative] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [dupStudentData,setDupStudentData] = useState(studentData.attendance)
 
 
 
   const { themeColor } = useSelector((state) => state.settings);
   const {school } = useSelector((state) => state.auth);
+
+  console.log("attendance for this student is --->",studentData.attendance)
 
 
   useEffect(()=>{
@@ -150,7 +153,7 @@ const AttendanceReportForm = ({studentData}) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {studentData.attendance ? studentData.attendance.map((item, index) => (
+          {dupStudentData ? dupStudentData.map((item, index) => (
             <TableRow key={item.id}>
               <TableCell>
                 <div style={{display:"flex",alignItems:"center"}}>
@@ -163,8 +166,27 @@ const AttendanceReportForm = ({studentData}) => {
               {
                 <TableCell>
                 <TextField
-                  value={item.mon?'Y': 'N'}
-                  //onChange={(e) => handleScoreChange(subject, 'ca', e.target.value)}
+                  value={item.mon === true ?'Y'  :item.mon === false ? 'N':''}
+                  onChange={(e) =>{
+                   
+                      dupStudentData[index].mon = e.target.value
+                      setDupStudentData(  [...dupStudentData])
+                      
+                   
+                    if(e.target.value === 'Y' || e.target.value === 'y' ){
+                      dupStudentData[index].mon = true
+                     setDupStudentData(  [...dupStudentData]
+                     )
+                     dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    else if(e.target.value === 'N' || e.target.value === 'n' ){
+                      dupStudentData[index].mon = false
+                      setDupStudentData(  [...dupStudentData]
+                       )
+                       dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    
+                    }}
                   multiline
                   rows={1}
                   style={{ marginLeft: '40px' }}
@@ -181,8 +203,27 @@ const AttendanceReportForm = ({studentData}) => {
               
               <TableCell>
                 <TextField
-                 value={item.tue?'Y': 'N'}
+                 value={item.tue === true ?'Y'  :item.tue === false ? 'N':''}
                   //onChange={(e) => handleScoreChange(subject, 'testScores', e.target.value)}
+                  onChange={(e) =>{
+                   
+                      dupStudentData[index].tue = e.target.value
+                      setDupStudentData(  [...dupStudentData])
+                   
+                    if(e.target.value === 'Y' || e.target.value === 'y' ){
+                      dupStudentData[index].tue = true
+                     setDupStudentData(  [...dupStudentData]
+                     )
+                     dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    else if(e.target.value === 'N' || e.target.value === 'n' ){
+                      dupStudentData[index].tue = false
+                      setDupStudentData(  [...dupStudentData]
+                       )
+                       dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    
+                    }}
                   multiline
                   rows={1}
                   className={classes.searchInput}
@@ -196,8 +237,26 @@ const AttendanceReportForm = ({studentData}) => {
               </TableCell>
               <TableCell>
                 <TextField
-                  value={item.wed?'Y': 'N'}
-                  //onChange={(e) => handleScoreChange(subject, 'examScores', e.target.value)}
+                  value={item.wed=== true ?'Y'  :item.wed=== false ? 'N':''}
+                  onChange={(e) =>{
+                    
+                      dupStudentData[index].wed = e.target.value
+                      setDupStudentData(  [...dupStudentData])
+                   
+                    if(e.target.value === 'Y' || e.target.value === 'y' ){
+                      dupStudentData[index].wed = true
+                     setDupStudentData(  [...dupStudentData]
+                     )
+                     dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    else if(e.target.value === 'N' || e.target.value === 'n' ){
+                      dupStudentData[index].wed = false
+                      setDupStudentData(  [...dupStudentData]
+                       )
+                       dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    
+                    }}
                   multiline
                   rows={1}
                   className={classes.searchInput}
@@ -211,10 +270,28 @@ const AttendanceReportForm = ({studentData}) => {
               </TableCell>
               <TableCell>
                 <TextField
-                  value={item.thu?'Y': 'N'}
-                  disabled={true}
+                  value={item.thu === true ?'Y'  :item.thu === false ? 'N':''}
                   
-                  //onChange={(e) => handleScoreChange(subject, 'finalGrade', e.target.value)}
+                  
+                  onChange={(e) =>{
+                   
+                      dupStudentData[index].thu = e.target.value
+                      setDupStudentData(  [...dupStudentData])
+                   
+                    if(e.target.value === 'Y' || e.target.value === 'y' ){
+                      dupStudentData[index].thu = true
+                     setDupStudentData(  [...dupStudentData]
+                     )
+                     dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    else if(e.target.value === 'N' || e.target.value === 'n' ){
+                      dupStudentData[index].thu = false
+                      setDupStudentData(  [...dupStudentData]
+                       )
+                       dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    
+                    }}
                   multiline
                   rows={1}
                   className={classes.searchInput}
@@ -230,10 +307,26 @@ const AttendanceReportForm = ({studentData}) => {
 
               <TableCell>
                 <TextField
-                  value={item.fri?'Y': 'N'}
-                  disabled={true}
-                  
-                  //onChange={(e) => handleScoreChange(subject, 'finalGrade', e.target.value)}
+                  value={item.fri === true ?'Y'  :item.fri === false ? 'N':''}
+                  onChange={(e) =>{
+                   
+                      dupStudentData[index].fri = e.target.value
+                      setDupStudentData(  [...dupStudentData])
+                   
+                    if(e.target.value === 'Y' || e.target.value === 'y' ){
+                      dupStudentData[index].fri = true
+                     setDupStudentData(  [...dupStudentData]
+                     )
+                     dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    else if(e.target.value === 'N' || e.target.value === 'n' ){
+                      dupStudentData[index].fri = false
+                      setDupStudentData(  [...dupStudentData]
+                       )
+                       dispatch(updateStudentAttendance(studentData.id,dupStudentData))
+                    }
+                    
+                    }}
                   multiline
                   rows={1}
                   className={classes.searchInput}

@@ -183,6 +183,27 @@ export const deleteStudent = (studentData, navigate) => async (dispatch) => {
 }
 
 
+export const updateStudentAttendance = (studentId,attendanceArray) => async (dispatch) => {
+  db.collection('students')
+    .doc(studentId)
+    .update({
+
+    attendance:attendanceArray
+
+    }).then((res) => {
+     
+      notifySuccessFxn('Updated successfully');
+     
+    })
+    .catch((err) => {
+     
+      console.log('ERR updating student data-: ', err);
+    });
+};
+
+
+
+
 export const updateStudent = (studentData, navigate, setLoading) => async (dispatch) => {
   db.collection('students')
     .doc(studentData.studentId)
