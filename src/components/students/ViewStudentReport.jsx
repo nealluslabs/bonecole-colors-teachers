@@ -32,6 +32,8 @@ const columns = [
   },
 ];
 
+
+
 export default function ViewStudentsReport({ students }) {
   const navigate = useNavigate();
   const handleActionClick = (student) => {
@@ -41,6 +43,8 @@ export default function ViewStudentsReport({ students }) {
   const handleAddResult = (student) => {
     navigate('/dashboard/action-reports', { state: { student } });
   };
+
+ 
 
   const dispatch = useDispatch()
 

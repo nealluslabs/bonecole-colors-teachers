@@ -35,6 +35,12 @@ export default function ReportPage() {
   const { user } = useSelector((state) => state.auth);
   const { students } = useSelector((state) => state.student);
 
+  const [studentsToDisplay,setStudentsToDisplay] = useState([...students])
+  
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('');
+  const [selectedGender, setSelectedGender] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('');
 
   useEffect(() => {
     //dispatch(fetchMyGroups(user?.coolers));
@@ -50,6 +56,25 @@ export default function ReportPage() {
     dispatch(getStudents());
     dispatch(fetchUserData(user?.id));
   }, [])
+
+  useEffect(() => {
+/*FILTERING BY LEVEL */
+     if(selectedLevel){
+
+
+   let studentsFilteredByLevel = students.filter((item)=> (item.class && Number(item.class.slice(item.class.length-2,item.class.length)) ===  Number(selectedLevel.slice(selectedLevel.length-2,selectedLevel.length)) ))
+  
+    console.log("students filtered by level--->",studentsFilteredByLevel)
+
+   setStudentsToDisplay(studentsFilteredByLevel )
+
+     }
+
+    /*FILTERING BY PAYMENT */ 
+
+    
+  }, [selectedLevel])
+
 
  
 
@@ -74,7 +99,10 @@ export default function ReportPage() {
   const [genderFilter,setGenderFilter] = useState(false)
   const [statusFilter,setStatusFilter] = useState(false)
 
-  const [selectedOption, setSelectedOption] = useState('');
+ 
+
+
+
   const [selectedValue, setSelectedValue] = useState('');
 
   const [activeButton, setActiveButton] = useState('1');
@@ -82,6 +110,12 @@ export default function ReportPage() {
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
     setSelectedValue(event.target.value);
+  };
+
+
+  const handleSelectLevelChange = (event) => {
+    setSelectedLevel(event.target.value);
+   
   };
 
   const handleSelectChange1 = (event) => {
@@ -229,8 +263,8 @@ const downloadPageContent = (areaID) => {
         <Grid item sx={{mb: 2}}>
      <FormControl sx={{ minWidth: 140 }}>
           <Select
-            value={selectedOption}
-            onChange={handleSelectChange}
+            value={selectedLevel}
+            onChange={handleSelectLevelChange}
             displayEmpty
             label=""
             sx={{
@@ -242,6 +276,7 @@ const downloadPageContent = (areaID) => {
             <MenuItem value="">
               Sélectionner Classe
             </MenuItem>
+            <MenuItem value={false}>effacer le filtre</MenuItem>
         <MenuItem value={'Level 1'}>Niveau 1</MenuItem>
         <MenuItem value={'Level 2'}>Niveau 2</MenuItem>
         <MenuItem value={'Level 3'}>Niveau 3</MenuItem>
@@ -314,7 +349,8 @@ const downloadPageContent = (areaID) => {
             <MenuItem onClick={(e)=>{setLevelFilter(true);setGenderFilter(false); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Niveau"}>Niveau</MenuItem>
             <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(true); setStatusFilter(false);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Genre"}>Genre</MenuItem>
             <MenuItem onClick={(e)=>{setLevelFilter(false);setGenderFilter(false); setStatusFilter(true);setMainMenuOpen(true);setSelectedValue(e.target.value)}} value={"Statut"}>Statut</MenuItem>
-
+   
+          
         <MenuItem style={{display:"none"}} value={'Niveau 1'}>Niveau 1</MenuItem>
         <MenuItem style={{display:"none"}} value={'Niveau 2'}>Niveau 2</MenuItem>
         <MenuItem style={{display:"none"}} value={'Niveau 3'}>Niveau 3</MenuItem>
@@ -346,8 +382,8 @@ const downloadPageContent = (areaID) => {
         <div style={{  position:"absolute",left:"1rem",top:"4rem",backgroundColor:"white"}}>
         <FormControl style={{ width: 120}}>
           <Select onMouseLeave={()=>{setLevelFilter(false)}}
-            value={selectedOption}
-            onChange={handleSelectChange}
+            value={selectedLevel}
+            onChange={handleSelectLevelChange}
             displayEmpty
             label=""
             sx={{
@@ -356,7 +392,7 @@ const downloadPageContent = (areaID) => {
               p: 1,
             }}
           >
-           
+          
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 1"}>Niveau 1</MenuItem>
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 2"}>Niveau 2</MenuItem>
             <MenuItem onClick={()=>{setLevelFilter(false);setMainMenuOpen(false)}} value={"Niveau 3"}>Niveau 3</MenuItem>
@@ -438,8 +474,8 @@ const downloadPageContent = (areaID) => {
 
             <Grid id="printableArea" item xs={8} md={12} lg={12}>
               <div style={{background: '#F8F8F8',  padding: '10px'}}>
-              {activeButton === '1' &&  <ViewStudentsReport students={students}/>}  
-              {activeButton === '2' &&  <ViewStudentAttendanceReport students={students}/>}  
+              {activeButton === '1' &&  <ViewStudentsReport students={studentsToDisplay}/>}  
+              {activeButton === '2' &&  <ViewStudentAttendanceReport students={studentsToDisplay}/>}  
               {/*activeButton === '3' &&  <ViewStudentsReport students={students}/>*/}  
                 </div>
             </Grid>

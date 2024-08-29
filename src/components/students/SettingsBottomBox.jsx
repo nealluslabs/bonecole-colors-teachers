@@ -303,7 +303,7 @@ dispatch(saveThemeImageBlob(event.target.files[0]))
             component="label"
             fullWidth
             value={state.lname}
-            onChange={handleChange}
+            //onChange={handleChange}
             className={classes.searchInput}
             InputProps={{
               disableUnderline: true,

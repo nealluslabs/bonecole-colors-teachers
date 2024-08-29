@@ -287,6 +287,7 @@ if(!url )
           if(!userPreferences.password){
             console.error("No Password to update");
             notifySuccessFxn("Updated successfully");
+            dispatch(fetchUserData(userID, "update"));
             }
          //navigate('/dashboard/home', { replace: true });
         }
@@ -315,6 +316,7 @@ if(!url )
             //setLoading(false);
             console.log("our first update to the database went swimmingly");
             notifySuccessFxn("Updated successfully");
+          dispatch(fetchUserData(userID, "update"));
            // navigate('/dashboard/home', { replace: true });
           })
           .catch((error) => {
