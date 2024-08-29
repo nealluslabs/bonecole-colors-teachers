@@ -192,7 +192,7 @@ export const updateStudentAttendance = (studentId,attendanceArray) => async (dis
 
     }).then((res) => {
      
-      notifySuccessFxn('Updated successfully');
+     console.log("updated attendance array!")
      
     })
     .catch((err) => {
