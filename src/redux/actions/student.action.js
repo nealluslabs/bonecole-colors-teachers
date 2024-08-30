@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { nanoid } from 'nanoid';
 import { notifyErrorFxn, notifySuccessFxn } from 'src/utils/toast-fxn';
 import { fetchStudents, fetchTeachers } from '../reducers/student.slice';
+import firebase from "firebase/app";
 
 export const uploadDocImages = (file) => async (dispatch) => {
   const imageName = uuidv4() + '.' + file.name.split('.').pop();
@@ -121,6 +122,93 @@ export const createStudent = async (studentData, navigate, setLoading) => {
     await db.collection('students').doc(studentRef.id).update({
       studentId: studentRef.id,
     });
+
+
+    await db.collection('parents')
+    .where('email', '==', studentData.state.email) // Adjust the field name if needed
+    .get()
+    .then(async(snapshot)=>{   
+
+    console.log("PARENT EXISTS INFO--->",snapshot.docs)
+
+     if(snapshot.docs.length >0 ){
+
+
+      await db.collection('parents').doc(snapshot.docs[0].data().id).update({
+        students: firebase.firestore.FieldValue.arrayUnion(studentRef.id)
+      });
+
+     }else{
+
+
+      if(studentData.state.email){  
+
+        fb.auth().createUserWithEmailAndPassword(
+          studentData.state.email,
+          '123456'
+      ).then(async(res)=>{
+    
+        await db.collection('parents').doc(res.user.uid).set({
+          id:res.user.uid,
+          parentId:res.user.uid,
+          schoolId:studentData.schoolId,
+          accountCreated: today.toLocaleDateString('en-US', options),
+          parentIdFileUrl: studentData.mothersIdFileUrl,
+          email: studentData?.state?.email,
+          password:'123456',
+          phoneNumber: studentData?.state?.phoneNumber,
+          students:[
+            studentRef.id
+          ],
+    
+           })
+           
+    
+    
+         }
+    
+    
+        )
+    
+    
+      }else{
+    
+    
+        await db.collection('parents').add({
+         
+          schoolId:studentData.schoolId,
+          accountCreated: today.toLocaleDateString('en-US', options),
+          parentIdFileUrl: studentData.mothersIdFileUrl,
+          email: studentData?.state?.email,
+          password:'123456',
+          phoneNumber: studentData?.state?.phoneNumber,
+          students:[
+            studentRef.id
+          ],
+    
+           })
+           .then((res)=>{
+
+            db.collection('parents')
+          .doc(res.id)
+          .update({
+            id:res.user.id,
+            parentId:res.user.id,
+          })
+      
+           })
+    
+      }
+
+   }
+
+  
+})
+
+
+
+
+
 
     console.log('Created Successfully');
     notifySuccessFxn('Student Profile Created Successfully');
