@@ -24,7 +24,7 @@ export default function StudentPage() {
     
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user,school } = useSelector((state) => state.auth);
   const { myGroups, isLoading } = useSelector((state) => state.group);
   const { students } = useSelector((state) => state.student);
 
@@ -36,7 +36,7 @@ export default function StudentPage() {
   console.log("STUDENTS:::::", students);
 
   useEffect(() => {
-    dispatch(getStudents());
+    dispatch(getStudents(user?.schoolId));
     dispatch(fetchUserData(user?.id));
   }, [])
 

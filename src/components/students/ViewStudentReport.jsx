@@ -80,6 +80,7 @@ export default function ViewStudentsReport({ students }) {
                   >
                     Voir Résultat
                   </Button>
+                  
                   <Button
                     onClick={() => handleAddResult(params?.row)}
                     variant="contained"

@@ -221,9 +221,11 @@ export const createStudent = async (studentData, navigate, setLoading) => {
   }
 };
 
-export const getStudents = () => async (dispatch) => {
+export const getStudents = (schoolId) => async (dispatch) => {
   try {
-    const studentsSnapshot = await db.collection('students').get();
+    const studentsSnapshot = await db.collection('students')
+    .where('schoolId', '==', schoolId)
+    .get();
 
     const students = studentsSnapshot.docs.map((studentDoc) => {
       const studentData = studentDoc.data();
@@ -248,12 +250,12 @@ export const getStudents = () => async (dispatch) => {
   }
 };
 
-export const deleteStudent = (studentData, navigate) => async (dispatch) => {
+export const deleteStudent = (studentData, navigate,user) => async (dispatch) => {
 
   db.collection('students')
   .doc(studentData.studentId)
   .delete(
-    dispatch(getStudents())
+    dispatch(getStudents(user?.schoolId))
   )
   .then((res)=>{
    

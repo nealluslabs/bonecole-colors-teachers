@@ -59,7 +59,7 @@ export default function SettingsPage() {
   }, [user])
 
   useEffect(() => {
-    dispatch(getStudents());
+    dispatch(getStudents(user?.schoolId));
     dispatch(fetchUserData(user?.id));
   }, [])
 

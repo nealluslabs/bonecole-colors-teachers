@@ -9,6 +9,10 @@ export default function ViewExamReport({ result }) {
 
 
   const columns = 
+
+  result ?
+  (
+ 
   //checking if there is entry for a third exam, meaning we must show 3 tables
   Object.entries(result.subjects)[0][1].exam3 ?
   
@@ -45,13 +49,34 @@ export default function ViewExamReport({ result }) {
     { field: 'finalGrade', headerName: 'Final Grade', width: 200 },
   ]
 
- console.log("RESULTS.SUBJECTS-->",result.subjects)
+  )
 
- console.log("RESULTS.SUBJECTS IN AN ARRAY FORM-->",Object.entries(result.subjects))
+
+  :
+
+
+    //no third exam,no 2nd exam,meaning default of 1 exam--> show 1 table
+    [
+      /*{ field: 'id', headerName: '#', width: 150 },*/
+      { field: 'subject', headerName: 'Subject', width: 200 },
+      /*{ field: 'ca', headerName: 'Continuous Assessment', width: 200 },*/
+      { field: 'exam1', headerName: 'First Exam', width: 200 },
+     
+      { field: 'finalGrade', headerName: 'Final Grade', width: 200 },
+    ]
+
+
+
+// console.log("RESULTS.SUBJECTS-->",result.subjects)
+
+ //console.log("RESULTS.SUBJECTS IN AN ARRAY FORM-->",Object.entries(result.subjects))
 
 
   // Transform subject data into rows for DataGrid
   const rows =
+
+  result ?
+  (
   
   Object.entries(result.subjects)[0][1].exam3 ?
 
@@ -92,7 +117,11 @@ export default function ViewExamReport({ result }) {
     finalGrade: data.finalGrade || '',
   }))
 
+  )
 
+  :
+
+  []
   
   
 

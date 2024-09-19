@@ -53,7 +53,7 @@ export default function ReportPage() {
   }, [])
 
   useEffect(() => {
-    dispatch(getStudents());
+    dispatch(getStudents(user?.schoolId));
     dispatch(fetchUserData(user?.id));
   }, [])
 

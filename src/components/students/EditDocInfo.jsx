@@ -329,7 +329,7 @@ dispatch(saveThemeImage(school && school.settings &&  school.settings.themeImage
 
   <Grid xs={12} style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
      <Button
-         onClick={()=>{dispatch(deleteStudent(state,navigate))}}
+         onClick={()=>{dispatch(deleteStudent(state,navigate,user))}}
           variant="contained"
           style={{
             minWidth: '125px',

@@ -339,7 +339,7 @@ const EditAdditionalInfo = ({state, handleChange, handleUpdate, loading}) => {
 
         <Grid style={{marginTop:"2rem",marginBottom:"1rem",marginLeft:"30px"}}>
      <Button
-         onClick={()=>{dispatch(deleteStudent(state,navigate))}}
+         onClick={()=>{dispatch(deleteStudent(state,navigate,user))}}
           variant="contained"
           style={{
             minWidth: '125px',
